@@ -1,0 +1,7 @@
+{
+  "/Pricing/page": "app/Pricing/page.js",
+  "/page": "app/page.js",
+  "/Blog/page": "app/Blog/page.js",
+  "/Download/Windows/page": "app/Download/Windows/page.js",
+  "/Forum/page": "app/Forum/page.js"
+}

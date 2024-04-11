@@ -11,7 +11,7 @@ const Footer = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [data,setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8081/public/footerimage/1") // Adjust the URL according to your endpoint
+    fetch("http://65.2.172.195:8081/public/footerimage/1") // Adjust the URL according to your endpoint
       .then((response) => response.blob())
       .then((blob) => {
         const url = URL.createObjectURL(blob);
@@ -22,7 +22,7 @@ const Footer = () => {
   }, []);
   
   const Getall=()=>{
-    axios.get('http://localhost:8081/public/footertext').then((res)=>{
+    axios.get('http://65.2.172.195:8081/public/footertext').then((res)=>{
       setData(res.data)
       console.log("data...",res.data)
     }).catch((err)=>{

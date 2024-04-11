@@ -25,7 +25,7 @@ const FeaturesMT = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const apiUrl = 'http://localhost:8081/admin/saveFormData';
+        const apiUrl = 'http://65.2.172.195:8081/admin/saveFormData';
         const token = localStorage.getItem('token');
 
         const formData = {
@@ -65,7 +65,7 @@ const FeaturesMT = () => {
     };
 
     const GetAllFeaturebox = () => {
-        axios.get('http://localhost:8081/public/featurebox')
+        axios.get('http://65.2.172.195:8081/public/featurebox')
             .then((res) => {
                 setData(res.data);
             })

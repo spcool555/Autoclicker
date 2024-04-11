@@ -18,7 +18,7 @@ const Pricing = () => {
     }, []);
 
     const GetAllFeaturebox = () => {
-        axios.get('http://localhost:8081/public/pricefeaturebox')
+        axios.get('http://65.2.172.195:8081/public/pricefeaturebox')
             .then((res) => {
                 setData(res.data);
             })
@@ -36,7 +36,7 @@ const Pricing = () => {
             // Add more headers as needed
         };
     
-        axios.get(`http://localhost:8081/adminuser/getPlanFormData/${uid}`, { headers })
+        axios.get(`http://65.2.172.195:8081/adminuser/getPlanFormData/${uid}`, { headers })
             .then((res) => {
                 setUserPlan(res.data);
                 console.log("dddddddddddddd" + res.data);
@@ -49,7 +49,7 @@ const Pricing = () => {
     const handleSubmit = async (event, planid, planname, price) => {
         event.preventDefault();
 
-        const apiUrl = 'http://localhost:8081/adminuser/savePlanFormData';
+        const apiUrl = 'http://65.2.172.195:8081/adminuser/savePlanFormData';
         const token = localStorage.getItem('token');
 
         const generateTransactionId = () => {

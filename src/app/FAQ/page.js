@@ -11,14 +11,14 @@ useEffect(()=>{
   GetAllQuestionAnswer()
 },[]);
   const GetAllFeaturebox = ()=>{
-      axios.get(`http://localhost:8081/public/savefaq/1`).then((res)=>{
+      axios.get(`http://65.2.172.195:8081/public/savefaq/1`).then((res)=>{
           setData(res.data)
           
           console.log("data...",res.data)
         }).catch((err)=>{
           console.log("err",err)
         })
-        axios.get(`http://localhost:8081/public/savefaq/2`).then((res)=>{
+        axios.get(`http://65.2.172.195:8081/public/savefaq/2`).then((res)=>{
           setData2(res.data)
           
           console.log("data...",res.data)
@@ -28,7 +28,7 @@ useEffect(()=>{
       
   }
   const GetAllQuestionAnswer = ()=>{
-    axios.get('http://localhost:8081/public/questionanswer').then((res)=>{
+    axios.get('http://65.2.172.195:8081/public/questionanswer').then((res)=>{
         setQuestionAnswer(res.data)
         console.log("data...",res.data)
       }).catch((err)=>{

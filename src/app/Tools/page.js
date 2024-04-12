@@ -86,22 +86,54 @@ const Tools = () => {
                 <div class="p-2 md:p-4">
                     <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
                         <h2 class="pl-6 text-2xl font-bold sm:text-xl">Tools</h2>
-        
+                        
                         <div class="grid max-w-2xl mx-auto mt-8">
                         <div className="wrapper">
       
+                        <div className="lg:hidden">
+  <button onClick={() => openModal("https://spcool555.github.io/keyboard_mouse_test/")} className="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+    Keyboard Mouse Test
+  </button>
 
-      
+  <button onClick={() => openModal("https://spcool555.github.io/sapcebar_clicker/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+    Spacebar Clicker
+  </button>
+
+  <button onClick={() => openModal("https://spcool555.github.io/cps_test/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+    CPSTest
+  </button>
+
+  <button onClick={() => openModal("https://spcool555.github.io/typing_test/practice.html")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+    Typing Test
+  </button>
+
+  <button onClick={() => openModal("https://premium-cursors.netlify.app/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+    Custome Cursor Test
+  </button>
+
+  <button onClick={() => openModal("https://spcool555.github.io/ReactionTimeTexster/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+    Reaction Time Test
+  </button>
+
+  <button onClick={() => openModal("https://spcool555.github.io/micAndSpeechTotext/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+    Mic Test & Speech to Text
+  </button>
+</div>
+
+         
 
 
         
            
      
-            <Modal isOpen={isModalOpen} onRequestClose={closeModal} style={{ content: { width: '100%', height: '100%', margin: 'auto' } }}>
-     
-                <iframe id="modalIframe" src={modalUrl} style={{ width: '100%', height: '100%' }}></iframe>
-                <button onClick={closeModal}>Close</button>
-            </Modal>
+<Modal isOpen={isModalOpen} onRequestClose={closeModal} className="fixed inset-0 flex items-center justify-center">
+  <div className="bg-white rounded-lg shadow-lg p-6 sm:p-10 w-full max-w-lg overflow-y-auto">
+    <iframe id="modalIframe" src={modalUrl} className="w-full" title="Modal Content" style={{ height: '80vh' }}></iframe>
+    <button onClick={closeModal} className="mt-4 block w-full rounded-md bg-blue-500 text-white font-semibold py-2 px-4 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Close</button>
+  </div>
+</Modal>
+
+
         </div>
                         </div>
                     </div>

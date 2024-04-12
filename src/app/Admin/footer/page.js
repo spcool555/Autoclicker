@@ -25,7 +25,7 @@ const Footer = () => {
       
       const token = localStorage.getItem('token');
       try {
-        const response = await fetch('http://65.2.172.195:8081/admin/footerupload', {
+        const response = await fetch('http://localhost:8081/admin/footerupload', {
           method: 'POST',
           body: formData,
           headers: {
@@ -55,7 +55,7 @@ const Footer = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://65.2.172.195:8081/admin/footertext',
+        'http://localhost:8081/admin/footertext',
         { items: about },
         {
           headers: {

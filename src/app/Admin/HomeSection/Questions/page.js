@@ -25,7 +25,7 @@ import JoditEditor from "jodit-react";
     const handleSubmit = async (event) => {
         event.preventDefault();
         
-        const apiUrl = 'http://65.2.172.195:8081/admin/questionanswer';
+        const apiUrl = 'http://localhost:8081/admin/questionanswer';
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         
         const formData = {
@@ -68,7 +68,7 @@ import JoditEditor from "jodit-react";
         GetAllQuestionAnswer();
     },[]);
         const GetAllQuestionAnswer = ()=>{
-            axios.get('http://65.2.172.195:8081/public/questionanswer').then((res)=>{
+            axios.get('http://localhost:8081/public/questionanswer').then((res)=>{
                 setQuestionAnswer(res.data)
                 console.log("data...",res.data)
               }).catch((err)=>{

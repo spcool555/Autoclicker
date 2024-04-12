@@ -21,7 +21,7 @@ async function handleSubmit(event) {
         contact: event.target.contact.value,
     };
 
-    const response = await fetch('http://65.2.172.195:8081/auth/signup', {
+    const response = await fetch('http://localhost:8081/auth/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -33,7 +33,7 @@ const PricingSection = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const apiUrl = 'http://65.2.172.195:8081/admin/savePriceFormData';
+        const apiUrl = 'http://localhost:8081/admin/savePriceFormData';
         const token = localStorage.getItem('token');
 
         const formData = {
@@ -79,7 +79,7 @@ const PricingSection = () => {
     };
 
     const GetAllFeaturebox = () => {
-        axios.get('http://65.2.172.195:8081/public/pricefeaturebox')
+        axios.get('http://localhost:8081/public/pricefeaturebox')
             .then((res) => {
                 setData(res.data);
             })

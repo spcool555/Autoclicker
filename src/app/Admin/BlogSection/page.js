@@ -34,7 +34,7 @@ import JoditEditor from "jodit-react";
       event.preventDefault();
       
       // Your API endpoint where the form data will be sent
-      const apiUrl = 'http://65.2.172.195:8081/admin/news';
+      const apiUrl = 'http://localhost:8081/admin/news';
       const token = localStorage.getItem('token');
       // The data you want to send in JSON format
       const formData = {
@@ -97,7 +97,7 @@ useEffect(()=>{
   GetAllFeaturebox();
 },[]);
   const GetAllFeaturebox = ()=>{
-      axios.get('http://65.2.172.195:8081/public/newsbox').then((res)=>{
+      axios.get('http://localhost:8081/public/newsbox').then((res)=>{
           setData(res.data)
           console.log("data...",res.data)
         }).catch((err)=>{

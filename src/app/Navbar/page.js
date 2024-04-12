@@ -41,49 +41,173 @@ export const Navbar = () => {
   };
 
  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
 
   return (
-    <header className="bg-[#1C2B71] text-white relative z-50">
-      <nav className="max-w-screen-xl mx-auto py-3 px-5 flex justify-between">
-        <div className="flex justify-between items-center w-full">
-          <a
-            aria-current="page"
-            href="/"
-            className="router-link-active router-link-exact-active flex items-center space-x-2 mr-5"
-          >
-            <Image src="/logo.png" alt="logo" width={170} height={56} />
-          </a>
-          <div className="hidden md:flex items-center space-x-5">
-           <ul className="hidden h-full gap-12 lg:flex">
-            
-           <li><Link href="/">Home</Link></li>
-           <li><Link href="/Download">Download</Link></li>
-           <li><Link href="/Token">Token</Link></li>
-           <li><Link href="/Forum">Forum</Link></li>
-           <li><Link href="/Pricing">Pricing</Link></li>
-           <li><Link href="/FAQ">FAQs</Link></li>
-           <li><Link href="/Blog">Blog</Link></li>
-           <li><Link href="/Help">Documentation</Link ></li>
-           <li><Link href="/Tools">Tools</Link></li>
-           {/* <li><Link href="/About">About</Link></li> */}
-         
-           
-           <li>
+    <nav  className="bg-[#1C2B71] text-white relative z-50">
+    <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4  ">
+      <Link  href="/"     className="router-link-active router-link-exact-active flex items-center space-x-2 mr-5">
+      <Image src="/logo.png" alt="logo" width={170} height={56}  className="h-8"/>
+        
+      </Link>
+      <button
+        onClick={toggleMobileMenu}
+        type="button"
+        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-default"
+        aria-expanded={isMobileMenuOpen ? "true" : "false"}
+      >
+        <span className="sr-only">Open main menu</span>
+        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+      {/* Normal navbar for large screens */}
+      <div className="hidden md:flex md:items-center md:space-x-4">
+        <Link href="/" className="text-white-900">Home</Link>
+        <Link href="/Download" className="text-white-900">Download</Link>
+        <Link href="/Token" className="text-white-900">Token</Link>
+        <Link href="/Forum" className="text-white-900">Forum</Link>
+        <Link href="/Pricing" className="text-white-900">Pricing</Link>
+        <Link href="/FAQ" className="text-white-900">FAQ</Link>
+        <Link href="/Blog" className="text-white-900">Blog</Link>
+        <Link href="/Documentation" className="text-white-900">Documentation</Link>
+        <Link href="/Tools" className="text-white-900">Tools</Link>
+
+
+     
       {isLoggedIn ? (
         // Render this if the user is logged in
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} className="text-white-900"
+        
+        >Logout</button>
         
       ) : (
         // Render this if the user is not logged in
-        <Link href="/SignIn">SignIn</Link>
+        <Link href="/SignIn" className="text-white-900"
+        
+        onClick={toggleMobileMenu}
+        aria-expanded={isMobileMenuOpen ? "true" : "false"}
+        >SignIn</Link>
+      )}
+
+
+      {isLoggedIn ? (
+        // Render this if the user is logged in
+        <Link href="/Profile" className="block py-2 px-3 text-white-900"
+        
+        onClick={toggleMobileMenu}
+        aria-expanded={isMobileMenuOpen ? "true" : "false"}
+
+        >Profile</Link>
+        
+      ) : (
+        // Render this if the user is not logged in
+        <Link hidden href=""></Link>
+      )}
+   
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+    {/* Mobile menu */}
+    <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden`} id="navbar-default">
+      <ul className="font-medium flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 space-y-2">
+        <li>
+          <Link href="/" className="block py-2 px-3 text-blue-700 rounded hover:bg-gray-100"
+           onClick={toggleMobileMenu}
+           aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          >Home</Link>
+        </li>
+        <li>
+          <Link href="/Download" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100" 
+              onClick={toggleMobileMenu}
+          aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          >Download</Link>
+        </li>
+        <li>
+          <Link href="/Token" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+           onClick={toggleMobileMenu}
+           aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          >Token</Link>
+        </li>
+        <li>
+          <Link href="/Forum" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+           onClick={toggleMobileMenu}
+           aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          >Forum</Link>
+        </li>
+        <li>
+          <Link href="/Pricing" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+           onClick={toggleMobileMenu}
+           aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          >Pricing</Link>
+        </li>
+        <li>
+          <Link href="/FAQ" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+            onClick={toggleMobileMenu}
+            aria-expanded={isMobileMenuOpen ? "true" : "false"}
+           >FAQs</Link>
+        </li>
+        <li>
+          <Link href="/Blog" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+          
+          onClick={toggleMobileMenu}
+          aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          >Blog</Link>
+        </li>
+        <li>
+          <Link href="/Help" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+          
+          onClick={toggleMobileMenu}
+          aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          >Documentation</Link>
+        </li>
+        <li>
+          <Link href="/Tools" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+          
+          onClick={toggleMobileMenu}
+          aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          >Tools</Link>
+        </li>
+
+  
+        <li>
+      {isLoggedIn ? (
+        // Render this if the user is logged in
+        <button onClick={handleLogout} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+        
+        >Logout</button>
+        
+      ) : (
+        // Render this if the user is not logged in
+        <Link href="/SignIn" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+        
+        onClick={toggleMobileMenu}
+        aria-expanded={isMobileMenuOpen ? "true" : "false"}
+        >SignIn</Link>
       )}
     </li>
     <li>
       {isLoggedIn ? (
         // Render this if the user is logged in
-        <Link href="/Profile">Profile</Link>
+        <Link href="/Profile" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+        
+        onClick={toggleMobileMenu}
+        aria-expanded={isMobileMenuOpen ? "true" : "false"}
+
+        >Profile</Link>
         
       ) : (
         // Render this if the user is not logged in
@@ -91,57 +215,17 @@ export const Navbar = () => {
       )}
     </li>
 
-           </ul>
-          </div>
-          {/* <div className="flex items-center space-x-2">
-            <div id="toggle" onClick={toggleTheme} >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26a5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1"
-                ></path>
-              </svg>
-            </div>
-          </div> */}
-        </div>
-        <div className="flex justify-center items-center space-x-2">
-          <div className="block md:hidden">
-            <div className="pl-2">
-              <svg
-                className="w-8 h-8"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1m0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1M3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1"
-                ></path>
-              </svg>
-              <svg
-                className="hidden w-8 h-8"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
-                ></path>
-              </svg>
-            </div>
-           
-          </div>
-        </div>
-      </nav>
-    </header>
+       
+
+
+
+
+
+
+
+      </ul>
+    </div>
+  </nav>
   );
 };
 

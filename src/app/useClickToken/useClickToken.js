@@ -19,7 +19,7 @@ const useClickToken = () => {
         } else {
             // Fetch a new click token from the backend if not signed in
             if (!signInToken) {
-                fetch('http://65.2.172.195:8081/public/token')
+                fetch('http://localhost:8081/public/token')
                     .then(response => response.text())
                     .then(newToken => {
                         localStorage.setItem('clickToken', newToken);
@@ -40,7 +40,7 @@ const useClickToken = () => {
         const apiURL = isSignedIn ? '/public/tokenss' : '/public/tokens'; // Example API endpoints
         const headers = isSignedIn ? { 'Authorization': `Bearer ${localStorage.getItem('token')}` } : { 'Content-Type': 'text/plain' };
 
-        fetch(`http://65.2.172.195:8081${apiURL}`, {
+        fetch(`http://localhost:8081${apiURL}`, {
             method: 'POST',
             headers: headers,
             body: isSignedIn ? undefined : token, // Send the clickToken if not signed in

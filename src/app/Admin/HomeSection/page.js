@@ -19,7 +19,7 @@ import AdminSidebar from '../AdminSidebar/page';
         
         const token = localStorage.getItem('token');
         try {
-          const response = await fetch('http://localhost:8081/admin/upload', {
+          const response = await fetch('http://65.2.172.195:8081/admin/upload', {
             method: 'POST',
             body: formData,
             headers: {

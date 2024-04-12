@@ -49,7 +49,7 @@ Getall();
 },[]);
 
 const Getall=()=>{
-  axios.get('http://localhost:8081/public/newpost').then((res)=>{
+  axios.get('http://65.2.172.195:8081/public/newpost').then((res)=>{
     const curentuid = localStorage.getItem('uid');
     setCurentuid2(curentuid);
     setData(res.data)
@@ -80,7 +80,7 @@ const handleSubmit = async (e) => {
     }
 
     const response = await axios.post(
-      'http://localhost:8081/adminuser/newpost',
+      'http://65.2.172.195:8081/adminuser/newpost',
       { newpost: newpost, uname: formData.firstname, uid: uid },
       {
         headers: {
@@ -109,7 +109,7 @@ const handleSubmit = async (e) => {
 useEffect(() => {
   GetAllReplies();
   const uid = localStorage.getItem('uid');
-  axios.get(`http://localhost:8081/public/userdata/${uid}`)
+  axios.get(`http://65.2.172.195:8081/public/userdata/${uid}`)
   .then((res) => {
       console.log("Received data:", res.data);
       setFormData(res.data);
@@ -124,7 +124,7 @@ replydata.forEach(reply => {
   touidToSenderunameMap[reply.touid] = reply.senderuname;
 });
   const GetAllReplies = ()=>{
-      axios.get('http://localhost:8081/public/replypost').then((res)=>{
+      axios.get('http://65.2.172.195:8081/public/replypost').then((res)=>{
         setReplydata(res.data)
        
         }).catch((err)=>{
@@ -151,7 +151,7 @@ const handleReplySubmit = async (event) => {
     });
     return;
   }
-  const apiUrl = 'http://localhost:8081/adminuser/replypost';
+  const apiUrl = 'http://65.2.172.195:8081/adminuser/replypost';
   const token = localStorage.getItem('token'); // Retrieve the token from local storage
   
   const formData2 = {

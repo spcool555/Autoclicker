@@ -20,7 +20,7 @@ GetAllQuestionAnswer();
 },[]);
 
 const GetAllFeaturebox = ()=>{
-  axios.get('http://localhost:8081/public/featurebox').then((res)=>{
+  axios.get('http://65.2.172.195:8081/public/featurebox').then((res)=>{
       setData2(res.data)
       console.log("data...",res.data)
     }).catch((err)=>{
@@ -29,7 +29,7 @@ const GetAllFeaturebox = ()=>{
   
 }
 const Getall=()=>{
-  axios.get('http://localhost:8081/public/items').then((res)=>{
+  axios.get('http://65.2.172.195:8081/public/items').then((res)=>{
     setData(res.data)
     console.log("data...",res.data)
   }).catch((err)=>{
@@ -39,7 +39,7 @@ const Getall=()=>{
 }
 
   const GetAllQuestionAnswer = ()=>{
-      axios.get('http://localhost:8081/public/questionanswer').then((res)=>{
+      axios.get('http://65.2.172.195:8081/public/questionanswer').then((res)=>{
           setQuestionAnswer(res.data)
           console.log("data...",res.data)
         }).catch((err)=>{
@@ -48,7 +48,7 @@ const Getall=()=>{
       
   }
   useEffect(() => {
-      fetch('http://localhost:8081/public/image/1') // Adjust the URL according to your endpoint
+      fetch('http://65.2.172.195:8081/public/image/1') // Adjust the URL according to your endpoint
           .then(response => response.blob())
           .then(blob => {
               const url = URL.createObjectURL(blob);
@@ -77,7 +77,7 @@ const Getall=()=>{
     
     
     const Getallwhatmakes=()=>{
-      axios.get('http://localhost:8081/public/whatmakes').then((res)=>{
+      axios.get('http://65.2.172.195:8081/public/whatmakes').then((res)=>{
         setData3(res.data)
         console.log("data333333333...",res.data)
       }).catch((err)=>{
@@ -93,7 +93,7 @@ const Getall=()=>{
       GetAllLatestMtblog();
       },[]);
         const GetAllLatestMtblog= ()=>{
-            axios.get('http://localhost:8081/public/newsbox').then((res)=>{
+            axios.get('http://65.2.172.195:8081/public/newsbox').then((res)=>{
                 setData4(res.data)
                 console.log("data44444444...",res.data)
               }).catch((err)=>{
@@ -110,7 +110,7 @@ const[video, setVideo]=useState([]);
       }, []);
   
       const GetallTopVideo = () => {
-          axios.get('http://localhost:8081/public/topvideo').then((res) => {
+          axios.get('http://65.2.172.195:8081/public/topvideo').then((res) => {
               setVideo(res.data)
               console.log("videodata...", res.data)
           }).catch((err) => {

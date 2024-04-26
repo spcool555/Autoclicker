@@ -5,8 +5,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import AdminSidebar from '../Admin/AdminSidebar/page';
+
  const Profile = () => {
-   
+    const router = useRouter();
+    useEffect(() => {
+        // Get the uid value from local storage
+        const uid = localStorage.getItem('uid');
+        console.log("UID value:", uid); // Log the value of uid
+
+        if (!uid) {
+            // If uid is undefined or null, redirect to the home page
+            router.push('/');
+        } else if (uid !== '1') {
+            // If the user is not an admin, redirect to the home page
+            router.push('/');
+        } 
+    }, []);
+    
   return (
    <>
    

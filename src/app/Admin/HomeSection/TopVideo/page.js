@@ -12,10 +12,10 @@ const TopVideo = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        Getall();
+        Getalls();
     }, []);
 
-    const Getall = () => {
+    const Getalls = () => {
         axios.get('http://65.2.172.195:8081/public/topvideo').then((res) => {
             setData(res.data)
             console.log("data...", res.data)
@@ -60,12 +60,36 @@ const TopVideo = () => {
             );
             console.log('Item saved:', response.data);
             setItemName('');
-            Getall();
+            Getalls();
         } catch (error) {
             console.error('Error saving item:', error);
         }
     };
 
+    async function handleDelete(id) {
+        try {
+            const token = localStorage.getItem('token');
+          const response = await fetch(`http://65.2.172.195:8081/admin/deletetopvideo/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({ id }), // Send the ID of the item to be deleted
+          });
+      
+          if (!response.ok) {
+            throw new Error('Failed to delete item');
+          }
+      
+          // Handle success, maybe update UI or state
+          console.log('Item deleted successfully');
+          Getalls();
+        } catch (error) {
+          console.error('Error deleting item:', error.message);
+          // Handle error, maybe show an error message to the user
+        }
+      }
     return (
         <>
             <div className="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
@@ -88,15 +112,7 @@ const TopVideo = () => {
                                                 </div>
 
                                             </div>
-                                            <div className="mb-4">
-                                                <div>
-                                                    {
-                                                        data.map((item, ind) => (
-                                                            <p key={ind}>{item.items}</p>
-                                                        ))
-                                                    }
-                                                </div>
-                                            </div>
+                                           
                                             <div className="flex items-center mb-3">
 
                                                 <Form onSubmit={handleSubmit} className="flex-grow ml-3">
@@ -118,6 +134,22 @@ const TopVideo = () => {
 
                                                     </div>
                                                 </Form>
+                                            </div>
+
+                                            <div className="mb-4">
+                                                <div>
+                                                    {
+                                                        data.map((item, ind) => (
+                                                            <div className='border-double border-4 border-indigo-600 ...'>
+
+                                                           
+                                                            <p key={ind}>{item.items}</p>
+                                                            <button type="Delete" id="del"  onClick={() => handleDelete(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
+        
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

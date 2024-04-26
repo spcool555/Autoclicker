@@ -21,10 +21,13 @@ import JoditEditor from "jodit-react";
         setAnswers(value);
 
     };
-
+    const [error, setError] = useState('');
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+        if (question.trim() === '' && answers.trim() === '' )  {
+            setError('Please enter a value for the question And Answer');
+            return;
+          }
         const apiUrl = 'http://65.2.172.195:8081/admin/questionanswer';
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         
@@ -76,6 +79,40 @@ import JoditEditor from "jodit-react";
               })
             
         }
+
+
+
+
+
+
+        async function handleDelete(id) {
+            try {
+                const token = localStorage.getItem('token');
+              const response = await fetch(`http://65.2.172.195:8081/admin/deleteQuestion/${id}`, {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({ id }), // Send the ID of the item to be deleted
+              });
+          
+              if (!response.ok) {
+                throw new Error('Failed to delete item');
+              }
+          
+              // Handle success, maybe update UI or state
+              console.log('Item deleted successfully');
+              GetAllQuestionAnswer();
+            } catch (error) {
+              console.error('Error deleting item:', error.message);
+              // Handle error, maybe show an error message to the user
+            }
+          }
+
+
+
+
   return (
    <>
    
@@ -87,7 +124,7 @@ import JoditEditor from "jodit-react";
             <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
                 <h2 class="pl-6 text-2xl font-bold sm:text-xl">Admin Page</h2>
 
-  
+                {error && <p className="text-red-500">{error}</p>}
 
                 <div className="grid max-w-2xl mx-auto mt-8">
     <div>
@@ -126,13 +163,16 @@ import JoditEditor from "jodit-react";
         </form>
         <div>
             <h4 className="text-lg font-semibold mb-4">Featuresbox</h4>
-            <div>
+            <div >
                 {questionAnswer.map((item, ind) => (
-                    <div key={ind} className="mb-4">
+                    <div key={ind} className="mb-4 border-double border-4 border-indigo-600 ...">
+                        
                         <p className="mb-1 font-semibold">Questions</p>
                         <p dangerouslySetInnerHTML={{ __html: item.question }}></p>
                         <p className="mb-1 font-semibold">Answer</p>
                         <p dangerouslySetInnerHTML={{ __html: item.answers }}></p>
+                        <button type="Delete" id="del"  onClick={() => handleDelete(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
+
                     </div>
                 ))}
             </div>

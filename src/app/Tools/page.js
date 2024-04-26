@@ -46,37 +46,41 @@ const Tools = () => {
         <>
    
    
-        <div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+        <div class="bg-white p0 p4 w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
             <aside class="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
                 <div class="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
         
                     <h2 class="pl-3 mb-4 text-2xl font-semibold">Tools Pages</h2>
         
-                    <button onClick={() => openModal("https://spcool555.github.io/keyboard_mouse_test/")} class="flex items-center px-3 py-2.5 font-bold bg-white  text-indigo-900 border rounded-full">
+                    <button onClick={() => openModal("https://spcool555.github.io/keyboard_mouse_test/")} class="flex items-center px-3 py-2.5 font-bold p3 p4 bg-white  text-indigo-900 border rounded-full">
                     Keyboard Mouse Test
                     </button>
                   
-                    <button onClick={() => openModal("https://spcool555.github.io/sapcebar_clicker/")} class="flex items-center px-3 py-2.5 font-bold bg-white  text-indigo-900 border rounded-full">
+                    <button onClick={() => openModal("https://spcool555.github.io/sapcebar_clicker/")} class="flex items-center px-3 py-2.5 font-bold p3 p4 bg-white  text-indigo-900 border rounded-full">
                     Spacebar Clicker
                     </button>
-                    <button onClick={() => openModal("https://spcool555.github.io/cps_test/")}
-                        class="flex items-center px-3 py-2.5 font-bold bg-white  text-indigo-900 border rounded-full ">
+                    <button onClick={() => openModal("https://spcool555.github.io/cps/")}
+                        class="flex items-center px-3 py-2.5 font-bold bg-white p3 p4  text-indigo-900 border rounded-full ">
                      CPSTest
                     </button>
-                    <button onClick={() => openModal("https://spcool555.github.io/typing_test/practice.html")}
-                        class="flex items-center px-3 py-2.5 font-bold bg-white  text-indigo-900 border rounded-full ">
+                    <button onClick={() => openModal("https://spcool555.github.io/typing_test/")}
+                        class="flex items-center px-3 py-2.5 font-bold bg-white p3 p4  text-indigo-900 border rounded-full ">
                     Typing Test
                     </button>
+                    <button onClick={() => openModal("https://spcool555.github.io/webcam/")}
+                        class="flex items-center px-3 py-2.5 font-bold bg-white p3 p4  text-indigo-900 border rounded-full ">
+                    WebCam Test
+                    </button>
                     <button onClick={() => openModal("https://premium-cursors.netlify.app/")}
-                        class="flex items-center px-3 py-2.5 font-bold bg-white  text-indigo-900 border rounded-full ">
+                        class="flex items-center px-3 py-2.5 font-bold bg-white  p3 p4 text-indigo-900 border rounded-full ">
                    Custome Cursor Test
                     </button>
                     <button onClick={() => openModal("https://spcool555.github.io/ReactionTimeTexster/")}
-                        class="flex items-center px-3 py-2.5 font-bold bg-white  text-indigo-900 border rounded-full ">
+                        class="flex items-center px-3 py-2.5 font-bold bg-white  p3 p4 text-indigo-900 border rounded-full ">
                    Reaction Time Test
                     </button>
                     <button onClick={() => openModal("https://spcool555.github.io/micAndSpeechTotext/")}
-                        class="flex items-center px-3 py-2.5 font-bold bg-white  text-indigo-900 border rounded-full ">
+                        class="flex items-center px-3 py-2.5 font-bold bg-white p3 p4 text-indigo-900 border rounded-full ">
                  Mic Test & Speech to Text
                     </button>
          
@@ -99,11 +103,11 @@ const Tools = () => {
     Spacebar Clicker
   </button>
 
-  <button onClick={() => openModal("https://spcool555.github.io/cps_test/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+  <button onClick={() => openModal("https://spcool555.github.io/cps/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
     CPSTest
   </button>
 
-  <button onClick={() => openModal("https://spcool555.github.io/typing_test/practice.html")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+  <button onClick={() => openModal("https://spcool555.github.io/typing_test/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
     Typing Test
   </button>
 
@@ -126,12 +130,15 @@ const Tools = () => {
         
            
      
-<Modal isOpen={isModalOpen} onRequestClose={closeModal} className="fixed inset-0 flex items-center justify-center">
-  <div className="bg-white rounded-lg shadow-lg p-6 sm:p-10 w-full max-w-lg overflow-y-auto">
-    <iframe id="modalIframe" src={modalUrl} className="w-full" title="Modal Content" style={{ height: '80vh' }}></iframe>
-    <button onClick={closeModal} className="mt-4 block w-full rounded-md bg-blue-500 text-white font-semibold py-2 px-4 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Close</button>
-  </div>
-</Modal>
+<Modal isOpen={isModalOpen} onRequestClose={closeModal} style={{ content: { width: '100%', height: '100%', margin: 'auto' } }}>
+     
+                <iframe id="modalIframe" src={modalUrl} style={{ width: '100%', height: '100%' }}></iframe>
+       
+                <button onClick={closeModal} class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Close</button>
+
+            </Modal>
+
+
 
 
         </div>

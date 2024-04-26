@@ -14,7 +14,7 @@ import SidebarDocumentation from '../Documentation/sidebarDocumentation/page'
    <>
    
    
-<div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+<div class="bg-white p0 p4 w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
    <SidebarDocumentation/>
     <main class="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
         <div class="p-2 md:p-4">

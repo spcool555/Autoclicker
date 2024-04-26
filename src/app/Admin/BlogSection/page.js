@@ -7,106 +7,84 @@ import Swal from "sweetalert2";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import AdminSidebar from '../AdminSidebar/page';
 import JoditEditor from "jodit-react";
- const BlogSection = () => {
-   
-  
- 
+
+const BlogSection = () => {
   const [input1, setInput1] = useState('');
   const [input2, setInput2] = useState('');
   const [input3, setInput3] = useState('');
-  const [data,setData] = useState([]);
-
-
+  const [data, setData] = useState([]);
 
   const handleInput1Change = (value) => {
-      setInput1(value);
-  };
-  const handleInput3Change = (event) => {
-      setInput3(event.target.value);
+    setInput1(value);
   };
 
   const handleInput2Change = (value) => {
-      setInput2(value);
-    
+    setInput2(value);
   };
 
+  const handleInput3Change = (file) => {
+    setInput3(file);
+  };
   const handleSubmit = async (event) => {
-      event.preventDefault();
-      
-      // Your API endpoint where the form data will be sent
-      const apiUrl = 'http://65.2.172.195:8081/admin/news';
-      const token = localStorage.getItem('token');
-      // The data you want to send in JSON format
-      const formData = {
-     
-          input1: input1,
-          input2: input2,
-          input3: input3,
-      };
-  
-      try {
-          // Making a POST request to the server with the form data
-          const response = await fetch(apiUrl, {
-              method: 'POST', // Method itself
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`,
-              },
-              
-              body: JSON.stringify(formData), // body data type must match "Content-Type" header
-          });
-  
-          if (!response.ok) {
-              // If the server response was not ok (e.g., 400, 401, 500, etc.), throw an error
-              throw new Error('Network response was not ok');
-          }
-  
-          // Assuming your server responds with the saved data or some message
-          const result = await response.json();
-  
-          // Here, you can handle the response. For example, show a success message, clear the form, etc.
-          console.log(result); // For demonstration purposes, we just log the result
-          Swal.fire({
-            title:"",
-            icon: 'success',
-        })
-          
-          // Optionally, reset the form fields to blank after successful submission
+    event.preventDefault();
 
-       
-          setInput1('');
-          setInput2('');
-          setInput3('');
-         
-      } catch (error) {
-          // Handle errors if the fetch fails (e.g., network error, server error)
-          console.error('There was a problem with your fetch operation:', error);
-          Swal.fire({
-            title:"",
-            icon: 'success',
-        })
-          setInput1('');
-          setInput2('');
-          setInput3('');
-          GetAllFeaturebox();
+    if (!input3) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Please select a file.',
+      });
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('input3', input3);
+    formData.append('input1', input1);
+    formData.append('input2', input2);
+
+    try {
+      const response = await axios.post('http://65.2.172.195:8081/admin/news', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      if (response.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          text: 'Form data saved successfully.',
+        });
+        setInput1('');
+        setInput2('');
+        setInput3('');
+        // Optionally, you can reload the blog entries after successful submission
+        GetAllFeaturebox();
+      } else {
+        throw new Error('Network response was not ok');
       }
+    } catch (error) {
+      console.error('There was a problem with your fetch operation:', error);
+      Swal.fire({
+        icon: 'error',
+        text: 'Failed to upload file.',
+      });
+    }
   };
 
+  useEffect(() => {
+    GetAllFeaturebox();
+  }, []);
 
-useEffect(()=>{
-  GetAllFeaturebox();
-},[]);
-  const GetAllFeaturebox = ()=>{
-      axios.get('http://65.2.172.195:8081/public/newsbox').then((res)=>{
-          setData(res.data)
-          console.log("data...",res.data)
-        }).catch((err)=>{
-          console.log("err",err)
-        })
-      
-  }
-
-   
+  const GetAllFeaturebox = () => {
+    axios.get('http://65.2.172.195:8081/public/newsbox')
+      .then((res) => {
+        setData(res.data);
+        console.log("data...", res.data);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
   return (
    <>
    
@@ -153,15 +131,26 @@ useEffect(()=>{
           <label htmlFor="formInput3" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Add URL
           </label>
-          <input
-           required
-            id="formInput3"
-            type="text"
-            placeholder="Enter Url"
-            value={input3}
-            onChange={handleInput3Change}
-            className="border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          
+        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <span>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> Image Update</h5>
+    </span>
+    <div class="flex items-center justify-center w-full">
+  <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+      <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 16">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+      </svg>
+      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+      <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+    </div>
+    <input id="dropzone-file" type="file" className="hidden" name="input3" onChange={(event) => handleInput3Change(event.target.files[0])} />
+
+
+  </label>
+</div>
+</div>
         </div>
         <button
           type="submit"
@@ -186,7 +175,10 @@ useEffect(()=>{
                  <p>News Description</p>
                  <p dangerouslySetInnerHTML={{ __html: item.input2 }}></p>
                  <p>News Url</p>
-                 <p>{item.input3}</p>
+                 {/* <p>{item.input3}</p> */}
+                 {/* <img src="D:/autoclicker/Autoclickers/public/a.jpg" alt="ssss"  />
+                  */}
+<img src={item.input3} alt="Starter" class="mb-4 w-100 h-100 mx-auto" />
 
              </div>
          ))

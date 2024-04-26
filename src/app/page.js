@@ -1,10 +1,11 @@
 'use client'
 
-
+import { useRouter } from 'next/navigation';
 import useClickToken from '../app/useClickToken/useClickToken';
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+
 const Content = () => {
 
   const [imageUrl, setImageUrl] = useState('');
@@ -22,7 +23,7 @@ GetAllQuestionAnswer();
 const GetAllFeaturebox = ()=>{
   axios.get('http://65.2.172.195:8081/public/featurebox').then((res)=>{
       setData2(res.data)
-      console.log("data...",res.data)
+      
     }).catch((err)=>{
       console.log("err",err)
     })
@@ -31,7 +32,7 @@ const GetAllFeaturebox = ()=>{
 const Getall=()=>{
   axios.get('http://65.2.172.195:8081/public/items').then((res)=>{
     setData(res.data)
-    console.log("data...",res.data)
+
   }).catch((err)=>{
     console.log("err",err)
   })
@@ -41,7 +42,7 @@ const Getall=()=>{
   const GetAllQuestionAnswer = ()=>{
       axios.get('http://65.2.172.195:8081/public/questionanswer').then((res)=>{
           setQuestionAnswer(res.data)
-          console.log("data...",res.data)
+      
         }).catch((err)=>{
           console.log("err",err)
         })
@@ -79,7 +80,7 @@ const Getall=()=>{
     const Getallwhatmakes=()=>{
       axios.get('http://65.2.172.195:8081/public/whatmakes').then((res)=>{
         setData3(res.data)
-        console.log("data333333333...",res.data)
+       
       }).catch((err)=>{
         console.log("err",err)
       })
@@ -95,13 +96,20 @@ const Getall=()=>{
         const GetAllLatestMtblog= ()=>{
             axios.get('http://65.2.172.195:8081/public/newsbox').then((res)=>{
                 setData4(res.data)
-                console.log("data44444444...",res.data)
+         
               }).catch((err)=>{
                 console.log("err",err)
               })
             
         }
+        const router = useRouter();
 
+        const handleClick2 = () => {
+            router.push({
+                pathname: '/BigBlog',
+                state: { id: item.id } // Pass ID as state
+            });
+        };
 
 const[video, setVideo]=useState([]);
 
@@ -112,7 +120,7 @@ const[video, setVideo]=useState([]);
       const GetallTopVideo = () => {
           axios.get('http://65.2.172.195:8081/public/topvideo').then((res) => {
               setVideo(res.data)
-              console.log("videodata...", res.data)
+        
           }).catch((err) => {
               console.log("err", err)
           })
@@ -120,21 +128,28 @@ const[video, setVideo]=useState([]);
       }
 
 
+      const MAX_WORDS = 25;
 
-
+      const truncateText = (text, maxWords) => {
+        const words = text.split(' ');
+        if (words.length > maxWords) {
+          return words.slice(0, maxWords).join(' ') + '...';
+        }
+        return text;
+      };
 
   return (
     <>
     <section className="relative overflow-hidden">
      
      
-    <div className="bg-white dark:bg-[rgb(22,36,88)]">
+    <div className="bg-white p0 ">
       <div className="w-full m-auto relative px-3 py-10 md:py-20 md:px-20 mx-auto max-w-7xl">
         <div className="max-w-screen-lg mx-auto">
           <div className="flex items-center">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-slate-700 dark:text-slate-200 mb-3 text-4xl font-bold leading-snug sm:text-[42px] lg:text-[60px]">
-                <span className="text-[#1C2B71] dark:text-[#22DEFE]">
+              <h1 className="text-slate-700  mb-3 text-4xl font-bold leading-snug sm:text-[42px] lg:text-[60px]">
+                <span className="text-[#1C2B71] p1">
                   {" "}
                   MT Auto Clicker{" "}
                 </span>
@@ -168,7 +183,7 @@ Download
       <h2 className="pb-6 mb-5 border-b-2 border-[#256EFF] text-2xl md:text-4xl text-center font-bold">
         Work Smarter, Not Harder with MT
       </h2>
-      <div>
+      <div hidden>
             <button onClick={handleClick}>Click me!</button>
             {message && <p>{message}</p>}
             <p>Clicks: {clickCount}</p>
@@ -210,7 +225,7 @@ Download
         </div>
       </div>
     </div>
-    <div className="bg-white dark:bg-[#162458] relative p-5">
+    <div className="bg-white p0">
       <div className="mx-auto max-w-screen-xl relative pt-20">
         <h1 className="pb-6 mb-5 border-b-2 border-[#256EFF] text-2xl md:text-4xl text-center font-bold">
           Features of MT Auto clicker
@@ -218,7 +233,7 @@ Download
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
           {
             data2.map((item,ind)=>(
-          <div className="p-5 space-y-2 md:space-y-4 bg-[#F3F4F6] dark:bg-[#162458] dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
+          <div className="p-5 space-y-2 md:space-y-4 bg-[#F3F4F6] p0 dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
             <div className="svg w-12 md:w-16 text-[#0795FF]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -252,20 +267,13 @@ Download
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
         {
   data4.slice(-3).map((item, ind) => (
-    <div key={ind} class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">
-      <img src="./a.jpg" alt="Starter" class="mb-4 w-100 h-100 mx-auto" />
+    <div key={ind} class="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">
+      <img src={item.input3} alt="img" className="standard-image" />
       <div class="flex justify-center items-baseline my-8">
         <span class="mr-2 text-5xl font-extrabold"   dangerouslySetInnerHTML={{ __html: item.input1 }}></span>
       </div> 
-      <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400" dangerouslySetInnerHTML={{ __html: item.input2 }}></p>
-      <ul role="list" class="m-8 space-y-4 text-left">
-        <li class="flex items-center space-x-3">
-          <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                </li>
-        {/* <!-- Other list items --> */}
-      </ul>
-      <Link href={item.input3} class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Explore</Link>
-
+      <p className="font-light p4 sm:text-lg dark:text-gray-400" dangerouslySetInnerHTML={{ __html: truncateText(item.input2, MAX_WORDS) }}></p>
+      <Link href={`/BigBlog?id=${item.id}`} class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Read More</Link>
        
     </div>
   ))
@@ -330,7 +338,7 @@ Download
               className="group [&amp;_summary::-webkit-details-marker]:hidden"
             
             >
-              <summary className="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-[#F3F4F6] dark:bg-[#0C1633] p-4">
+              <summary className="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg p3 bg-[#F3F4F6] dark:bg-[#0C1633] p-4">
                 <h2 className="font-medium" dangerouslySetInnerHTML={{ __html: item.question }}></h2>
                
               

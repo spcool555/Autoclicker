@@ -4,19 +4,33 @@
 
 :root {
   --color-background-light: #ffffff;
-  --color-text-light: #000000;
-  --color-background-dark: #121212;
+  --color-text-light: #162458;
+  --color-background-dark: #162458;
   --color-text-dark: #ffffff;
 }
 
 [data-theme='light'] {
   --color-background: var(--color-background-light);
   --color-text: var(--color-text-light);
+
+  
 }
 
 [data-theme='dark'] {
   --color-background: var(--color-background-dark);
   --color-text: var(--color-text-dark);
+  .p1{
+    color: #1CDFFE;
+  }
+  .p0{
+ background-color: #162458;
+  }
+  .p3{
+    background-color: #0C1633;
+  }
+  .p4{
+    color: #ffffff;
+  }
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -38,4 +52,17 @@ body {
 }
 .modal-open footer {
   display: none;
+}
+
+.standard-image {
+  width: 300px; /* Example width */
+  height: 200px; /* Example height */
+}
+
+#del{
+   
+      position: sticky;
+     
+      left: 86%;
+
 }

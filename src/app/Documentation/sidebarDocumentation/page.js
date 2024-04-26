@@ -15,17 +15,18 @@
 
             <h2 class="pl-3 mb-4 text-2xl font-semibold">Open</h2>
 
-            <a href="#" class="flex items-center px-3 py-2.5 font-bold bg-white  text-indigo-900 border rounded-full">
+            <a href="#" class="flex items-center px-3 py-2.5 font-bold bg-white  p3 p4 text-indigo-900 border rounded-full">
                 Doc 1
             </a>
-            <a href="#"
-                class="flex items-center px-3 py-2.5 font-semibold  hover:text-indigo-900 hover:border hover:rounded-full">
+           
+            <a href="#" class="flex items-center px-3 py-2.5 font-bold bg-white  p3 p4 text-indigo-900 border rounded-full">
                 Doc 2
             </a>
-            <a href="#"
-                class="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full  ">
-               Doc 3
+           
+            <a href="#" class="flex items-center px-3 py-2.5 font-bold bg-white  p3 p4 text-indigo-900 border rounded-full">
+                Doc 3
             </a>
+           
            
         </div>
     </aside>

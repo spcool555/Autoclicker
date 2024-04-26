@@ -140,7 +140,7 @@ import Link from "next/link";
    <>
    
    
-<div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+<div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row p0 p4 text-[#161931]">
     <aside class="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
         <div class="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
 
@@ -200,7 +200,7 @@ import Link from "next/link";
                             <div class="w-full">
                            
                                 <label for="first_name"
-                                    class="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Your
+                                    class="block mb-2 text-sm font-medium text-indigo-900 p4">Your
                                     first name</label>
                                 <input type="text" id="firstname"  value={formData.firstname} onChange={handleChange}
                                     class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
@@ -209,7 +209,7 @@ import Link from "next/link";
 
                             <div class="w-full">
                                 <label for="last_name" 
-                                    class="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Your
+                                    class="block mb-2 text-sm font-medium text-indigo-900 p4">Your
                                     last name</label>
                                 <input type="text" id="lastname" value={formData.lastname} onChange={handleChange}
                                     class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
@@ -221,7 +221,7 @@ import Link from "next/link";
                         </div>
                         <div class="mb-2 sm:mb-6">
                                 <label for="contact" 
-                                    class="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Your
+                                    class="block mb-2 text-sm font-medium text-indigo-900 p4">Your
                                     Contact No</label>
                                     <input 
     type="number" 
@@ -242,7 +242,7 @@ import Link from "next/link";
                             </div>
                         <div class="mb-2 sm:mb-6">
                             <label for="email"
-                                class="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Your
+                                class="block mb-2 text-sm font-medium text-indigo-900 p4">Your
                                 Email</label>
                             <input type="email" id="email"  value={formData.email} onChange={handleChange}
                                 class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
@@ -250,7 +250,7 @@ import Link from "next/link";
                         </div>
                         <div class="mb-2 sm:mb-6">
                             <label for="refferal"
-                                class="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Your
+                                class="block mb-2 text-sm font-medium text-indigo-900 p4">Your
                                  Refferal Code</label>
                             <input type="refferal" id="refferal"  value={formData.refferalcode} 
                                 class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
@@ -259,7 +259,7 @@ import Link from "next/link";
 
                         <div class="mb-2 sm:mb-6">
                             <label for="profession"
-                                class="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Profession</label>
+                                class="block mb-2 text-sm font-medium text-indigo-900 p4">Profession</label>
                             <input type="text" id="profession"  value={formData.profession} onChange={handleChange}
                                 class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                 placeholder="your profession" required />
@@ -269,7 +269,7 @@ import Link from "next/link";
 
                         <div class="mb-6">
                             <label for="message"
-                                class="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Bio</label>
+                                class="block mb-2 text-sm font-medium text-indigo-900 p4">Bio</label>
                             <textarea id="bio" rows="4"  value={formData.bio} onChange={handleChange}
                                 class="block p-2.5 w-full text-sm text-indigo-900 bg-indigo-50 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500 "
                                 placeholder="Write your bio here..."></textarea>

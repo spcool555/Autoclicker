@@ -5,27 +5,64 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function toggleTheme() {
-  const body = document.body;
-  const currentTheme = body.getAttribute('data-theme');
-  if (currentTheme === 'dark') {
-    body.setAttribute('data-theme', 'light');
-  } else {
-    body.setAttribute('data-theme', 'dark');
-  }
-}
 
-export const Navbar = () => {
+ const Navbar = () => {
+  const [dark, setDark] = useState(false);
+  function toggleTheme() {
+    const newDark = !dark;
+    setDark(newDark);
+    localStorage.setItem('darkMode', newDark ? 'dark' : 'light'); // Store preference in localStorage
+  }
+  useEffect(() => {
+    const storedMode = localStorage.getItem('darkMode');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (storedMode) {
+      setDark(storedMode === 'dark');
+    } else {
+      setDark(prefersDark);
+    }
+  }, []);
+  useEffect(() => {
+    const body = document.body;
+    body.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }, [dark]);
+
+  // Effect to update the body's data-theme attribute based on dark state
+  useEffect(() => {
+    const body = document.body;
+    body.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }, [dark]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
-  const router = useRouter();
   useEffect(() => {
-    // Check for the token in local storage
     const token = localStorage.getItem('token');
     if (token) {
       setIsLoggedIn(true);
-    }
-    else if (token == ''){
+      router.push('/');
+      
+      // Set timer to remove token after 5 minutes
+      const removeTokenTimeout = setTimeout(() => {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        alert("token expired");
+        router.push('/SignIn'); // Redirect to login page after token expiration
+      }, 10000 * 60 * 1000); // 5 minutes in milliseconds
+
+      // Event handler function for 'unload' event
+      const handleUnload = () => {
+        localStorage.removeItem('token');
+      };
+
+      // Add event listener for 'unload' event
+      window.addEventListener('unload', handleUnload);
+
+      // Cleanup function to clear the timer and remove event listener
+      return () => {
+        clearTimeout(removeTokenTimeout);
+        window.removeEventListener('unload', handleUnload);
+      };
+    } else {
+      // Token doesn't exist or is empty
       localStorage.removeItem('token');
       setIsLoggedIn(false);
     }
@@ -47,7 +84,22 @@ export const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const router = useRouter();
+  useEffect(() => {
+      // Get the uid value from local storage
+      const uid = localStorage.getItem('uid');
+      console.log("UID value:", uid); // Log the value of uid
 
+      if (!uid) {
+          // If uid is undefined or null, redirect to the home page
+          router.push('/');
+      } else if (uid !== '1') {
+          // If the user is not an admin, redirect to the home page
+          router.push('/');
+      } 
+  }, []);
+
+  
   return (
     <nav  className="bg-[#1C2B71] text-white relative z-50">
     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4  ">
@@ -110,10 +162,14 @@ export const Navbar = () => {
         // Render this if the user is not logged in
         <Link hidden href=""></Link>
       )}
-   
-
-
-
+   <div id="toggle" onClick={toggleTheme} className="pl-4">
+      <svg className={dark ? '' : 'hidden'} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26a5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1"></path>
+      </svg>
+      <svg className={dark ? 'hidden' : ''} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 17q-2.075 0-3.537-1.463T7 12q0-2.075 1.463-3.537T12 7q2.075 0 3.538 1.463T17 12q0 2.075-1.463 3.538T12 17m-7-4H1v-2h4zm18 0h-4v-2h4zM11 5V1h2v4zm0 18v-4h2v4zM6.4 7.75L3.875 5.325L5.3 3.85l2.4 2.5zm12.3 12.4l-2.425-2.525L17.6 16.25l2.525 2.425zM16.25 6.4l2.425-2.525L20.15 5.3l-2.5 2.4zM3.85 18.7l2.525-2.425L7.75 17.6l-2.425 2.525z"></path>
+      </svg>
+    </div>
 
 
 
@@ -215,7 +271,7 @@ export const Navbar = () => {
       )}
     </li>
 
-       
+ 
 
 
 

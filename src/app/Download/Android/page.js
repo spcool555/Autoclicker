@@ -58,7 +58,7 @@ axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
    <DownloadFrontPage />
       <section className="space-y-10 max-w-screen-xl mx-auto">
      
-    <div className="bg-[#F3F4F6] dark:bg-[#162458] p-5 md:px-10 md:py-8 border-slate-500 dark:border-black drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)] rounded-sm">
+    <div className="bg-[#F3F4F6] dark:bg-[#162458] p3 p-5 md:px-10 md:py-8 border-slate-500 dark:border-black drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)] rounded-sm">
           <div className="grid items-center text-center grid-cols-1 md:grid-cols-4 gap-3">
             <div className="text-center">
               <Image
@@ -80,7 +80,7 @@ axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
             </div>
           </div>
         </div>
-        <div className="bg-[#F3F4F6] dark:bg-[#162458] p-5 md:px-10 md:py-8 border-slate-500 dark:border-black drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)] rounded-sm">
+        <div className="bg-[#F3F4F6] dark:bg-[#162458] p3 p-5 md:px-10 md:py-8 border-slate-500 dark:border-black drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)] rounded-sm">
           <div>
             <h2 className="text-xl md:text-xl font-semibold pb-2">
               Minimum System Requirements
@@ -89,8 +89,8 @@ axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
             {
   data.map((item, ind) => (
     <div key={ind}> {/* Make sure to add a unique key for each element when using map */}
-    <h3 className="font-semibold text-base text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: item.input1 }}></h3>
-    <ul className="list-disc list-inside text-slate-600 dark:text-slate-200 md:pl-5">
+    <h3 className="font-semibold text-base text-gray-700 dark:text-gray-300 p4" dangerouslySetInnerHTML={{ __html: item.input1 }}></h3>
+    <ul className="list-disc list-inside text-slate-600 dark:text-slate-200 md:pl-5 p4">
       <li dangerouslySetInnerHTML={{ __html: item.input2 }}></li> {/* Assuming item.input2 is a string, wrap it in a list item */}
     </ul>
   </div>
@@ -106,8 +106,8 @@ axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
         {
                 data2.map((item,ind)=>(
           <li className="mb-10 ms-4">
-            <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-            <div className="font-semibold text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: item.items }}>
+            <div className="absolute w-3 h-3 p4 bg-gray-300 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+            <div className="font-semibold p4 text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: item.items }}>
             
             </div>
           </li>
@@ -123,7 +123,7 @@ axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
           {
                 data3.map((item,ind)=>(
 
-            <div className="p-5 space-y-2 md:space-y-4 bg-[#F3F4F6] dark:bg-[#162458] dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
+            <div className="p-5 space-y-2 md:space-y-4 p3 bg-[#F3F4F6] dark:bg-[#162458] dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
               <div className="svg w-12 md:w-16 text-[#0795FF]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

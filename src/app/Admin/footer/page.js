@@ -112,7 +112,7 @@ rows={'5'}
 cols={'35'}
 value={about}
 onChange={(e) => setAbout(e.target.value)}
-required
+
 />
 
     </Col>

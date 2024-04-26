@@ -11,7 +11,7 @@ import JoditEditor from "jodit-react";
 const SpecificationAndFeatures = () => {
     const [itemName, setItemName] = useState('');
     const [data, setData] = useState([]);
-
+    const [error, setError] = useState('');
     useEffect(() => {
         Getall();
     }, []);
@@ -27,6 +27,10 @@ const SpecificationAndFeatures = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (itemName.trim() === '') {
+            setError('Please enter a value for the item name.');
+            return;
+          }
         showConfirmationDialog();
     };
 
@@ -69,9 +73,11 @@ const SpecificationAndFeatures = () => {
 
     return (
         <>
+        
             <div className="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
                 <AdminSidebar />
                 <main className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
+                    
                     <div className="p-2 md:p-4">
                         <div className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
                             <h2 className="pl-6 text-2xl font-bold sm:text-xl">Admin Page</h2>
@@ -84,6 +90,7 @@ const SpecificationAndFeatures = () => {
                                                 <div className="flex items-center">
 
                                                     <div className="ms-3">
+                                                    {error && <p className="text-red-500">{error}</p>}
                                                         <h1 className="mb-0 font-bold">Specification & Features</h1>
                                                     </div>
                                                 </div>

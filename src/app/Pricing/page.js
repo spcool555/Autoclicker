@@ -108,31 +108,31 @@ const Pricing = () => {
 
     return (
         <>
-            <section className="bg-white dark:bg-gray-900">
+            <section className="bg-white p0 dark:bg-gray-900">
                 <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                     <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Designed for business teams like yours</h2>
-                        <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold p4 text-gray-900 dark:text-white">Designed for business teams like yours</h2>
+                        <p className="mb-5 font-light text-gray-500 sm:text-xl p4 dark:text-gray-400">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
                     </div>
                     <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
                         {/* Pricing Card */}
                         {data.map((item) => (
-                            <div key={item.id} className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-                                <h3 className="mb-4 text-2xl font-semibold" dangerouslySetInnerHTML={{ __html: item.input1 }}></h3>
+                            <div key={item.id} className="flex flex-col p-6 mx-auto max-w-lg text-center p3 text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                                <h3 className="mb-4 text-2xl p4 font-semibold" dangerouslySetInnerHTML={{ __html: item.input1 }}></h3>
                                 <form onSubmit={(event) => handleSubmit(event, item.id, item.input1, item.input3)} className="mt-4">
                                     <input type='hidden' id="uid" value={uid} onChange={(e) => setUid(e.target.value)} />
                                     <input type='hidden' id="planid" value={item.id} />
                                     <input type='hidden' id="planname" value={item.input1} />
                                     <input type='hidden' id="price" value={item.input3} onChange={(e) => setInput3(e.target.value)} />
 
-                                    <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400" dangerouslySetInnerHTML={{ __html: item.input2 }}></p>
-                                    <div className="flex justify-center items-baseline my-8">
-                                        <span className="mr-2 text-5xl font-extrabold" dangerouslySetInnerHTML={{ __html: item.input3 }}></span>
-                                        <span className="text-gray-500 dark:text-gray-400">/Year</span>
+                                    <p className="font-light p4 text-gray-500 sm:text-lg dark:text-gray-400" dangerouslySetInnerHTML={{ __html: item.input2 }}></p>
+                                    <div className="flex justify-center p4 items-baseline my-8">
+                                        <span className="mr-2 text-5xl p4 font-extrabold" dangerouslySetInnerHTML={{ __html: item.input3 }}></span>
+                                        <span className="text-gray-500 p4 dark:text-gray-400">/Year</span>
                                     </div>
                                     {/* List */}
                                   
-                                    <ul role="list" className="mb-8 space-y-4 text-left" dangerouslySetInnerHTML={{ __html: item.input4 }}></ul>
+                                    <ul role="list" className="mb-8 space-y-4 p4 text-left" dangerouslySetInnerHTML={{ __html: item.input4 }}></ul>
                                     {item.id === userplan.planid ? (
                 <button disabled className="text-white bg-primary-600 opacity-50 cursor-not-allowed hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:focus:ring-primary-900">Active Plan</button>
             ) : (

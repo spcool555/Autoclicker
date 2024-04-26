@@ -186,9 +186,9 @@ const handleReplySubmit = async (event) => {
 
   return (
     <>
-      <div className="md:grid md:grid-cols-3 gap-4 p-4">
+      <div className="md:grid md:grid-cols-3 gap-4 p-4 p0">
         {/* Responsive Sidebar */}
-        <div className="md:col-span-1 bg-gray-200 p-4 rounded mb-4 md:mb-0">
+        <div className="md:col-span-1 bg-gray-200 p-4 p0 rounded mb-4 md:mb-0">
           <h2 className="text-lg font-bold mb-2">Categories</h2>
           {/* Example Category Links */}
           <div class="col-md-3">
@@ -286,7 +286,7 @@ const handleReplySubmit = async (event) => {
 
 
               <textarea
-                class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-400 focus:outline-none focus:bg-white"
+                class="bg-gray-100 p3 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-400 focus:outline-none"
                 name="body"
                 placeholder="Comment"
                 required
@@ -314,13 +314,13 @@ const handleReplySubmit = async (event) => {
         {/* Responsive Main Content */}
         <div className="md:col-span-2">
           {/* Thread List */}
-          <div className="bg-gray-100 p-4 rounded mb-4">
+          <div className="bg-gray-100 p-4 rounded mb-4 p0">
             <h2 className="text-lg font-bold mb-2">Threads</h2>
             {/* Example Threads */}
             <div class="col-span-9">
               <div class="grid grid-cols-1 gap-4">
                 <div class="p-4">
-                  <h2 class="font-bold text-xl mb-4">Issues</h2>
+                  <h2 class="font-bold text-xl mb-4 " >Issues</h2>
 
                   <hr class="mb-4" />
                   <div class="flex space-x-2 mb-4">
@@ -387,7 +387,7 @@ const handleReplySubmit = async (event) => {
             <br />
           </h3>
         </div>
-        <p class="text-gray-600 mt-2">
+        <p class="text-gray-600 p4 mt-2">
          {item.newpost}
         </p>
         {isLoggedIn ? (
@@ -421,7 +421,7 @@ const handleReplySubmit = async (event) => {
                     <br />
                   </h3>
                 </div>
-                <p className="text-gray-600 mt-2">
+                <p className="text-gray-600 p4 mt-2">
                   {reply.replypost}
                 </p>
               </div>

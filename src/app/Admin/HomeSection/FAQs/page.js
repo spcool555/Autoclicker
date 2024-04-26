@@ -21,7 +21,7 @@ import JoditEditor from "jodit-react";
   const [input3, setInput3] = useState('');
   const [data,setData] = useState([]);
 
-
+  const [error, setError] = useState('');
 
   const handleInput1Change = (value) => {
       setInput1(value);
@@ -45,7 +45,10 @@ import JoditEditor from "jodit-react";
 }, [input3]);
   const handleSubmit = async (event) => {
       event.preventDefault();
-      
+      if (input1.trim() === '' || input3.trim() === '') {
+        setError('Please enter a value .');
+        return;
+      }
       // Your API endpoint where the form data will be sent
       const apiUrl = 'http://65.2.172.195:8081/admin/savefaq';
       const token = localStorage.getItem('token');
@@ -120,6 +123,33 @@ useEffect(()=>{
   }
   
 
+  async function handleDelete(id) {
+    try {
+        const token = localStorage.getItem('token');
+      const response = await fetch(`http://65.2.172.195:8081/admin/deleteFaq/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id }), // Send the ID of the item to be deleted
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to delete item');
+      }
+  
+      // Handle success, maybe update UI or state
+      console.log('Item deleted successfully');
+      GetAllFeaturebox();
+    } catch (error) {
+      console.error('Error deleting item:', error.message);
+      // Handle error, maybe show an error message to the user
+    }
+  }
+
+
+
   return (
    <>
    
@@ -136,6 +166,7 @@ useEffect(()=>{
     <Card className="mb-4">
       <Card.Body>
       <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Add Free /  Paid FAQs</h2>
+      {error && <p className="text-red-500">{error}</p>}
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formInput3">
             <Form.Label>Select Option</Form.Label>
@@ -186,7 +217,7 @@ useEffect(()=>{
             
             <div className="mt-3">
               {data.map((item, ind) => (
-                <div key={ind} className="mb-4">
+                <div key={ind} className="mb-4 border-double border-4 border-indigo-600 ...">
                  
                  <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
     <li class="flex items-center">
@@ -195,7 +226,8 @@ useEffect(()=>{
          </svg>
         
          <p dangerouslySetInnerHTML={{ __html: item.input1 }}></p>
-                                                        
+         <button type="Delete" id="del"  onClick={() => handleDelete(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
+                                   
     </li>
     </ul>
                  

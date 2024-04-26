@@ -44,6 +44,9 @@ import Link from "next/link";
                 <Link href="/Admin/HomeSection/TopVideo" class="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full">
                 TopVideos
                 </Link>
+                <Link href="/Admin/HomeSection/HeadTagData" class="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full">
+                HeadTagData
+                </Link>
               
             </div>
         </div>
@@ -92,6 +95,25 @@ import Link from "next/link";
         <div class="flex flex-col gap-2">
             <Link href="/Admin/BlogSection" class="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
                 Blog Page 
+            </Link>
+           
+        </div>
+        <div class="flex flex-col gap-2">
+            <Link href="/Admin/Documentation" class="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+            Documentation Page
+            </Link>
+           
+        </div>
+        <div class="flex flex-col gap-2">
+            <Link href="/Admin/PrivacyPolicy" class="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+         Privacy Policy Page
+            </Link>
+           
+            <Link href="/Admin/TearmsOfUse" class="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+         Terms Of Use Page
+            </Link>
+            <Link href="/Admin/ChangeLogPage" class="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+         Change log Page
             </Link>
            
         </div>

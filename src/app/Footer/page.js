@@ -114,17 +114,23 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="/privacy-policy"
+                <Link
+                  href="PrivacyPolicy"
                   className="cursor-pointer"
                   aria-label=""
                 >
                   Privacy Policy
+                </Link>
+              
+              </li>
+              <li>
+              <a href="/ChangeLogs" className="cursor-pointer" aria-label="">
+              Change Log
                 </a>
               </li>
               <li>
-                <a href="/terms" className="cursor-pointer" aria-label="">
-                  Terms of Service
+                <a href="/Terms" className="cursor-pointer" aria-label="">
+                  Terms of Use
                 </a>
               </li>
             </ul>

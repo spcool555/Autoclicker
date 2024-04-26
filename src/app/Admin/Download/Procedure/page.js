@@ -10,7 +10,7 @@ import JoditEditor from "jodit-react";
  const DownloadSectionProcedure = () => {
     const [selectOs, setselectos] = useState('');
   const [itemName, setItemName] = useState('');
-
+  const [editid, setEditid] = useState('');
   const [data,setData] = useState([]);
   const handleselectOsChange = (event) => {
     setselectos(event.target.value);
@@ -22,7 +22,9 @@ import JoditEditor from "jodit-react";
       const token = localStorage.getItem('token');
       const response = await axios.post(
         'http://65.2.172.195:8081/admin/instprocedure',
-        { items: itemName ,  selectOs: selectOs},
+        { id:editid,
+          items: itemName ,
+           selectOs: selectOs},
     
         {
           headers: {
@@ -73,6 +75,46 @@ import JoditEditor from "jodit-react";
     }
   
 
+    async function handleDelete(id) {
+      try {
+          const token = localStorage.getItem('token');
+        const response = await fetch(`http://65.2.172.195:8081/admin/deleteprocedure/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({ id }), // Send the ID of the item to be deleted
+        });
+    
+        if (!response.ok) {
+          throw new Error('Failed to delete item');
+        }
+    
+        // Handle success, maybe update UI or state
+        console.log('Item deleted successfully');
+        Getall();
+      } catch (error) {
+        console.error('Error deleting item:', error.message);
+        // Handle error, maybe show an error message to the user
+      }
+    }
+
+
+    
+  async function EditById(editid) {
+    try {
+        const response = await axios.get(`http://65.2.172.195:8081/public/instproceduresedit/${editid}`);
+        const { id, items } = response.data; // Assuming the response has id, question, and answers fields
+        setEditid(id); // Assuming you have a state to hold the question id
+        setItemName(items);
+    
+      
+        console.log("dataediiitttnewww...", response.data);
+    } catch (error) {
+        console.log("err", error);
+    }
+}
   return (
    <>
    
@@ -152,8 +194,13 @@ import JoditEditor from "jodit-react";
                 <h4 className='mb-3 text-lg font-semibold'>Installing Procedure</h4>
                 <div>
                   {data.map((item,ind)=>(
+                    <div className="mb-4 border-double border-4 border-indigo-600 ...">
                     <p className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: item.items }}></p>
-                  ))}
+                  <button type="Delete" id="del"  onClick={() => handleDelete(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
+                  <button type="Edit" id="edit"  onClick={() => EditById(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Edit</button>
+
+                  </div>
+                 ))}
                 </div>
               </Card.Body>
             </Card>

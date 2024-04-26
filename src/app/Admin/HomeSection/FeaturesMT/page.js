@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import AdminSidebar from '../../AdminSidebar/page';
 
 const FeaturesMT = () => {
+    const [editid, setEditid] = useState('');
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
     const [data, setData] = useState([]);
@@ -32,6 +33,7 @@ const FeaturesMT = () => {
         const token = localStorage.getItem('token');
 
         const formData = {
+            id: editid,
             input1: input1,
             input2: input2,
         };
@@ -77,6 +79,18 @@ const FeaturesMT = () => {
             });
     };
 
+    async function EditById(editid) {
+        try {
+            const response = await axios.get(`http://65.2.172.195:8081/public/featureboxedit/${editid}`);
+            const { id, input1, input2 } = response.data; // Assuming the response has id, question, and answers fields
+            setEditid(id); // Assuming you have a state to hold the question id
+            setInput1(input1);
+            setInput2(input2);
+            console.log("dataediiitttnewww...", response.data);
+        } catch (error) {
+            console.log("err", error);
+        }
+    }
     async function handleDelete(id) {
         try {
             const token = localStorage.getItem('token');
@@ -151,7 +165,8 @@ const FeaturesMT = () => {
                                                 <p className="mb-1 font-semibold">Description</p>
                                                 <p dangerouslySetInnerHTML={{ __html: item.input2 }}></p>
                                                 <button type="Delete" id="del"  onClick={() => handleDelete(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
-        
+                                                <button type="Edit" id="edit"  onClick={() => EditById(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Edit</button>
+
                                             </div>
                                         ))}
                                     </div>

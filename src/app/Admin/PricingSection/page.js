@@ -88,6 +88,31 @@ const PricingSection = () => {
             });
     };
 
+       
+    async function handleDelete(id) {
+        try {
+            const token = localStorage.getItem('token');
+          const response = await fetch(`http://65.2.172.195:8081/admin/deletepricefeaturebox/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({ id }), // Send the ID of the item to be deleted
+          });
+      
+          if (!response.ok) {
+            throw new Error('Failed to delete item');
+          }
+      
+          // Handle success, maybe update UI or state
+          console.log('Item deleted successfully');
+          GetAllFeaturebox();
+        } catch (error) {
+          console.error('Error deleting item:', error.message);
+          // Handle error, maybe show an error message to the user
+        }
+      }
     return (
         <>
             <div className="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
@@ -149,7 +174,7 @@ const PricingSection = () => {
                                     <h4 className="text-lg font-semibold mt-6 mb-4">Featuresbox</h4>
                                     <div>
                                         {data.map((item, ind) => (
-                                            <div key={ind}>
+                                            <div key={ind} className='border-double border-4 border-indigo-600 ...'>
                                                 <p className="mb-1 font-semibold">Heading</p>
                                                 <p  dangerouslySetInnerHTML={{ __html: item.input1 }}></p>
                                                 <p className="mb-1 font-semibold">Description</p>
@@ -158,6 +183,8 @@ const PricingSection = () => {
                                                 <p dangerouslySetInnerHTML={{ __html: item.input3 }}></p>
                                                 <p className="mb-1 font-semibold">Benefits</p>
                                                 <p dangerouslySetInnerHTML={{ __html: item.input4 }}></p>
+                                                <button type="Delete" id="del"  onClick={() => handleDelete(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
+                  
                                             </div>
                                         ))}
                                     </div>

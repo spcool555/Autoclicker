@@ -108,6 +108,30 @@ import JoditEditor from "jodit-react";
               })
             
         }
+        async function handleDelete(id) {
+            try {
+                const token = localStorage.getItem('token');
+              const response = await fetch(`http://65.2.172.195:8081/admin/deletemetadata/${id}`, {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({ id }), // Send the ID of the item to be deleted
+              });
+          
+              if (!response.ok) {
+                throw new Error('Failed to delete item');
+              }
+          
+              // Handle success, maybe update UI or state
+              console.log('Item deleted successfully');
+              GetAllQuestionAnswer();
+            } catch (error) {
+              console.error('Error deleting item:', error.message);
+              // Handle error, maybe show an error message to the user
+            }
+          }
   return (
    <>
    
@@ -213,21 +237,29 @@ import JoditEditor from "jodit-react";
         </form>
         <div>
             <h4 className="text-lg font-semibold mb-4">Featuresbox</h4>
-            <div>
+            <div className="border-double border-4 border-indigo-600 ...">
                 {questionAnswer.map((item, ind) => (
                     <div key={ind} className="mb-4">
                         <p className="mb-1 font-semibold">Meta Title</p>
                         <p dangerouslySetInnerHTML={{ __html: item.question }}></p>
+                        <hr/>
                         <p className="mb-1 font-semibold">Meta Description </p>
                         <p dangerouslySetInnerHTML={{ __html: item.answers }}></p>
+                        <hr/>
                         <p className="mb-1 font-semibold">Meta Og title </p>
                         <p dangerouslySetInnerHTML={{ __html: item.ogTitle }}></p>
+                        <hr/>
                         <p className="mb-1 font-semibold">Meta Og Description </p>
                         <p dangerouslySetInnerHTML={{ __html: item.ogDescription }}></p>
+                        <hr/>
                         <p className="mb-1 font-semibold">Meta Conical Url </p>
                         <p dangerouslySetInnerHTML={{ __html: item.conicalurl }}></p>
+                        <hr/>
                         <p className="mb-1 font-semibold">Meta Plain text </p>
                         <p dangerouslySetInnerHTML={{ __html: item.plainText }}></p>
+                        <hr/>
+                        <button hidden type="Delete" id="del"  onClick={() => handleDelete(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
+        
                     </div>
                 ))}
             </div>

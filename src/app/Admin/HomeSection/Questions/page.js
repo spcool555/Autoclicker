@@ -8,10 +8,11 @@ import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import AdminSidebar from '../../AdminSidebar/page';
 import JoditEditor from "jodit-react";
  const QuestionsSection = () => {
-
+    const[questionId,setQuestionId]=useState('')
     const [question, setQuestion] = useState('');
     const [answers, setAnswers] = useState('');
     const [questionAnswer,setQuestionAnswer] = useState([]);
+  
 
     const handleInput1Change = (value) => {
         setQuestion(value);
@@ -32,6 +33,7 @@ import JoditEditor from "jodit-react";
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         
         const formData = {
+            id:questionId,
             question: question,
             answers: answers,
         };
@@ -80,7 +82,20 @@ import JoditEditor from "jodit-react";
             
         }
 
-
+        async function EditQuestionAnswerById(questionId) {
+            try {
+                const response = await axios.get(`http://65.2.172.195:8081/public/questionansweredit/${questionId}`);
+                const { id, question, answers } = response.data; // Assuming the response has id, question, and answers fields
+                setQuestionId(id); // Assuming you have a state to hold the question id
+                setQuestion(question);
+                setAnswers(answers);
+                console.log("dataediiittt...", response.data);
+            } catch (error) {
+                console.log("err", error);
+            }
+        }
+        
+        
 
 
 
@@ -131,6 +146,7 @@ import JoditEditor from "jodit-react";
         <h4 className="text-lg font-semibold mb-4">Frequently Asked Questions?</h4>
         <form onSubmit={handleSubmit} className="mb-6">
             <div className="mb-4">
+                 <input type="hidden" value={questionId} placeholder="id"/>
                 <label htmlFor="question" className="block mb-2 text-sm font-medium text-gray-900">Question</label>
                 <JoditEditor
                   
@@ -172,6 +188,7 @@ import JoditEditor from "jodit-react";
                         <p className="mb-1 font-semibold">Answer</p>
                         <p dangerouslySetInnerHTML={{ __html: item.answers }}></p>
                         <button type="Delete" id="del"  onClick={() => handleDelete(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
+                        <button type="Edit" id="edit"  onClick={() => EditQuestionAnswerById(item.id)} class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Edit</button>
 
                     </div>
                 ))}

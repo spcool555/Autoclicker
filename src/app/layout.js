@@ -16,7 +16,7 @@ const RootLayout = ({ children }) => {
   }, []);
 
   const GetAllQuestionAnswer = () => {
-    axios.get('http://65.2.172.195:8081/public/metadata')
+    axios.get('http://localhost:8081/public/metadata')
       .then((res) => {
         setAllMetadata(res.data);
         console.log("Metadata:", res.data);

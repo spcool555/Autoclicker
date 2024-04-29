@@ -17,7 +17,7 @@ useEffect(()=>{
   GetAllWorkflow();
 },[]);
   const GetAllFeaturebox = ()=>{
-      axios.get('http://65.2.172.195:8081/public/saverequirements/4').then((res)=>{
+      axios.get('http://localhost:8081/public/saverequirements/4').then((res)=>{
           setData(res.data)
           console.log("data...",res.data)
         }).catch((err)=>{
@@ -26,7 +26,7 @@ useEffect(()=>{
       
   }
   const Getallinstprocedures=()=>{
-    axios.get('http://65.2.172.195:8081/public/instprocedure/4').then((res)=>{
+    axios.get('http://localhost:8081/public/instprocedure/4').then((res)=>{
       setData2(res.data)
       console.log("data.instalprocedure..",res.data)
     }).catch((err)=>{
@@ -36,7 +36,7 @@ useEffect(()=>{
   }
 
   const GetAllApllicationData =()=>{
-    axios.get('http://65.2.172.195:8081/public/Applicationbox/4').then((res)=>{
+    axios.get('http://localhost:8081/public/Applicationbox/4').then((res)=>{
       setData3(res.data)
       console.log("data.instalprocedure..",res.data)
     }).catch((err)=>{
@@ -44,7 +44,7 @@ useEffect(()=>{
     })
   }
 const GetAllWorkflow = () =>{
-axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
+axios.get('http://localhost:8081/public/workflow/4').then((res)=>{
   setData4(res.data)
   console.log("data.workflow..",res.data)
 }).catch((err)=>{

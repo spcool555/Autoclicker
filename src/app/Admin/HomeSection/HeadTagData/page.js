@@ -48,7 +48,7 @@ import JoditEditor from "jodit-react";
             setError('Please enter a value for the question And Answer');
             return;
           }
-        const apiUrl = 'http://65.2.172.195:8081/admin/metadata';
+        const apiUrl = 'http://localhost:8081/admin/metadata';
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         
         const formData = {
@@ -100,7 +100,7 @@ import JoditEditor from "jodit-react";
         GetAllQuestionAnswer();
     },[]);
         const GetAllQuestionAnswer = ()=>{
-            axios.get('http://65.2.172.195:8081/public/metadata').then((res)=>{
+            axios.get('http://localhost:8081/public/metadata').then((res)=>{
                 setQuestionAnswer(res.data)
                 console.log("data...",res.data)
               }).catch((err)=>{
@@ -111,7 +111,7 @@ import JoditEditor from "jodit-react";
         async function handleDelete(id) {
             try {
                 const token = localStorage.getItem('token');
-              const response = await fetch(`http://65.2.172.195:8081/admin/deletemetadata/${id}`, {
+              const response = await fetch(`http://localhost:8081/admin/deletemetadata/${id}`, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ import JoditEditor from "jodit-react";
 
                 <div className="grid max-w-2xl mx-auto mt-8">
     <div>
-        <h4 className="text-lg font-semibold mb-4">Add Meta Data In Headt Tag</h4>
+        <h4 className="text-lg font-semibold mb-4">Add Meta Data In Head Tag</h4>
         <form onSubmit={handleSubmit} className="mb-6">
             <div className="mb-4">
                 <label htmlFor="question" className="block mb-2 text-sm font-medium text-gray-900">Meta Title</label>
@@ -202,7 +202,7 @@ import JoditEditor from "jodit-react";
                    />
             </div>
             <div className="mb-4">
-                <label htmlFor="answer" className="block mb-2 text-sm font-medium text-gray-900">Conical Url</label>
+                <label htmlFor="answer" className="block mb-2 text-sm font-medium text-gray-900">Cononical Url</label>
                 <input
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter conical url"
                   type="text"

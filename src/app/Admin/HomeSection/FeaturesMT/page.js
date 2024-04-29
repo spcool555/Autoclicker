@@ -29,7 +29,7 @@ const FeaturesMT = () => {
             setError('Please enter a value for the item name.');
             return;
           }
-        const apiUrl = 'http://65.2.172.195:8081/admin/saveFormData';
+        const apiUrl = 'http://localhost:8081/admin/saveFormData';
         const token = localStorage.getItem('token');
 
         const formData = {
@@ -70,7 +70,7 @@ const FeaturesMT = () => {
     };
 
     const GetAllFeaturebox = () => {
-        axios.get('http://65.2.172.195:8081/public/featurebox')
+        axios.get('http://localhost:8081/public/featurebox')
             .then((res) => {
                 setData(res.data);
             })
@@ -81,7 +81,7 @@ const FeaturesMT = () => {
 
     async function EditById(editid) {
         try {
-            const response = await axios.get(`http://65.2.172.195:8081/public/featureboxedit/${editid}`);
+            const response = await axios.get(`http://localhost:8081/public/featureboxedit/${editid}`);
             const { id, input1, input2 } = response.data; // Assuming the response has id, question, and answers fields
             setEditid(id); // Assuming you have a state to hold the question id
             setInput1(input1);
@@ -94,7 +94,7 @@ const FeaturesMT = () => {
     async function handleDelete(id) {
         try {
             const token = localStorage.getItem('token');
-          const response = await fetch(`http://65.2.172.195:8081/admin/deletefeaturebox/${id}`, {
+          const response = await fetch(`http://localhost:8081/admin/deletefeaturebox/${id}`, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',

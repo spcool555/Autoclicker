@@ -12,7 +12,7 @@ const FAQs = () => {
   }, []);
   const GetAllFeaturebox = () => {
     axios
-      .get(`http://65.2.172.195:8081/public/savefaq/1`)
+      .get(`http://localhost:8081/public/savefaq/1`)
       .then((res) => {
         setData(res.data);
 
@@ -22,7 +22,7 @@ const FAQs = () => {
         console.log("err", err);
       });
     axios
-      .get(`http://65.2.172.195:8081/public/savefaq/2`)
+      .get(`http://localhost:8081/public/savefaq/2`)
       .then((res) => {
         setData2(res.data);
 
@@ -34,7 +34,7 @@ const FAQs = () => {
   };
   const GetAllQuestionAnswer = () => {
     axios
-      .get("http://65.2.172.195:8081/public/questionanswer")
+      .get("http://localhost:8081/public/questionanswer")
       .then((res) => {
         setQuestionAnswer(res.data);
         console.log("data...", res.data);

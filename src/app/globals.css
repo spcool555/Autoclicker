@@ -74,3 +74,11 @@ body {
 
 
 }
+.grid{
+  PADDING: 20PX;
+    JUSTIFY-CONTENT: center;
+    GAP: 29PX;
+    display: flex;
+    flex-wrap: wrap;
+}
+

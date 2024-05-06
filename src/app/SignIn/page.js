@@ -3,7 +3,9 @@ import axios from 'axios';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation'
 import React, { useState, useEffect } from 'react';
+import GoogleLogin from 'react-google-login';
 import Swal from 'sweetalert2';
+
 const SignIn = () => {
   const router = useRouter()
   const [email2, setEmail2]= useState('')
@@ -97,7 +99,17 @@ const SignIn = () => {
   const deviceids = (event) => {
     setDeviceid(event.target.value);
   }
-
+  const responseGoogle = (response) => {
+    console.log(response);
+    // Print user ID and name if available
+    if (response.profileObj) {
+      console.log('User ID:', response.profileObj.googleId);
+      console.log('Name:', response.profileObj.name);
+      // You can send the response.accessToken to your server for authentication
+    }
+    // Handle further authentication process
+  };
+  
   // const handleSignIn = () => {
   //   router.push('/oauth2/authorization/google');
   // };
@@ -216,6 +228,14 @@ Sign in with Facebook
   </Link> */}
 
 
+<GoogleLogin
+          clientId="974361811013-8vefl7jsh1308jtrjd0brhp3lc4cp2i9.apps.googleusercontent.com"
+          buttonText="Sign in with Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          className="flex w-full justify-center rounded-md bg-red-600 px-3 mb-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+        />
 
 
 </div>    

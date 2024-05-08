@@ -5,15 +5,24 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Link from "next/link";
+import SEO from "../seo/Seo";
 import SidebarDocumentation from '../Documentation/sidebarDocumentation/page'
  const Documentation = () => {
 
 
-    
+    let metaData = {
+        title: "blog page",
+        description: "blog decription",
+        ogTitle: "blog ogtitle",
+        ogDescription: "blog ogtitle Description",
+        conicalurl
+          : "conicalurl"
+          || "https://example.com",
+        plaintext: "blog plaintext",
+      } 
   return (
    <>
-   
-   
+<SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  /> 
 <div class="bg-white p0 p4 w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
    <SidebarDocumentation/>
     <main class="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">

@@ -19,8 +19,8 @@ const useClickToken = () => {
         } else {
             // Fetch a new click token from the backend if not signed in
             if (!signInToken) {
-                fetch('http://localhost:8081/public/token')
-                    .then(response => response.text())
+                fetch('http://65.2.172.195:8081/public/token')
+                    .then(response => response?.text())
                     .then(newToken => {
                         localStorage.setItem('clickToken', newToken);
                         setToken(newToken);

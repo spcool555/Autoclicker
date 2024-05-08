@@ -1,4 +1,4 @@
-// File: D:\autoclicker\Autoclickers\src\app\Token\page.js
+// File: I:\cluematrix_project_asmita\autoclicker\autoclicker_frontend\src\app\Token\page.js
 import * as entry from '../../../../src/app/Token/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

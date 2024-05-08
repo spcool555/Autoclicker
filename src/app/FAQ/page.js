@@ -2,6 +2,8 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import SEO from "../seo/Seo";
+
 const FAQs = () => {
   const [data, setData] = useState([]);
   const [datas, setData2] = useState([]);
@@ -12,7 +14,7 @@ const FAQs = () => {
   }, []);
   const GetAllFeaturebox = () => {
     axios
-      .get(`http://localhost:8081/public/savefaq/1`)
+      .get(`http://65.2.172.195:8081/public/savefaq/1`)
       .then((res) => {
         setData(res.data);
 
@@ -22,7 +24,7 @@ const FAQs = () => {
         console.log("err", err);
       });
     axios
-      .get(`http://localhost:8081/public/savefaq/2`)
+      .get(`http://65.2.172.195:8081/public/savefaq/2`)
       .then((res) => {
         setData2(res.data);
 
@@ -34,7 +36,7 @@ const FAQs = () => {
   };
   const GetAllQuestionAnswer = () => {
     axios
-      .get("http://localhost:8081/public/questionanswer")
+      .get("http://65.2.172.195:8081/public/questionanswer")
       .then((res) => {
         setQuestionAnswer(res.data);
         console.log("data...", res.data);
@@ -43,7 +45,19 @@ const FAQs = () => {
         console.log("err", err);
       });
   };
+  let metaData = {
+    title: "FAQ page",
+    description: "FAQ decription",
+    ogTitle: "FAQ ogtitle",
+    ogDescription: "FAQ ogtitle Description",
+    conicalurl
+      : "conicalurl"
+      || "https://example.com",
+    plaintext: "FAQ plaintext",
+  }
   return (
+    <>
+    <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
     <div className="p0">
       <h1 className="pb-6 mb-5 border-b-2 border-[#256EFF] text-2xl md:text-4xl text-center font-bold">
         FAQs
@@ -153,6 +167,8 @@ const FAQs = () => {
         </div>
       </div>
     </div>
+    </>
+  
   );
 };
 

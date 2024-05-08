@@ -42,7 +42,7 @@ const BlogSection = () => {
     formData.append('input2', input2);
 
     try {
-      const response = await axios.post('http://localhost:8081/admin/news', formData, {
+      const response = await axios.post('http://65.2.172.195:8081/admin/news', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -76,7 +76,7 @@ const BlogSection = () => {
   }, []);
 
   const GetAllFeaturebox = () => {
-    axios.get('http://localhost:8081/public/newsbox')
+    axios.get('http://65.2.172.195:8081/public/newsbox')
       .then((res) => {
         setData(res.data);
         console.log("data...", res.data);
@@ -91,7 +91,7 @@ const BlogSection = () => {
   async function handleDelete(id) {
     try {
         const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:8081/admin/deletenewsbox/${id}`, {
+      const response = await fetch(`http://65.2.172.195:8081/admin/deletenewsbox/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

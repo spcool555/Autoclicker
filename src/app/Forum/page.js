@@ -5,6 +5,7 @@ import "../Forum/style.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import SEO from "../seo/Seo";
 const Forum = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [showReplies, setShowReplies] = useState(false);
@@ -49,7 +50,7 @@ Getall();
 },[]);
 
 const Getall=()=>{
-  axios.get('http://localhost:8081/public/newpost').then((res)=>{
+  axios.get('http://65.2.172.195:8081/public/newpost').then((res)=>{
     const curentuid = localStorage.getItem('uid');
     setCurentuid2(curentuid);
     setData(res.data)
@@ -80,7 +81,7 @@ const handleSubmit = async (e) => {
     }
 
     const response = await axios.post(
-      'http://localhost:8081/adminuser/newpost',
+      'http://65.2.172.195:8081/adminuser/newpost',
       { newpost: newpost, uname: formData.firstname, uid: uid },
       {
         headers: {
@@ -109,7 +110,7 @@ const handleSubmit = async (e) => {
 useEffect(() => {
   GetAllReplies();
   const uid = localStorage.getItem('uid');
-  axios.get(`http://localhost:8081/public/userdata/${uid}`)
+  axios.get(`http://65.2.172.195:8081/public/userdata/${uid}`)
   .then((res) => {
       console.log("Received data:", res.data);
       setFormData(res.data);
@@ -124,7 +125,7 @@ replydata.forEach(reply => {
   touidToSenderunameMap[reply.touid] = reply.senderuname;
 });
   const GetAllReplies = ()=>{
-      axios.get('http://localhost:8081/public/replypost').then((res)=>{
+      axios.get('http://65.2.172.195:8081/public/replypost').then((res)=>{
         setReplydata(res.data)
        
         }).catch((err)=>{
@@ -151,7 +152,7 @@ const handleReplySubmit = async (event) => {
     });
     return;
   }
-  const apiUrl = 'http://localhost:8081/adminuser/replypost';
+  const apiUrl = 'http://65.2.172.195:8081/adminuser/replypost';
   const token = localStorage.getItem('token'); // Retrieve the token from local storage
   
   const formData2 = {
@@ -183,9 +184,19 @@ const handleReplySubmit = async (event) => {
   }
 };
 
-
+let metaData = {
+  title: "Forum page",
+  description: "Forum decription",
+  ogTitle: "Forum ogtitle",
+  ogDescription: "Forum ogtitle Description",
+  conicalurl
+    : "conicalurl"
+    || "https://example.com",
+  plaintext: "Forum plaintext",
+}
   return (
     <>
+    <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
       <div className="md:grid md:grid-cols-3 gap-4 p-4 p0">
         {/* Responsive Sidebar */}
         <div className="md:col-span-1 bg-gray-200 p-4 p0 rounded mb-4 md:mb-0">

@@ -1,8 +1,8 @@
 {
-  "/Blog/page": "app/Blog/page.js",
-  "/FAQ/page": "app/FAQ/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/Pricing/page": "app/Pricing/page.js",
+  "/page": "app/page.js",
+  "/SignIn/page": "app/SignIn/page.js",
+  "/Token/page": "app/Token/page.js",
+  "/Tools/page": "app/Tools/page.js",
   "/Documentation/page": "app/Documentation/page.js",
-  "/Tools/page": "app/Tools/page.js"
+  "/Download/page": "app/Download/page.js"
 }

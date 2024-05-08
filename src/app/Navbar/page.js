@@ -70,7 +70,8 @@ import axios from "axios";
   
   const handleLogout = () => {
     // Remove the token from local storage to log out
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
+    localStorage.clear()
     setIsLoggedIn(false);
     router.push('/');
     // Redirect to home page or do something else after logging out
@@ -102,7 +103,7 @@ import axios from "axios";
   
   return (
     <nav  className="bg-[#1C2B71] text-white relative z-50">
-    <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4  ">
+    <div className="flex flex-wrap items-center justify-between mx-auto p-4  ">
       <Link  href="/"     className="router-link-active router-link-exact-active flex items-center space-x-2 mr-5">
       <Image src="/logo.png" alt="logo" width={170} height={56}  className="h-8"/>
         

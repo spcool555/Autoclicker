@@ -3,6 +3,8 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
+import SEO from "../seo/Seo";
+
 const Blog = () => {
     const [data,setData] = useState([]);
     
@@ -10,7 +12,7 @@ useEffect(()=>{
     GetAllFeaturebox();
   },[]);
     const GetAllFeaturebox = ()=>{
-        axios.get('http://localhost:8081/public/newsbox').then((res)=>{
+        axios.get('http://65.2.172.195:8081/public/newsbox').then((res)=>{
             setData(res.data)
             console.log("data...",res.data)
           }).catch((err)=>{
@@ -30,9 +32,20 @@ useEffect(()=>{
       }
       return text;
     };
+    let metaData = {
+      title: "blog page",
+      description: "blog decription",
+      ogTitle: "blog ogtitle",
+      ogDescription: "blog ogtitle Description",
+      conicalurl
+        : "conicalurl"
+        || "https://example.com",
+      plaintext: "blog plaintext",
+    }
   return (
   
 <>
+<SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
 
 <section class="bg-white dark:bg-gray-900 p0">
   <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">

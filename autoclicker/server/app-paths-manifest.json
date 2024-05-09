@@ -1,8 +1,3 @@
 {
-  "/page": "app/page.js",
-  "/SignIn/page": "app/SignIn/page.js",
-  "/Token/page": "app/Token/page.js",
-  "/Tools/page": "app/Tools/page.js",
-  "/Documentation/page": "app/Documentation/page.js",
-  "/Download/page": "app/Download/page.js"
+  "/Tools/page": "app/Tools/page.js"
 }

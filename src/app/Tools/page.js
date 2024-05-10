@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import SEO from "../seo/Seo";
 import CameraTest from '../toolsChild/CameraTest'
+import MicTest from '../toolsChild/Mictest'
 const Tools = () => {
 
  
         const [isModalOpen, setIsModalOpen] = useState(false);
-        const [isCamera,setIsCamera] = useState(false);
+        const [isCamera,setIsCamera] = useState(0);
 
         const [modalUrl, setModalUrl] = useState("");
     
@@ -20,11 +21,15 @@ const Tools = () => {
             setIsModalOpen(false);
         };
         const openCamera=()=>{
-            setIsCamera(true)
+            setIsCamera(1)
+        }
+        const openMictest=()=>{
+            setIsCamera(2)
         }
         const closeCamera=()=>{
-            setIsCamera(false)
+            setIsCamera(0)
         }
+       
         useEffect(() => {
             // No longer opening modal on page load
         }, []);
@@ -63,8 +68,13 @@ const Tools = () => {
         <>
          <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
         {
-                isCamera?(
+                isCamera == 1?(
                     <CameraTest isclose={closeCamera}/>
+                )
+                :
+                isCamera == 2?
+                (
+                    <MicTest isclose={closeCamera}/>
                 )
                 :
                 <div className="bg-white p0 p4 w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
@@ -80,7 +90,7 @@ const Tools = () => {
                         <button onClick={() => openModal("https://spcool555.github.io/sapcebar_clicker/")} className="flex items-center px-3 py-2.5 font-bold p3 p4 bg-white  text-indigo-900 border rounded-full">
                         Spacebar Clicker
                         </button>
-                        <button onClick={() => openModal("https://spcool555.github.io/cps/")}
+                        <button onClick={() => openModal("https://cps-tester-app.netlify.app/")}
                             className="flex items-center px-3 py-2.5 font-bold bg-white p3 p4  text-indigo-900 border rounded-full ">
                          CPSTest
                         </button>
@@ -100,7 +110,7 @@ const Tools = () => {
                             className="flex items-center px-3 py-2.5 font-bold bg-white  p3 p4 text-indigo-900 border rounded-full ">
                        Reaction Time Test
                         </button>
-                        <button onClick={() => openModal("https://spcool555.github.io/micAndSpeechTotext/")}
+                        <button onClick={() => openMictest()}
                             className="flex items-center px-3 py-2.5 font-bold bg-white p3 p4 text-indigo-900 border rounded-full ">
                      Mic Test & Speech to Text
                         </button>
@@ -124,7 +134,7 @@ const Tools = () => {
         Spacebar Clicker
       </button>
     
-      <button onClick={() => openModal("https://spcool555.github.io/cps/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+      <button onClick={() => openModal("https://cps-tester-app.netlify.app/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
         CPSTest
       </button>
     
@@ -145,7 +155,7 @@ const Tools = () => {
       </button>
     </div>
     
-             
+           
     
     
             

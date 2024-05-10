@@ -52,9 +52,12 @@ const RootLayout = ({ children}) => {
       </head>
 
       <body className={inter.className}>
+        <div >
         <Navbar />
         {children}
         <Footer />
+        </div>
+      
       </body>
     </html>
 

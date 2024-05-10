@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Webcam from 'react-webcam';
 import Image from "next/image";
 import CameraGif from '../assets/camera.gif'
+import network from '../assets/network.webp'
 const CameraTest = (props) => {
   // *********************style*******************
   const style = {
@@ -22,12 +23,35 @@ const CameraTest = (props) => {
       padding: '20px',
       width: '45%',
 
+    },
+    labeltext: {
+      textAlign: 'center',
+      fontWeight: '600',
+      fontSize:'20px',
+      color:'red'
+    },
+    labeltextC: {
+      textAlign: 'center',
+      fontWeight: '600',
+      fontSize:'20px',
+      color:'green'
     }
 
 
   };
   const [isopencamera, setopencamera] = useState(false)
   const webcamRef = React.useRef(null);
+  const [webcamAvailable, setWebcamAvailable] = useState(true);
+
+  const handleUserMediaError = () => {
+    console.log('Webcam not available');
+    setWebcamAvailable(false);
+  };
+
+  const handleUserMedia = () => {
+    console.log('Webcam available');
+    setWebcamAvailable(true);
+  };
   return (
     <div className='cameratestBox'>
       <div style={style.webchilebox}>
@@ -43,21 +67,60 @@ const CameraTest = (props) => {
         {
           isopencamera ?
             <div>
-              <div >
-                <Webcam
-                  audio={false}
-                  ref={webcamRef}
-                  width="100%"
-                  height="300px"
-                  screenshotFormat="image/jpeg"
-                />
+              {
+                webcamAvailable ?
+                  <div style={{  width: '100% !important',}}>
+                    <div style={{display: 'flex',
+    paddingBottom: '20px'}}>
+                      <label style={style.labeltextC}>A web camera was detected. Press “Test my cam” to check the functionality and supported properties of your camera.</label>
+                    </div>
+                    <Webcam
+                    style={{height:'300px',width:'100% !important'}}
+                      audio={false}
+                      ref={webcamRef}
+                      width="100%"
+                      onUserMediaError={handleUserMediaError}
+                      onUserMedia={handleUserMedia}
+                     
+                      screenshotFormat="image/jpeg"
+                    />
 
-              </div>
+                  </div>
+                  :
+                  <div style={{
+                    width: '100%', display: 'flex',
+                    justifyContent: 'center',flexDirection: 'column',
+                    alignItems: 'center',
+    gap: '20px'
+                  }
+                  }>
+                    <div
+                      style={{
+                        width: '60%',
+                        display: 'flex',
+                        justifyContent: 'center'
+
+                      }
+                      }>
+                      <Image src={network} width='100%'  style={{borderRadius:'10px',height:'200px'}} alt='img' />
+                    </div>
+                    <div>
+                      <p style={style.labeltext}>Oops...!</p>
+                      <p style={style.labeltext}>Webcam not available</p>
+                    </div>
+
+                  </div>
+
+              }
+
 
             </div>
             :
             <div className='BoxCamerachild'>
-              <div style={{ width: '100%', height: '300px' }}>
+              <div style={{
+                width: '100%', height: '300px', display: 'flex',
+                justifyContent: 'center'
+              }}>
                 <Image src={CameraGif} width='100%' height='100%' alt='img' />
               </div>
 

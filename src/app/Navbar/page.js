@@ -102,6 +102,7 @@ import axios from "axios";
 
   
   return (
+    <>
     <nav  className="bg-[#1C2B71] text-white relative z-50">
     <div className="flex flex-wrap items-center justify-between mx-auto p-4  ">
       <Link  href="/"     className="router-link-active router-link-exact-active flex items-center space-x-2 mr-5">
@@ -283,6 +284,7 @@ import axios from "axios";
       </ul>
     </div>
   </nav>
+  </>
   );
 };
 

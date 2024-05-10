@@ -157,7 +157,8 @@ const[video, setVideo]=useState([]);
   return (
     <>
     <SEO title={metadata[0]?.title} description={metadata[0]?.description} ogTitle={metadata[0]?.ogTitle} ogDescription={metadata[0]?.ogDescription} plaintext={metadata[0]?.plaintext} conicalurl={metadata[0]?.conicalurl}  />
-    <section className="relative overflow-hidden">
+   <div>
+   <section className="relative overflow-hidden">
     <div className="bg-white p0 ">
       <div className="w-full m-auto relative px-3 py-10 md:py-20 md:px-20 mx-auto max-w-7xl">
         <div className="max-w-screen-lg mx-auto">
@@ -216,7 +217,7 @@ Download
           </p>
           <p className="py-5">Features</p>
           <section className="space-y-3 md:space-y-3 text-slate-350 font-medium">
-  {data.map((item, index) => (
+  {data.map((item,index) => (
     <div className="flex items-start space-x-5 relative" key={index}>
       <div className="absolute left-0 w-6 h-6 bg-[#6366F1] rounded-full text-black flex items-center justify-center font-bold">
         <div className="w-4 h-4 text-white">
@@ -248,19 +249,19 @@ Download
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
           {
             data2.map((item,ind)=>(
-          <div className="p-5 space-y-2 md:space-y-4 bg-[#F3F4F6] p0 dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
+          <div key={ind} className="p-5 space-y-2 md:space-y-4 bg-[#F3F4F6] p0 dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
             <div className="svg w-12 md:w-16 text-[#0795FF]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                   style={{ width: 'inherit', height: 'inherit' }}
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                 ></path>
               </svg>
@@ -313,10 +314,10 @@ Download
   height="315" 
   src={item.items}
   title="YouTube video player" 
-  frameborder="0" 
+  frameBorder="0" 
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  referrerpolicy="strict-origin-when-cross-origin" 
-  allowfullscreen 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  allowFullScreen 
   style={{borderRadius: '28px', border: '2px solid blue'}}>
 </iframe>
   ))}
@@ -386,6 +387,8 @@ Download
       </div>
     </div>
   </section>
+   </div>
+    
   </>
   )
 }

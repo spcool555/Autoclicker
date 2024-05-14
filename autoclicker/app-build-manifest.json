@@ -1,46 +1,45 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/Forum/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/Forum/page.css",
-      "static/chunks/app/Forum/page.js"
+      "static/chunks/app/page.js"
     ],
     "/SignIn/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/SignIn/page.js"
     ],
-    "/SignUp/page": [
+    "/Profile/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/SignUp/page.js"
+      "static/chunks/app/Profile/page.js"
     ],
-    "/Download/page": [
+    "/Admin/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Download/page.js"
+      "static/chunks/app/Admin/page.js"
     ],
-    "/Blog/page": [
+    "/Admin/BlogSection/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Blog/page.js"
+      "static/chunks/app/Admin/BlogSection/page.js"
     ],
     "/BigBlog/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/BigBlog/page.js"
+    ],
+    "/Download/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Download/page.js"
     ],
     "/Download/Windows/page": [
       "static/chunks/webpack.js",
@@ -52,11 +51,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/Download/Linux/page.js"
     ],
-    "/Download/MacOs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Download/MacOs/page.js"
-    ],
     "/Token/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -67,20 +61,26 @@
       "static/chunks/main-app.js",
       "static/chunks/app/Pricing/page.js"
     ],
-    "/FAQ/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/FAQ/page.js"
-    ],
-    "/Documentation/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Documentation/page.js"
-    ],
     "/Tools/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/Tools/page.js"
+    ],
+    "/Forum/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Forum/page.css",
+      "static/chunks/app/Forum/page.js"
+    ],
+    "/Blog/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Blog/page.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
     ]
   }
 }

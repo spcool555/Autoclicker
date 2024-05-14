@@ -27,9 +27,13 @@
   }
   .p3{
     background-color: #0C1633;
+    /* color: black; */
   }
   .p4{
     color: #ffffff;
+  }
+  .p2{
+    color:black;
   }
 }
 @media (prefers-color-scheme: dark) {

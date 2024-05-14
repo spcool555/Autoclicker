@@ -2,13 +2,16 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import SEO from "../seo/Seo";
-
+import axios from "axios";
 const Token = () => {
   const [token, setToken] = useState("");
   const [isToken, setIsToken] = useState(false);
   const [email, setEmail] = useState('');
+
   const [isFormValid, setIsFormValid] = useState(false);
   const [isShowToken, setShowToken] = useState(false);
+  const [isEmail, setEmailexist] = useState(false);
+  const [tokenData, settokenData] = useState({});
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -23,10 +26,23 @@ const Token = () => {
   }, []);
   const emailInput = (event) => {
     setEmail(event.target.value);
+    if (event.target.value == '') {
+      setEmailexist(false)
+    }
   }
   const copyToClipboard = () => {
     navigator.clipboard
       .writeText(token)
+      .then(() => {
+        alert("Token copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy token to clipboard: ", error);
+      });
+  };
+  const copyToClipboardtoken = () => {
+    navigator.clipboard
+      .writeText(tokenData?.token)
       .then(() => {
         alert("Token copied to clipboard!");
       })
@@ -40,8 +56,29 @@ const Token = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowToken(true)
     // Handle form submission
+    let data = {
+      email: email
+    }
+    axios.post('http://65.2.172.195:8081/public/update', data)
+      .then((res) => {
+        settokenData(res.data)
+        if (res.data.token == null) {
+          setShowToken(false)
+          setEmailexist(true)
+          
+          
+        }
+        else {
+          setShowToken(true)
+          setEmailexist(false)
+        }
+
+        console.log("res......", res.data)
+      }).catch((err) => {
+        setShowToken(false)
+        console.log("err......", err)
+      })
   };
   useEffect(() => {
     validateForm();
@@ -98,6 +135,15 @@ const Token = () => {
                             required
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
+                          {
+                            isEmail ?
+                              <div style={{textAlign:'left'}}>
+                                <label style={{color:'red'}}>Email Not Registered</label>
+                              </div>
+
+                              : null
+                          }
+
                         </div>
                         <button
                           type="submit"
@@ -113,23 +159,23 @@ const Token = () => {
                   )
                     :
                     (
-                      
+
                       <div>
-                        <br/>
-                        
+                        <br />
+
                         <div className="max-w-xs w-full inline-flex gap-x-2">
                           <input
                             id="hs-clipboard-input"
                             type="text"
-                            className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder:text-gray-500 dark:focus:ring-gray-600"
-                            value={token}
+                            className="py-3 px-4 p2 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder:text-gray-500 dark:focus:ring-gray-600"
+                            value={tokenData?.token}
                             readOnly // Make the input field read-only
                           />
 
                           <button
                             type="button"
                             className="py-3 px-4 group inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            onClick={copyToClipboard} // Call the function to copy to clipboard on button click
+                            onClick={copyToClipboardtoken} // Call the function to copy to clipboard on button click
                           >
                             <svg
                               className="size-4"
@@ -150,10 +196,10 @@ const Token = () => {
                           </button>
 
                         </div>
-                         <br/>
-                         <br/>
+                        <br />
+                        <br />
                         <button
-                          type="submit" onClick={() => { setShowToken(false) }}
+                          type="submit" onClick={() => { setShowToken(false);setEmail("") }}
                           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                         >
                           Cancel
@@ -171,8 +217,8 @@ const Token = () => {
             {/* *************************before login generate token with email**************** */}
 
             <div className="m-10 tokenChildBox max-w-sm p-6 bg-white border p3 border-gray-200 rounded-lg p0 shadow dark:bg-gray-800 dark:border-gray-700">
-            <br />
-           
+              <br />
+
               <svg
                 className="w-7 h-7 text-gray-500 p4 mb-3"
                 aria-hidden="true"
@@ -192,12 +238,12 @@ const Token = () => {
               ) : (
                 // Render this if the user is not logged in
                 <>
-               
+
                   <Link href="/SignIn">SignIn To Generate Token</Link>
                   <br />
                   <br />
                   <br />
-                 
+
                 </>
               )}
 

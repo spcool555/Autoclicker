@@ -90,7 +90,7 @@ const Tools = () => {
                         <button onClick={() => openModal("https://spcool555.github.io/sapcebar_clicker/")} className="flex items-center px-3 py-2.5 font-bold p3 p4 bg-white  text-indigo-900 border rounded-full">
                         Spacebar Clicker
                         </button>
-                        <button onClick={() => openModal("https://cps-tester-app.netlify.app/")}
+                        <button onClick={() => openModal("https://cpsnew.onrender.com/")}
                             className="flex items-center px-3 py-2.5 font-bold bg-white p3 p4  text-indigo-900 border rounded-full ">
                          CPSTest
                         </button>
@@ -134,7 +134,7 @@ const Tools = () => {
         Spacebar Clicker
       </button>
     
-      <button onClick={() => openModal("https://cps-tester-app.netlify.app/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
+      <button onClick={() => openModal("https://cpsnew.onrender.com/")} className="flex items-center mt-2 px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full">
         CPSTest
       </button>
     

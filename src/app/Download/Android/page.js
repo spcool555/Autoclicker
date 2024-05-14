@@ -5,19 +5,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DownloadFrontPage from "../../../../DownloadFrontPage/page";
 const Download = () => {
+
   const [data,setData] = useState([]);
   const [data2,setData2] = useState([]);
   const [data3,setData3] = useState([]);
   const [data4,setData4] = useState([]);
-  
+
 useEffect(()=>{
+ 
   GetAllFeaturebox();
   Getallinstprocedures();
   GetAllApllicationData();
   GetAllWorkflow();
+ 
 },[]);
   const GetAllFeaturebox = ()=>{
-      axios.get('http://localhost:8081/public/saverequirements/4').then((res)=>{
+      axios.get('http://65.2.172.195:8081/public/saverequirements/4').then((res)=>{
           setData(res.data)
           console.log("data...",res.data)
         }).catch((err)=>{
@@ -26,7 +29,7 @@ useEffect(()=>{
       
   }
   const Getallinstprocedures=()=>{
-    axios.get('http://localhost:8081/public/instprocedure/4').then((res)=>{
+    axios.get('http://65.2.172.195:8081/public/instprocedure/4').then((res)=>{
       setData2(res.data)
       console.log("data.instalprocedure..",res.data)
     }).catch((err)=>{
@@ -36,7 +39,7 @@ useEffect(()=>{
   }
 
   const GetAllApllicationData =()=>{
-    axios.get('http://localhost:8081/public/Applicationbox/4').then((res)=>{
+    axios.get('http://65.2.172.195:8081/public/Applicationbox/4').then((res)=>{
       setData3(res.data)
       console.log("data.instalprocedure..",res.data)
     }).catch((err)=>{
@@ -44,7 +47,7 @@ useEffect(()=>{
     })
   }
 const GetAllWorkflow = () =>{
-axios.get('http://localhost:8081/public/workflow/4').then((res)=>{
+axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
   setData4(res.data)
   console.log("data.workflow..",res.data)
 }).catch((err)=>{
@@ -53,8 +56,10 @@ axios.get('http://localhost:8081/public/workflow/4').then((res)=>{
 
 }
 
+
   return (
    <div>
+   
    <DownloadFrontPage />
       <section className="space-y-10 max-w-screen-xl mx-auto">
      

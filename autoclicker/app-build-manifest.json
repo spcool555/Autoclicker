@@ -6,6 +6,7 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+<<<<<<< HEAD
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -61,6 +62,8 @@
       "static/chunks/main-app.js",
       "static/chunks/app/Pricing/page.js"
     ],
+=======
+>>>>>>> faa439b6cea28ca7acbed14b566c4ac06d0e8669
     "/Tools/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

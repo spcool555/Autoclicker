@@ -5,7 +5,7 @@ import useClickToken from '../app/useClickToken/useClickToken';
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-
+import SEO from './seo/Seo';
 const Content = () => {
 
   const [imageUrl, setImageUrl] = useState('');
@@ -19,9 +19,24 @@ Getall();
 GetAllFeaturebox();
 GetAllQuestionAnswer();
 },[]);
+const [allMetadata, setAllMetadata] = useState([]);
+  
+const generateMetadata = () => {
+  return allMetadata.map((item, ind) => ({
+    title: item.question || "Default Title",
+    description: item.answers || "Default Description",
+    ogTitle: item.ogTitle || "Default OG Title",
+    ogDescription: item.ogDescription || "Default OG Description",
+    conicalurl
+: item.conicalurl
+    || "https://example.com",
+    plaintext: item.plaintext || "Default Plaintext",
+  }));
+};
 
+const metadata = generateMetadata();
 const GetAllFeaturebox = ()=>{
-  axios.get('http://localhost:8081/public/featurebox').then((res)=>{
+  axios.get('http://65.2.172.195:8081/public/featurebox').then((res)=>{
       setData2(res.data)
       
     }).catch((err)=>{
@@ -29,8 +44,9 @@ const GetAllFeaturebox = ()=>{
     })
   
 }
+
 const Getall=()=>{
-  axios.get('http://localhost:8081/public/items').then((res)=>{
+  axios.get('http://65.2.172.195:8081/public/items').then((res)=>{
     setData(res.data)
 
   }).catch((err)=>{
@@ -40,7 +56,7 @@ const Getall=()=>{
 }
 
   const GetAllQuestionAnswer = ()=>{
-      axios.get('http://localhost:8081/public/questionanswer').then((res)=>{
+      axios.get('http://65.2.172.195:8081/public/questionanswer').then((res)=>{
           setQuestionAnswer(res.data)
       
         }).catch((err)=>{
@@ -49,7 +65,7 @@ const Getall=()=>{
       
   }
   useEffect(() => {
-      fetch('http://localhost:8081/public/image/1') // Adjust the URL according to your endpoint
+      fetch('http://65.2.172.195:8081/public/image/1') // Adjust the URL according to your endpoint
           .then(response => response.blob())
           .then(blob => {
               const url = URL.createObjectURL(blob);
@@ -78,7 +94,7 @@ const Getall=()=>{
     
     
     const Getallwhatmakes=()=>{
-      axios.get('http://localhost:8081/public/whatmakes').then((res)=>{
+      axios.get('http://65.2.172.195:8081/public/whatmakes').then((res)=>{
         setData3(res.data)
        
       }).catch((err)=>{
@@ -123,7 +139,7 @@ const[video, setVideo]=useState([]);
       }, []);
   
       const GetallTopVideo = () => {
-          axios.get('http://localhost:8081/public/topvideo').then((res) => {
+          axios.get('http://65.2.172.195:8081/public/topvideo').then((res) => {
               setVideo(res.data)
         
           }).catch((err) => {
@@ -145,9 +161,9 @@ const[video, setVideo]=useState([]);
 
   return (
     <>
-    <section className="relative overflow-hidden">
-     
-     
+    <SEO title={metadata[0]?.title} description={metadata[0]?.description} ogTitle={metadata[0]?.ogTitle} ogDescription={metadata[0]?.ogDescription} plaintext={metadata[0]?.plaintext} conicalurl={metadata[0]?.conicalurl}  />
+   <div>
+   <section className="relative overflow-hidden">
     <div className="bg-white p0 ">
       <div className="w-full m-auto relative px-3 py-10 md:py-20 md:px-20 mx-auto max-w-7xl">
         <div className="max-w-screen-lg mx-auto">
@@ -172,7 +188,7 @@ const[video, setVideo]=useState([]);
                 aria-label="download"
               >
       
-<button type="button" class="text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2">
+<button type="button" className="text-white bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-4 focus:outline-none focus:ring-[#FF9119]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#FF9119]/80 dark:focus:ring-[#FF9119]/40 me-2 mb-2">
 <img src={images[imageIndex]} alt="Download" className="w-6 h-6 inline-block mr-2" />
 
 Download
@@ -206,7 +222,7 @@ Download
           </p>
           <p className="py-5">Features</p>
           <section className="space-y-3 md:space-y-3 text-slate-350 font-medium">
-  {data.map((item, index) => (
+  {data.map((item,index) => (
     <div className="flex items-start space-x-5 relative" key={index}>
       <div className="absolute left-0 w-6 h-6 bg-[#6366F1] rounded-full text-black flex items-center justify-center font-bold">
         <div className="w-4 h-4 text-white">
@@ -238,19 +254,19 @@ Download
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
           {
             data2.map((item,ind)=>(
-          <div className="p-5 space-y-2 md:space-y-4 bg-[#F3F4F6] p0 dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
+          <div key={ind} className="p-5 space-y-2 md:space-y-4 bg-[#F3F4F6] p0 dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
             <div className="svg w-12 md:w-16 text-[#0795FF]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                   style={{ width: 'inherit', height: 'inherit' }}
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                 ></path>
               </svg>
@@ -278,7 +294,7 @@ Download
         <span class="mr-2 text-5xl font-extrabold"   dangerouslySetInnerHTML={{ __html: item.input1 }}></span>
       </div> 
       <p className="font-light p4 sm:text-lg dark:text-gray-400" dangerouslySetInnerHTML={{ __html: truncateText(item.input2, MAX_WORDS) }}></p>
-      <Link href={`/BigBlog?id=${item.id}`} class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Read More</Link>
+      <Link href={`/BigBlog?id=${item.id}`} className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Read More</Link>
        
     </div>
   ))
@@ -286,7 +302,7 @@ Download
 
         </div>
         <center>
-        <Link href="/Blog" class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Explore All</Link>
+        <Link href="/Blog" className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Explore All</Link>
         </center>
       </div>
       {/* Top Videos from Our Channel */}
@@ -303,17 +319,17 @@ Download
   height="315" 
   src={item.items}
   title="YouTube video player" 
-  frameborder="0" 
+  frameBorder="0" 
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  referrerpolicy="strict-origin-when-cross-origin" 
-  allowfullscreen 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  allowFullScreen 
   style={{borderRadius: '28px', border: '2px solid blue'}}>
 </iframe>
   ))}
     
         </div>
         <center>
-        <Link href="https://www.youtube.com/@OneMediaPlus" class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Explore All</Link>
+        <Link href="https://www.youtube.com/@OneMediaPlus" className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Explore All</Link>
         </center>
       </div>
       <div className="mx-auto max-w-screen-xl relative py-20">
@@ -376,6 +392,8 @@ Download
       </div>
     </div>
   </section>
+   </div>
+    
   </>
   )
 }

@@ -12,7 +12,7 @@ const Help = () => {
    },[]);
 
   const GetAllFeaturebox = ()=>{
-    axios.get('http://localhost:8081/public/helpbox').then((res)=>{
+    axios.get('http://65.2.172.195:8081/public/helpbox').then((res)=>{
         setData2(res.data)
         console.log("data...",res.data)
       }).catch((err)=>{
@@ -38,7 +38,7 @@ const Help = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                   style={{ width: 'inherit', height: 'inherit' }}
               >

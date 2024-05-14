@@ -82,3 +82,70 @@ body {
     flex-wrap: wrap;
 }
 
+.h-8{
+  height: 4rem;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.p-4 {
+  padding: 1rem 3rem;
+}
+
+.w-56{
+  width: 10rem;
+}
+.tokenBox{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.tokenChildBox{
+  width: 30%;
+  height: 230px;
+}
+@media (max-width: 900px) {
+  .tokenBox {
+    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  }
+  .tokenChildBox{
+    width: 45%;
+    height: 230px;
+  }
+}
+@media (max-width:500px) {
+  .tokenBox {
+    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  }
+  .tokenChildBox{
+    width: 50%;
+    height: 230px;
+  }
+}
+.iframeBody{
+  width: 100%;
+   height:700px;
+  margin:60px auto;
+}
+@media (max-width:590px) {
+  .iframeBody {
+    margin: 80px auto;
+  }
+}
+.cameratestBox{
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+
+
+
+
+
+

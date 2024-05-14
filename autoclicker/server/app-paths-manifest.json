@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "/not-found": "app/not-found.js",
   "/page": "app/page.js",
   "/Blog/page": "app/Blog/page.js",
@@ -6,4 +7,8 @@
   "/Admin/page": "app/Admin/page.js",
   "/Admin/BlogSection/page": "app/Admin/BlogSection/page.js",
   "/Profile/page": "app/Profile/page.js"
+=======
+  "/Tools/page": "app/Tools/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+>>>>>>> faa439b6cea28ca7acbed14b566c4ac06d0e8669
 }

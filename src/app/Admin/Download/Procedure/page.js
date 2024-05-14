@@ -21,7 +21,7 @@ import JoditEditor from "jodit-react";
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:8081/admin/instprocedure',
+        'http://65.2.172.195:8081/admin/instprocedure',
         { id:editid,
           items: itemName ,
            selectOs: selectOs},
@@ -65,7 +65,7 @@ import JoditEditor from "jodit-react";
       }
   }, [selectOs]);
     const Getall=()=>{
-      axios.get(`http://localhost:8081/public/instprocedure/${selectOs}`).then((res)=>{
+      axios.get(`http://65.2.172.195:8081/public/instprocedure/${selectOs}`).then((res)=>{
         setData(res.data)
         console.log("data...",res.data)
       }).catch((err)=>{
@@ -78,7 +78,7 @@ import JoditEditor from "jodit-react";
     async function handleDelete(id) {
       try {
           const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:8081/admin/deleteprocedure/${id}`, {
+        const response = await fetch(`http://65.2.172.195:8081/admin/deleteprocedure/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ import JoditEditor from "jodit-react";
     
   async function EditById(editid) {
     try {
-        const response = await axios.get(`http://localhost:8081/public/instproceduresedit/${editid}`);
+        const response = await axios.get(`http://65.2.172.195:8081/public/instproceduresedit/${editid}`);
         const { id, items } = response.data; // Assuming the response has id, question, and answers fields
         setEditid(id); // Assuming you have a state to hold the question id
         setItemName(items);

@@ -2,12 +2,13 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import SEO from "../seo/Seo";
 
 const About = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [data, setData] = useState("");
   useEffect(() => {
-    fetch("http://localhost:8081/public/aboutimage/1") // Adjust the URL according to your endpoint
+    fetch("http://65.2.172.195:8081/public/aboutimage/1") // Adjust the URL according to your endpoint
       .then((response) => response.blob())
       .then((blob) => {
         const url = URL.createObjectURL(blob);
@@ -19,7 +20,7 @@ const About = () => {
 
   const Getall = () => {
     axios
-      .get("http://localhost:8081/public/abouttext")
+      .get("http://65.2.172.195:8081/public/abouttext")
       .then((res) => {
         setData(res.data);
         console.log("data...", res.data);
@@ -28,8 +29,20 @@ const About = () => {
         console.log("err", err);
       });
   };
+  let metaData = {
+    title: "About us page" || "Default Title",
+    description: "About us decription" || "Default Description",
+    ogTitle: "About us ogtitle" || "Default OG Title",
+    ogDescription: "About us ogtitle Description" || "Default OG Description",
+    conicalurl
+      : "conicalurl"
+      || "https://example.com",
+    plaintext: "About us plaintext" || "Default Plaintext",
+  }
   return (
-    <div id="bg">
+    <>
+      <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
+      <div id="bg">
       <div class="heroContainer overflow-x-clip">
         <div class="max-w-screen-lg mx-auto md:space-y-10">
           <div class="grid md:grid-cols-2 gap-5 pt-8 p-5 md:pt-20">
@@ -58,6 +71,8 @@ const About = () => {
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 

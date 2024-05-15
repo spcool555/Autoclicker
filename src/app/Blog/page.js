@@ -6,14 +6,7 @@ import { Container } from 'react-bootstrap';
 import SEO from "../seo/Seo";
 
 const Blog = () => {
-    const [data,setData] = useState([
-      {
-        id:1,
-        input3:"https://5.imimg.com/data5/SELLER/Default/2023/7/326371055/AP/BV/SQ/43222355/ciferon-restaurant-billing-software-250x250.png",
-        input1:"jhfjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhkkk",
-        
-      }
-    ]);
+    const [data,setData] = useState([]);
     const [leddata,setleData] = useState([
       {
         id:1,
@@ -75,7 +68,7 @@ useEffect(()=>{
 <>
 <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
 
-{/* <section className="bg-white dark:bg-gray-900 p0">
+<section className="bg-white dark:bg-gray-900 p0">
   <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
     <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
       <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 p4 dark:text-white">AutoClicker</h2>
@@ -97,9 +90,9 @@ useEffect(()=>{
       }
     </div>
   </div>
-</section> */}
+</section>
 
-
+{/* 
 <section className="bg-white dark:bg-gray-900 p0">
   <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
     <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
@@ -126,7 +119,7 @@ useEffect(()=>{
     ))
   }
 </div>
-
+ */}
 
 </>
   )

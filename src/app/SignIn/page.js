@@ -67,7 +67,7 @@ const SignIn = () => {
         window.location.href="/"   // with reloading
      
       }else if(res.data.role == 'ADMIN'){
-        // window.location.href="http://localhost:3000" 
+        // window.location.href="http://65.2.172.195:3000" 
         window.location.href="/"
       }
       else{

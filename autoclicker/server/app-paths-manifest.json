@@ -1,0 +1,7 @@
+{
+  "/page": "app/page.js",
+  "/Tools/page": "app/Tools/page.js",
+  "/Token/page": "app/Token/page.js",
+  "/Forum/page": "app/Forum/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+}

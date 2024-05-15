@@ -110,7 +110,7 @@ const Getall=()=>{
       GetAllLatestMtblog();
       },[]);
         const GetAllLatestMtblog= ()=>{
-           axios.get('http://localhost:8081/public/newsbox')
+           axios.get('http://65.2.172.195:8081/public/newsbox')
       .then((res) => {
         const processedData = res.data.map(newsItem => ({
           ...newsItem,

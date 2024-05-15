@@ -33,19 +33,25 @@ const Blog = () => {
 useEffect(()=>{
     GetAllFeaturebox();
   },[]);
-    const GetAllFeaturebox = ()=>{
-        axios.get('http://65.2.172.195:8081/public/newsbox').then((res)=>{
-            setData(res.data)
-            console.log("data...",res.data)
-          }).catch((err)=>{
-            console.log("err",err)
-          })
-        
-    }
+  const GetAllFeaturebox = () => {
+    axios.get('http://localhost:8081/public/newsbox')
+      .then((res) => {
+        const processedData = res.data.map(newsItem => ({
+          ...newsItem,
+          imageUrl: `data:image/jpeg;base64,${newsItem.input3}` // Assuming input3 contains base64 encoded image data
+        }));
+        setData(processedData);
+        console.log("Processed data:", processedData);
+      })
+      .catch((err) => {
+        console.log("Error fetching data:", err);
+      });
+  };
+  
 
     
 
-    const MAX_WORDS = 25;
+    const MAX_WORDS = 15;
 
     const truncateText = (text, maxWords) => {
       const words = text.split(' ');
@@ -77,9 +83,9 @@ useEffect(()=>{
     </div>
     <div className="grid grid-cols-3 gap-6 sm:gap-6 xl:gap-10">
       {
-        leddata.map((item, ind) => (
-          <div style={{width:'400px'}} key={ind} className="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">
-      <img src={item.input3} alt="img" classeName="standard-image" />
+        data.map((item, ind) => (
+          <div key={ind} class="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">
+      <img src={item.imageUrl} alt="img" className="standard-image" />
       <div class="flex justify-center items-baseline my-8">
         <span class="mr-2 text-5xl font-extrabold"   dangerouslySetInnerHTML={{ __html: item.input1 }}></span>
       </div> 

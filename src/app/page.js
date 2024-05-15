@@ -110,13 +110,18 @@ const Getall=()=>{
       GetAllLatestMtblog();
       },[]);
         const GetAllLatestMtblog= ()=>{
-            axios.get('http://65.2.172.195:8081/public/newsbox').then((res)=>{
-                setData4(res.data)
-         
-              }).catch((err)=>{
-                console.log("err",err)
-              })
-            
+           axios.get('http://localhost:8081/public/newsbox')
+      .then((res) => {
+        const processedData = res.data.map(newsItem => ({
+          ...newsItem,
+          imageUrl: `data:image/jpeg;base64,${newsItem.input3}` // Assuming input3 contains base64 encoded image data
+        }));
+        setData4(processedData);
+        console.log("Processed data:", processedData);
+      })
+      .catch((err) => {
+        console.log("Error fetching data:", err);
+      });
         }
         const router = useRouter();
 
@@ -283,10 +288,10 @@ Download
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
         {
   data4.slice(-3).map((item, ind) => (
-    <div key={ind} className="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">
-      <img src={item.input3} alt="img" className="standard-image" />
-      <div className="flex justify-center items-baseline my-8">
-        <span className="mr-2 text-5xl font-extrabold"   dangerouslySetInnerHTML={{ __html: item.input1 }}></span>
+    <div key={ind} class="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">
+      <img src={item.imageUrl} alt="img" className="standard-image" />
+      <div class="flex justify-center items-baseline my-8">
+        <span class="mr-2 text-5xl font-extrabold"   dangerouslySetInnerHTML={{ __html: item.input1 }}></span>
       </div> 
       <p className="font-light p4 sm:text-lg dark:text-gray-400" dangerouslySetInnerHTML={{ __html: truncateText(item.input2, MAX_WORDS) }}></p>
       <Link href={`/BigBlog?id=${item.id}`} className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Read More</Link>

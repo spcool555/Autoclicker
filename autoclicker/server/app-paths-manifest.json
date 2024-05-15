@@ -1,7 +1,0 @@
-{
-  "/Token/page": "app/Token/page.js",
-  "/SignIn/page": "app/SignIn/page.js",
-  "/SignUp/page": "app/SignUp/page.js",
-  "/Blog/page": "app/Blog/page.js",
-  "/page": "app/page.js"
-}

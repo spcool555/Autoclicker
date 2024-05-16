@@ -92,6 +92,7 @@ const MicTest = (props) => {
           }
         }
         setTranscript(finalTranscript || interimTranscript);
+        // setTextToSpeak(finalTranscript.trim())
       };
 
       recognitionInstance.onerror = (event) => {
@@ -104,13 +105,15 @@ const MicTest = (props) => {
       console.error('SpeechRecognition API is not supported in this browser.');
     }
   }, []);
-
+const resettextrea=()=>{
+ setTextToSpeak("")
+}
   const startListening = () => {
     if (recognition) {
       recognition.start();
       setListening(true);
       setinputBox(true)
-      setTextToSpeak(transcript)
+   
     }
   };
 
@@ -136,7 +139,7 @@ const MicTest = (props) => {
 
   const handlechangetext = (e) => {
     setTextToSpeak(e.target.value)
-
+console.log("data",textToSpeak)
   }
 
   return (
@@ -213,6 +216,8 @@ const MicTest = (props) => {
                   </div>
                   <div style={style.wavespeekButton}>
                     <div style={{ width: '100%' }}>
+
+                      <label>transcript: {transcript}</label>
                       <textarea
                         style={{ width: '100%', borderRadius: '5px' }}
                         type="text"
@@ -237,6 +242,16 @@ const MicTest = (props) => {
                         }} className="flex justify-center rounded-md bg-indigo-600 px-3 mb-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={handleSpeak}>
                         <i className="fa fa-volume-up" ></i>
                         <label>Speak</label>
+                      </button>
+                      &nbsp;
+                      <button
+                        style={{
+                          flexDirection: 'column',
+                          display: 'flex',
+                          alignItems: 'center'
+                        }} className="flex justify-center rounded-md bg-indigo-600 px-3 mb-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={resettextrea}>
+                        <i className="fa fa-refresh" ></i>
+                        <label>Reset</label>
                       </button>
   
                     </div>

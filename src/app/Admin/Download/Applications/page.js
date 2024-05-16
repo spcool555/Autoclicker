@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import AdminSidebar from '../../AdminSidebar/page';
 import JoditEditor from "jodit-react";
+
+import Nav2 from "../../Nav2/page"
  const DownloadSectionApplication = () => {
   const [input1, setInput1] = useState('');
   const [input2, setInput2] = useState('');
@@ -142,7 +144,7 @@ useEffect(() => {
    
    
 <div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
-<AdminSidebar />
+<Nav2 />
     <main class="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
         <div class="p-2 md:p-4">
             <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">

@@ -44,6 +44,7 @@ const RootLayout = ({ children}) => {
   return (
     <html lang="en">
       <head>
+      <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"/>
       <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -57,7 +58,8 @@ const RootLayout = ({ children}) => {
         {children}
         <Footer />
         </div>
-      
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script>
       </body>
     </html>
 

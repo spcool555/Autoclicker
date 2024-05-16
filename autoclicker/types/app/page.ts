@@ -1,4 +1,4 @@
-// File: D:\autoclicker\Autoclickers\src\app\page.js
+// File: D:\autoclicker_frontend\src\app\page.js
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

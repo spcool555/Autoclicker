@@ -1,4 +1,4 @@
-// File: D:\autoclicker\Autoclickers\src\app\layout.js
+// File: I:\cluematrix_project_asmita\autoclicker\autoclicker_frontend\src\app\layout.js
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

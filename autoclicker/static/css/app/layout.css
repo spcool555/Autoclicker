@@ -1822,31 +1822,42 @@ video {
   --color-text-dark: #ffffff;
 }
 
-[data-theme='light'] {
+[data-theme="light"] {
   --color-background: var(--color-background-light);
   --color-text: var(--color-text-light);
 
-  
+  .p4 {
+    color: black;
+  }
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --color-background: var(--color-background-dark);
   --color-text: var(--color-text-dark);
-  .p1{
-    color: #1CDFFE;
+  .p1 {
+    color: #1cdffe;
   }
-  .p0{
- background-color: #162458;
+  .p0 {
+    background-color: #162458;
   }
-  .p3{
-    background-color: #0C1633;
+  .p3 {
+    background-color: #0c1633;
     /* color: black; */
   }
-  .p4{
+  .p4 {
     color: #ffffff;
   }
-  .p2{
-    color:black;
+  .p2 {
+    color: black;
+  }
+  
+  .labelForum{
+    color: #ffffff;
+    background-color: #256eff;
+  }
+  .trSecond{
+    color:white;
+    background-color: #162458;
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -1870,31 +1881,27 @@ body {
   height: 200px; /* Example height */
 }
 
-#del{
-   
-      position: sticky;
-     
-      left: 86%;
+#del {
+  position: sticky;
 
+  left: 86%;
 }
 
-#edit{
-   
+#edit {
   position: relative;
   left: 40%;
-
-
 }
-.grid{
-  PADDING: 20PX;
-    JUSTIFY-CONTENT: center;
-    GAP: 29PX;
-    display: flex;
-    flex-wrap: wrap;
+.grid {
+  padding: 20px;
+  justify-content: center;
+  gap: 29px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .app-sidebar{
   top: 0;
-
+}
+.h-8 {
 }
 .fixed-sidebar .app-sidebar {
   position: unset !important;
@@ -1910,53 +1917,53 @@ body {
   padding: 1rem 3rem;
 }
 
-.w-56{
+.w-56 {
   width: 10rem;
 }
-.tokenBox{
+.tokenBox {
   align-items: center;
   display: flex;
   justify-content: center;
 }
-.tokenChildBox{
+.tokenChildBox {
   width: 30%;
   height: 230px;
 }
 @media (max-width: 900px) {
   .tokenBox {
     align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
-  .tokenChildBox{
+  .tokenChildBox {
     width: 45%;
     height: 230px;
   }
 }
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .tokenBox {
     align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
-  .tokenChildBox{
+  .tokenChildBox {
     width: 50%;
     height: 230px;
   }
 }
-.iframeBody{
+.iframeBody {
   width: 100%;
-   height:700px;
-  margin:60px auto;
+  height: 700px;
+  margin: 60px auto;
 }
-@media (max-width:590px) {
+@media (max-width: 590px) {
   .iframeBody {
     margin: 80px auto;
   }
 }
-.cameratestBox{
+.cameratestBox {
   width: 100%;
   height: 100vh;
   padding: 20px;
@@ -2932,12 +2939,6 @@ body {
 .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
   text-align: right;
 }
-
-
-
-
-
-
 
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[11].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"src\\app\\layout.js","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!

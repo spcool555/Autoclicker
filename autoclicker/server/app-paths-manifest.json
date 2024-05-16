@@ -1,4 +1,10 @@
 {
-  "/Admin/HomeSection/Questions/page": "app/Admin/HomeSection/Questions/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/not-found": "app/not-found.js",
+  "/page": "app/page.js",
+  "/SignIn/page": "app/SignIn/page.js",
+  "/Profile/page": "app/Profile/page.js",
+  "/Admin/page": "app/Admin/page.js",
+  "/Admin/HomeSection/page": "app/Admin/HomeSection/page.js",
+  "/Admin/HomeSection/SpecificationAndFeature/page": "app/Admin/HomeSection/SpecificationAndFeature/page.js",
+  "/Forum/page": "app/Forum/page.js"
 }

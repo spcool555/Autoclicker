@@ -291,11 +291,10 @@ const Forum = () => {
   const style = {
     mainBox: {
       padding: '30px',
-      background: '#0c1633'
     },
     tableBox: {
       width: '100%',
-
+      boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
     },
     textendLabel: {
       textAlign: 'left'
@@ -312,12 +311,9 @@ const Forum = () => {
       width: '20%'
     },
     labelForum: {
-      color: 'white',
-      background: '#256eff',
       padding: '16px 10px',
     },
     tdTable: {
-      color: 'white',
       padding: '16px 10px',
       fontSize: '16px'
     },
@@ -683,7 +679,7 @@ const Forum = () => {
      
       </div> */}
 
-      <div style={style.mainBox} className="mainBox">
+      <div style={style.mainBox} className="p3">
         <div>
           <div style={style.forumTitle}>Forum</div>
         </div>
@@ -693,13 +689,13 @@ const Forum = () => {
               <tbody>
                 <tr>
                   <td colSpan="12">
-                    <div style={style.labelForum}>OBS Studio Support</div>
+                    <div style={style.labelForum} className="labelForum">MT Studio Support</div>
                   </td>
                 </tr>
                 {
                   operatingList.map((item, ind) => (
-                    <tr style={style.trSecond} key={ind}>
-                      <td style={style.tdTable}>
+                    <tr  className="trSecond" key={ind}>
+                      <td style={style.tdTable} className="p4">
                         <div>
                           <i className="far fa-comments" style={{ fontSize: '30px' }} aria-hidden="true"></i>
                         </div>
@@ -710,7 +706,7 @@ const Forum = () => {
 
 
                       </td>
-                      <td style={style.tdTable}>
+                      <td style={style.tdTable} className="p4">
                         <div style={style.boxEndBox}>
                           <div >
                             <div>Threads</div>
@@ -719,7 +715,7 @@ const Forum = () => {
                         </div>
 
                       </td>
-                      <td style={style.tdTable}>
+                      <td style={style.tdTable} className="p4">
                         <div style={style.boxEndBox}>
                           <div>
                             <div>Messages</div>
@@ -728,7 +724,7 @@ const Forum = () => {
                         </div>
 
                       </td>
-                      <td style={style.tdTable}>
+                      <td style={style.tdTable} className="p4">
                         <div style={style.boxEndBox}>
                           <div style={style.labelCenter}>
                             {item.label}
@@ -736,7 +732,7 @@ const Forum = () => {
                         </div>
 
                       </td>
-                      <td style={style.tdTable}>
+                      <td style={style.tdTable} className="p4">
                         <div style={style.boxEndBox}>
                           <div >
                             <div>{item.comment}</div>
@@ -757,14 +753,14 @@ const Forum = () => {
               <tbody>
                 <tr>
                   <td colSpan="12">
-                    <div style={style.labelForum}>Latest Post</div>
+                    <div style={style.labelForum} className="labelForum">Latest Post</div>
                   </td>
                 </tr>
                 {
                   latestpost.map((item, ind) => (
                     <tr style={style.trSecond} key={ind}>
 
-                      <td style={style.tdTable}>
+                      <td style={style.tdTable} className="p4">
                         <div style={style.boxEndBox}>
                           <div style={style.labelCenter}>
                             {item.label}
@@ -772,7 +768,7 @@ const Forum = () => {
                         </div>
 
                       </td>
-                      <td style={style.tdTable}>
+                      <td style={style.tdTable} className="p4">
                         {item.comment}
 
 

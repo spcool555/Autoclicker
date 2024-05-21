@@ -17,7 +17,7 @@ const SpecificationAndFeatures = () => {
     }, []);
 
     const Getall = () => {
-        axios.get('http://65.2.172.195:8081/public/items').then((res) => {
+        axios.get('http://localhost:8081/public/items').then((res) => {
             setData(res.data)
             console.log("data...", res.data)
         }).catch((err) => {
@@ -54,7 +54,7 @@ const SpecificationAndFeatures = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.post(
-                'http://65.2.172.195:8081/admin/items',
+                'http://localhost:8081/admin/items',
                 { items: itemName },
                 {
                     headers: {

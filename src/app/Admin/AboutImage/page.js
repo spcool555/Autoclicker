@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
     
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch('http://65.2.172.195:8081/admin/aboutupload', {
+      const response = await fetch('http://localhost:8081/admin/aboutupload', {
         method: 'POST',
         body: formData,
         headers: {

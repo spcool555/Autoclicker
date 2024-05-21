@@ -15,6 +15,7 @@ const Content = () => {
 
   const { handleClick, clickCount, message } = useClickToken();
 useEffect(()=>{
+  
 Getall();
 GetAllFeaturebox();
 GetAllQuestionAnswer();
@@ -36,7 +37,7 @@ const generateMetadata = () => {
 
 const metadata = generateMetadata();
 const GetAllFeaturebox = ()=>{
-  axios.get('http://65.2.172.195:8081/public/featurebox').then((res)=>{
+  axios.get('http://localhost:8081/public/featurebox').then((res)=>{
       setData2(res.data)
       
     }).catch((err)=>{
@@ -46,7 +47,7 @@ const GetAllFeaturebox = ()=>{
 }
 
 const Getall=()=>{
-  axios.get('http://65.2.172.195:8081/public/items').then((res)=>{
+  axios.get('http://localhost:8081/public/items').then((res)=>{
     setData(res.data)
 
   }).catch((err)=>{
@@ -56,7 +57,7 @@ const Getall=()=>{
 }
 
   const GetAllQuestionAnswer = ()=>{
-      axios.get('http://65.2.172.195:8081/public/questionanswer').then((res)=>{
+      axios.get('http://localhost:8081/public/questionanswer').then((res)=>{
           setQuestionAnswer(res.data)
       
         }).catch((err)=>{
@@ -65,7 +66,7 @@ const Getall=()=>{
       
   }
   useEffect(() => {
-      fetch('http://65.2.172.195:8081/public/image/1') // Adjust the URL according to your endpoint
+      fetch('http://localhost:8081/public/image/1') // Adjust the URL according to your endpoint
           .then(response => response.blob())
           .then(blob => {
               const url = URL.createObjectURL(blob);
@@ -94,7 +95,7 @@ const Getall=()=>{
     
     
     const Getallwhatmakes=()=>{
-      axios.get('http://65.2.172.195:8081/public/whatmakes').then((res)=>{
+      axios.get('http://localhost:8081/public/whatmakes').then((res)=>{
         setData3(res.data)
        
       }).catch((err)=>{
@@ -110,7 +111,7 @@ const Getall=()=>{
       GetAllLatestMtblog();
       },[]);
         const GetAllLatestMtblog= ()=>{
-           axios.get('http://65.2.172.195:8081/public/newsbox')
+           axios.get('http://localhost:8081/public/newsbox')
       .then((res) => {
         const processedData = res.data.map(newsItem => ({
           ...newsItem,
@@ -139,7 +140,7 @@ const[video, setVideo]=useState([]);
       }, []);
   
       const GetallTopVideo = () => {
-          axios.get('http://65.2.172.195:8081/public/topvideo').then((res) => {
+          axios.get('http://localhost:8081/public/topvideo').then((res) => {
               setVideo(res.data)
         
           }).catch((err) => {
@@ -162,9 +163,9 @@ const[video, setVideo]=useState([]);
   return (
     <>
     <SEO title={metadata[0]?.title} description={metadata[0]?.description} ogTitle={metadata[0]?.ogTitle} ogDescription={metadata[0]?.ogDescription} plaintext={metadata[0]?.plaintext} conicalurl={metadata[0]?.conicalurl}  />
-   <div>
+   <div className=" p4 p0 ">
    <section className="relative overflow-hidden">
-    <div className="bg-white p0 ">
+    <div >
       <div className="w-full m-auto relative px-3 py-10 md:py-20 md:px-20 mx-auto max-w-7xl">
         <div className="max-w-screen-lg mx-auto">
           <div className="flex items-center">
@@ -210,11 +211,11 @@ Download
             <p>Clicks: {clickCount}</p>
         </div>
       <div className="grid md:grid-cols-2 gap-5">
-      <div className="col-span-1 bg-center bg-contain bg-no-repeat scale-105 h-[500px]"
-             style={{ backgroundImage: `url('${imageUrl}')` }}>
-        </div>
 
         <div>
+      <div className="col-span- bg-center bg-contain bg-no-repeat scale-105 h-[500px]"
+             style={{ backgroundImage: `url('${imageUrl}')` }}>
+        </div>
           <p className="text-lg">
             MT Auto Clicker is a user-friendly tool designed to automate your
             multiple tasks with a bunch of features. Some of the features are
@@ -246,7 +247,7 @@ Download
         </div>
       </div>
     </div>
-    <div className="bg-white p0">
+    <div className="">
       <div className="mx-auto max-w-screen-xl relative pt-20">
         <h1 className="pb-6 mb-5 border-b-2 border-[#256EFF] text-2xl md:text-4xl text-center font-bold">
           Features of MT Auto clicker
@@ -254,7 +255,7 @@ Download
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
           {
             data2.map((item,ind)=>(
-          <div key={ind} className="p-5 space-y-2 md:space-y-4 bg-[#F3F4F6] p0 dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
+          <div key={ind} className="p-5 space-y-2 md:space-y-4 p4 p0 dark:hover:bg-[#0C1633] hover:bg-[#0C1633] group duration-100 cursor-pointer rounded-xl flex flex-col items-center drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)]">
             <div className="svg w-12 md:w-16 text-[#0795FF]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -20,7 +20,7 @@ const Help = () => {
 
     try {
       const response = await axios.post(
-        "http://65.2.172.195:8081/public/contactus",
+        "http://localhost:8081/public/contactus",
         formData,
         {
           headers: {

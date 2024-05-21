@@ -6,41 +6,10 @@ import Footer from "./Footer/page";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SEO from './seo/Seo'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 const inter = Inter({ subsets: ["latin"] });
 
 const RootLayout = ({ children}) => {
-  // const [allMetadata, setAllMetadata] = useState([]);
-  
-  // useEffect(() => {
-  //   GetAllQuestionAnswer();
-  // }, []);
-
-  // const GetAllQuestionAnswer = () => {
-  //   axios.get('http://65.2.172.195:8081/public/metadata')
-  //     .then((res) => {
-  //       setAllMetadata(res.data);
-  //       console.log("Metadata:", res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error:", err);
-  //     });
-  // };
-
-//   const generateMetadata = () => {
-//     return allMetadata.map((item, ind) => ({
-//       title: item.question || "Default Title",
-//       description: item.answers || "Default Description",
-//       ogTitle: item.ogTitle || "Default OG Title",
-//       ogDescription: item.ogDescription || "Default OG Description",
-//       conicalurl
-// : item.conicalurl
-//       || "https://example.com",
-//       plaintext: item.plaintext || "Default Plaintext",
-//     }));
-//   };
-
-  // const metadata = generateMetadata();
-
   return (
     <html lang="en">
       <head>
@@ -54,6 +23,7 @@ const RootLayout = ({ children}) => {
 
       <body className={inter.className}>
         <div >
+        <GoogleOAuthProvider clientId="126497486534-km344cdm7fvjhesdn4901ssn3o2m9nm1.apps.googleusercontent.com"></GoogleOAuthProvider>
         <Navbar />
         {children}
         <Footer />

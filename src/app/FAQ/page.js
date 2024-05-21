@@ -14,7 +14,7 @@ const FAQs = () => {
   }, []);
   const GetAllFeaturebox = () => {
     axios
-      .get(`http://65.2.172.195:8081/public/savefaq/1`)
+      .get(`http://localhost:8081/public/savefaq/1`)
       .then((res) => {
         setData(res.data);
 
@@ -24,7 +24,7 @@ const FAQs = () => {
         console.log("err", err);
       });
     axios
-      .get(`http://65.2.172.195:8081/public/savefaq/2`)
+      .get(`http://localhost:8081/public/savefaq/2`)
       .then((res) => {
         setData2(res.data);
 
@@ -36,7 +36,7 @@ const FAQs = () => {
   };
   const GetAllQuestionAnswer = () => {
     axios
-      .get("http://65.2.172.195:8081/public/questionanswer")
+      .get("http://localhost:8081/public/questionanswer")
       .then((res) => {
         setQuestionAnswer(res.data);
         console.log("data...", res.data);
@@ -58,13 +58,13 @@ const FAQs = () => {
   return (
     <>
     <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
-    <div className="p0">
+    <div className="p3 p4">
       <h1 className="pb-6 mb-5 border-b-2 border-[#256EFF] text-2xl md:text-4xl text-center font-bold">
         FAQs
       </h1>
       <div class="grid grid-cols-3 divide-x">
         <div className="p-5 mr-5">
-          <div class="w-full max-w-sm p-4 p3 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div class="w-full max-w-sm p-4 p0 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <h5 class="text-xl font-medium text-gray-900 p4 dark:text-white">
               empty
             </h5>
@@ -73,7 +73,7 @@ const FAQs = () => {
           </div>
         </div>
         <div className=" p-5 mr-5">
-          <div class="w-full max-w-sm p-4 p3 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div class="w-full max-w-sm p4 p0 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <h5 class="text-xl font-medium text-gray-900 p4 dark:text-white">
               Free version
             </h5>
@@ -100,7 +100,7 @@ const FAQs = () => {
           </div>
         </div>
         <div className=" p-5 mr-5">
-          <div class="w-full max-w-sm p-4 p3 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div class="w-full max-w-sm p4 p0 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <h5 class="text-xl font-medium p4 text-gray-900 dark:text-white">
               Paid version
             </h5>

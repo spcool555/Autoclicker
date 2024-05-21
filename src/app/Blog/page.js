@@ -27,7 +27,7 @@ useEffect(()=>{
     GetAllFeaturebox();
   },[]);
   const GetAllFeaturebox = () => {
-    axios.get('http://65.2.172.195:8081/public/newsbox')
+    axios.get('http://localhost:8081/public/newsbox')
       .then((res) => {
         const processedData = res.data.map(newsItem => ({
           ...newsItem,
@@ -68,13 +68,13 @@ useEffect(()=>{
 <>
 <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
 
-<section className="bg-white dark:bg-gray-900 p0">
+<section className=" dark:bg-gray-900 p3">
   <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
     <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
       <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 p4 dark:text-white">AutoClicker</h2>
       <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400 p4">A full-fledged autoclicker with two modes of autoclicking</p>
     </div>
-    <div className="grid grid-cols-3 gap-6 sm:gap-6 xl:gap-10">
+    <div className="grid grid-cols-3 gap-6 sm:gap-6 xl:gap-10 p0">
       {
         data.map((item, ind) => (
           <div key={ind} class="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">

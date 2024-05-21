@@ -60,7 +60,7 @@ const Token = () => {
     let data = {
       email: email
     }
-    axios.post('http://65.2.172.195:8081/public/update', data)
+    axios.post('http://localhost:8081/public/update', data)
       .then((res) => {
         settokenData(res.data)
         if (res.data.token == null) {
@@ -96,16 +96,16 @@ const Token = () => {
   return (
     <>
       <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl} />
-      <div>
+      <div className="p3 p4">
         <h1 className="pb-6 mb-5 border-b-2 border-[#256EFF] text-2xl md:text-4xl text-center font-bold">
           Token
         </h1>
 
         <center>
-          <div className="tokenBox">
+          <div className="tokenBox ">
             {
               !isToken ? (
-                <div className="m-10 tokenChildBox max-w-sm p-6 bg-white border p3 border-gray-200 rounded-lg p0 shadow dark:bg-gray-800 dark:border-gray-700">
+                <div className="m-10 tokenChildBox max-w-sm p-6  p3 border  border-gray-200 rounded-lg p0 shadow dark:bg-gray-800 dark:border-gray-700">
                   <svg
                     class="w-7 h-7 text-gray-500 p4 mb-3"
                     aria-hidden="true"
@@ -167,7 +167,7 @@ const Token = () => {
                           <input
                             id="hs-clipboard-input"
                             type="text"
-                            className="py-3 px-4 p2 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder:text-gray-500 dark:focus:ring-gray-600"
+                            className="py-3 px-4 p2 block w-full  p3 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder:text-gray-500 dark:focus:ring-gray-600"
                             value={tokenData?.token}
                             readOnly // Make the input field read-only
                           />
@@ -216,7 +216,7 @@ const Token = () => {
 
             {/* *************************before login generate token with email**************** */}
 
-            <div className="m-10 tokenChildBox max-w-sm p-6 bg-white border p3 border-gray-200 rounded-lg p0 shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="m-10 tokenChildBox max-w-sm p-6 p3 border p3 border-gray-200 rounded-lg p0 shadow dark:bg-gray-800 dark:border-gray-700">
               <br />
 
               <svg

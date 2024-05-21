@@ -77,41 +77,41 @@ const Tools = () => {
                     <MicTest isclose={closeCamera}/>
                 )
                 :
-                <div className="bg-white p0 p4 w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+                <div className=" p3 p4 w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
                 <aside className="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
                     <div className="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
             
                         <h2 className="pl-3 mb-4 text-2xl font-semibold">Tools Pages</h2>
             
-                        <button onClick={() => openModal("https://spcool555.github.io/keyboard_mouse_test/")} className="flex items-center px-3 py-2.5 font-bold p3 p4 bg-white  text-indigo-900 border rounded-full">
+                        <button onClick={() => openModal("https://spcool555.github.io/keyboard_mouse_test/")} className="flex items-center px-3 py-2.5 font-bold p3 p4  text-indigo-900 border rounded-full">
                         Keyboard Mouse Test
                         </button>
                       
-                        <button onClick={() => openModal("https://spcool555.github.io/sapcebar_clicker/")} className="flex items-center px-3 py-2.5 font-bold p3 p4 bg-white  text-indigo-900 border rounded-full">
+                        <button onClick={() => openModal("https://spcool555.github.io/sapcebar_clicker/")} className="flex items-center px-3 py-2.5 font-bold p3 p4   text-indigo-900 border rounded-full">
                         Spacebar Clicker
                         </button>
                         <button onClick={() => openModal("https://cpsnew.onrender.com/")}
-                            className="flex items-center px-3 py-2.5 font-bold bg-white p3 p4  text-indigo-900 border rounded-full ">
+                            className="flex items-center px-3 py-2.5 font-bold  p3 p4  text-indigo-900 border rounded-full ">
                          CPSTest
                         </button>
                         <button onClick={() => openModal("https://spcool555.github.io/typing_test/")}
-                            className="flex items-center px-3 py-2.5 font-bold bg-white p3 p4  text-indigo-900 border rounded-full ">
+                            className="flex items-center px-3 py-2.5 font-bold  p3 p4  text-indigo-900 border rounded-full ">
                         Typing Test
                         </button>
                         <button onClick={() => openCamera()}
-                            className="flex items-center px-3 py-2.5 font-bold bg-white p3 p4  text-indigo-900 border rounded-full ">
+                            className="flex items-center px-3 py-2.5 font-bold  p3 p4  text-indigo-900 border rounded-full ">
                         WebCam Test
                         </button>
                         <button onClick={() => openModal("https://premium-cursors.netlify.app/")}
-                            className="flex items-center px-3 py-2.5 font-bold bg-white  p3 p4 text-indigo-900 border rounded-full ">
+                            className="flex items-center px-3 py-2.5 font-bold   p3 p4 text-indigo-900 border rounded-full ">
                        Custome Cursor Test
                         </button>
                         <button onClick={() => openModal("https://spcool555.github.io/ReactionTimeTexster/")}
-                            className="flex items-center px-3 py-2.5 font-bold bg-white  p3 p4 text-indigo-900 border rounded-full ">
+                            className="flex items-center px-3 py-2.5 font-bold   p3 p4 text-indigo-900 border rounded-full ">
                        Reaction Time Test
                         </button>
                         <button onClick={() => openMictest()}
-                            className="flex items-center px-3 py-2.5 font-bold bg-white p3 p4 text-indigo-900 border rounded-full ">
+                            className="flex items-center px-3 py-2.5 font-bold  p3 p4 text-indigo-900 border rounded-full ">
                      Mic Test & Speech to Text
                         </button>
              

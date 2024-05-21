@@ -20,7 +20,7 @@ useEffect(()=>{
  
 },[]);
   const GetAllFeaturebox = ()=>{
-      axios.get('http://65.2.172.195:8081/public/saverequirements/4').then((res)=>{
+      axios.get('http://localhost:8081/public/saverequirements/4').then((res)=>{
           setData(res.data)
           console.log("data...",res.data)
         }).catch((err)=>{
@@ -29,7 +29,7 @@ useEffect(()=>{
       
   }
   const Getallinstprocedures=()=>{
-    axios.get('http://65.2.172.195:8081/public/instprocedure/4').then((res)=>{
+    axios.get('http://localhost:8081/public/instprocedure/4').then((res)=>{
       setData2(res.data)
       console.log("data.instalprocedure..",res.data)
     }).catch((err)=>{
@@ -39,7 +39,7 @@ useEffect(()=>{
   }
 
   const GetAllApllicationData =()=>{
-    axios.get('http://65.2.172.195:8081/public/Applicationbox/4').then((res)=>{
+    axios.get('http://localhost:8081/public/Applicationbox/4').then((res)=>{
       setData3(res.data)
       console.log("data.instalprocedure..",res.data)
     }).catch((err)=>{
@@ -47,7 +47,7 @@ useEffect(()=>{
     })
   }
 const GetAllWorkflow = () =>{
-axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
+axios.get('http://localhost:8081/public/workflow/4').then((res)=>{
   setData4(res.data)
   console.log("data.workflow..",res.data)
 }).catch((err)=>{
@@ -58,12 +58,15 @@ axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
 
 
   return (
-   <div>
-   
+   <div className="p3 p4" >
+  
+
    <DownloadFrontPage />
-      <section className="space-y-10 max-w-screen-xl mx-auto">
+
+
+      <section className="space-y-10 max-w-screen-xl mx-auto   ">
      
-    <div className="bg-[#F3F4F6] dark:bg-[#162458] p3 p-5 md:px-10 md:py-8 border-slate-500 dark:border-black drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)] rounded-sm">
+    <div  className="p0">
           <div className="grid items-center text-center grid-cols-1 md:grid-cols-4 gap-3">
             <div className="text-center">
               <Image
@@ -85,7 +88,7 @@ axios.get('http://65.2.172.195:8081/public/workflow/4').then((res)=>{
             </div>
           </div>
         </div>
-        <div className="bg-[#F3F4F6] dark:bg-[#162458] p3 p-5 md:px-10 md:py-8 border-slate-500 dark:border-black drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)] rounded-sm">
+        <div className="bg-[#F3F4F6] dark:bg-[#162458] p0 p-5 md:px-10 md:py-8 border-slate-500 dark:border-black drop-shadow-[0_7px_29px_rgba(0,0,0,0.3)] rounded-sm">
           <div>
             <h2 className="text-xl md:text-xl font-semibold pb-2">
               Minimum System Requirements

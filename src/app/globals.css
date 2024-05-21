@@ -31,13 +31,26 @@
     background-color: #0c1633;
     /* color: black; */
   }
+
   .p4 {
     color: #ffffff;
   }
   .p2 {
     color: black;
   }
-  
+  .white-text{
+    color: #ffffff;
+    font-weight: 800;
+  }
+  .foothover {
+    color: gray !important;
+    transition: background-color 0.3s ease !important; /* Smooth transition for background color */
+    
+  }
+
+  .foothover:hover {
+    color: whitesmoke;
+  }
   .labelForum{
     color: #ffffff;
     background-color: #256eff;

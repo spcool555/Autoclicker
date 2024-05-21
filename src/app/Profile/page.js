@@ -20,7 +20,7 @@ import Link from "next/link";
 
     const profileChangeNav = () => {
         const uid = localStorage.getItem('uid');
-        fetch(`http://65.2.172.195:8081/public/profileimage/${uid}`)
+        fetch(`http://localhost:8081/public/profileimage/${uid}`)
             .then((response) => response.blob())
             .then((blob) => {
                 const url = URL.createObjectURL(blob);
@@ -46,7 +46,7 @@ import Link from "next/link";
         const uid = localStorage.getItem('uid');
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch(`http://65.2.172.195:8081/adminuser/profileupload/${uid}`, {
+            const response = await fetch(`http://localhost:8081/adminuser/profileupload/${uid}`, {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -79,7 +79,7 @@ import Link from "next/link";
         e.preventDefault();
 
         // Send data to the REST API
-        axios.post(`http://65.2.172.195:8081/adminuser/saveprofiledata/${uid}`, formData, {
+        axios.post(`http://localhost:8081/adminuser/saveprofiledata/${uid}`, formData, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
@@ -107,7 +107,7 @@ import Link from "next/link";
 
     useEffect(() => {
         const uid = localStorage.getItem('uid');
-        axios.get(`http://65.2.172.195:8081/public/userdata/${uid}`)
+        axios.get(`http://localhost:8081/public/userdata/${uid}`)
         .then((res) => {
             console.log("Received data:", res.data);
             setFormData(res.data);
@@ -140,7 +140,7 @@ import Link from "next/link";
    <>
    
    
-<div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row p0 p4 text-[#161931]">
+<div class="w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row p0 p4 text-[#161931]">
     <aside class="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
         <div class="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
 
@@ -150,15 +150,15 @@ import Link from "next/link";
                 Pubic Profile
             </a>
             <a href="#"
-                class="flex items-center px-3 py-2.5 font-semibold  hover:text-indigo-900 hover:border hover:rounded-full">
+                class="flex items-center px-3 py-2.5 font-semibold  hover:text-indigo-900 hover:border hover:rounded-full hover:bg-white">
                 Current Plan
             </a>
             <a href="#"
-                class="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full  ">
+                class="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full hover:bg-white ">
                 Notifications
             </a>
             {formData && formData.role === "ADMIN" && (
-                    <Link href="/Admin" className="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full">
+                    <Link href="/Admin" className="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full hover:bg-white">
                         Admin Panel
                     </Link>
                 )}

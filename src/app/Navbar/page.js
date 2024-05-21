@@ -73,9 +73,9 @@ import axios from "axios";
     // localStorage.removeItem('token');
     localStorage.clear()
     setIsLoggedIn(false);
-    router.push('/');
+    // router.push('/');
     // Redirect to home page or do something else after logging out
-    // window.location.href = '/'; // Uncomment if redirection is needed
+    window.location.href = '/'; // Uncomment if redirection is needed
   };
 
  
@@ -123,42 +123,42 @@ import axios from "axios";
       </button>
       {/* Normal navbar for large screens */}
       <div className="hidden md:flex md:items-center md:space-x-4">
-        <Link href="/" className="text-white-900">Home</Link>
-        <Link href="/Download" className="text-white-900">Download</Link>
-        <Link href="/Token" className="text-white-900">Token</Link>
-        <Link href="/Forum" className="text-white-900">Forum</Link>
-        <Link href="/Pricing" className="text-white-900">Pricing</Link>
-        <Link href="/FAQ" className="text-white-900">FAQ</Link>
-        <Link href="/Blog" className="text-white-900">Blog</Link>
-        <Link href="/Documentation" className="text-white-900">Documentation</Link>
-        <Link href="/Tools" className="text-white-900">Tools</Link>
+        <Link href="/" className="white-text" style={{color:"white", fontWeight:800}}>Home</Link>
+        <Link href="/Download" className="white-text "style={{color:"white", fontWeight:800}}>Download</Link>
+        <Link href="/Token" className="white-text"style={{color:"white", fontWeight:800}}>Token</Link>
+        <Link href="/Forum" className="white-text"style={{color:"white", fontWeight:800}}>Forum</Link>
+        <Link href="/Pricing" className="white-text"style={{color:"white", fontWeight:800}}>Pricing</Link>
+        <Link href="/FAQ" className="white-text"style={{color:"white", fontWeight:800}}>FAQ</Link>
+        <Link href="/Blog" className="white-text"style={{color:"white", fontWeight:800}}>Blog</Link>
+        <Link href="/Documentation" className="white-text"style={{color:"white", fontWeight:800}}>Documentation</Link>
+        <Link href="/Tools" className="white-text"style={{color:"white", fontWeight:800}}>Tools</Link>
 
 
      
       {isLoggedIn ? (
         // Render this if the user is logged in
-        <button onClick={handleLogout} className="text-white-900"
+        <button onClick={handleLogout} className="white-text"
         
-        >Logout</button>
+        style={{color:"white", fontWeight:800}}>Logout</button>
         
       ) : (
         // Render this if the user is not logged in
-        <Link href="/SignIn" className="text-white-900"
+        <Link href="/SignIn" className="white-text"
         
         onClick={toggleMobileMenu}
         aria-expanded={isMobileMenuOpen ? "true" : "false"}
-        >SignIn</Link>
+        style={{color:"white", fontWeight:800}}>SignIn</Link>
       )}
 
 
       {isLoggedIn ? (
         // Render this if the user is logged in
-        <Link href="/Profile" className="block py-2 px-3 text-white-900"
+        <Link href="/Profile" className="block py-2 px-3 white-text"
         
         onClick={toggleMobileMenu}
         aria-expanded={isMobileMenuOpen ? "true" : "false"}
 
-        >Profile</Link>
+        style={{color:"white", fontWeight:800}}>Profile</Link>
         
       ) : (
         // Render this if the user is not logged in

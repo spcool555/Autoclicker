@@ -19,7 +19,7 @@ const Pricing = () => {
     }, []);
 
     const GetAllFeaturebox = () => {
-        axios.get('http://65.2.172.195:8081/public/pricefeaturebox')
+        axios.get('http://localhost:8081/public/pricefeaturebox')
             .then((res) => {
                 setData(res.data);
             })
@@ -37,7 +37,7 @@ const Pricing = () => {
             // Add more headers as needed
         };
     
-        axios.get(`http://65.2.172.195:8081/adminuser/getPlanFormData/${uid}`, { headers })
+        axios.get(`http://localhost:8081/adminuser/getPlanFormData/${uid}`, { headers })
             .then((res) => {
                 setUserPlan(res.data);
                 console.log("dddddddddddddd" + res.data);
@@ -50,7 +50,7 @@ const Pricing = () => {
     const handleSubmit = async (event, planid, planname, price) => {
         event.preventDefault();
 
-        const apiUrl = 'http://65.2.172.195:8081/adminuser/savePlanFormData';
+        const apiUrl = 'http://localhost:8081/adminuser/savePlanFormData';
         const token = localStorage.getItem('token');
 
         const generateTransactionId = () => {
@@ -119,7 +119,7 @@ const Pricing = () => {
     return (
         <>
      <SEO title={metaData?.title} description={metaData?.description} ogTitle={metaData?.ogTitle} ogDescription={metaData?.ogDescription} plaintext={metaData?.plaintext} conicalurl={metaData?.conicalurl}  />
-            <section className="bg-white p0 dark:bg-gray-900">
+            <section className=" p3 dark:bg-gray-900">
                 <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                     <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
                         <h2 className="mb-4 text-4xl tracking-tight font-extrabold p4 text-gray-900 dark:text-white">Designed for business teams like yours</h2>

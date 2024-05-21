@@ -52,7 +52,7 @@ import Nav2 from "../Nav2/page"
       event.preventDefault();
       
       // Your API endpoint where the form data will be sent
-      const apiUrl = 'http://65.2.172.195:8081/admin/saverequirements';
+      const apiUrl = 'http://localhost:8081/admin/saverequirements';
       const token = localStorage.getItem('token');
       // The data you want to send in JSON format
       const formData = {
@@ -115,7 +115,7 @@ useEffect(()=>{
   GetAllFeaturebox();
 },[]);
   const GetAllFeaturebox = ()=>{
-      axios.get(`http://65.2.172.195:8081/public/saverequirements/${input3}`).then((res)=>{
+      axios.get(`http://localhost:8081/public/saverequirements/${input3}`).then((res)=>{
           setData(res.data)
           console.log("data...",res.data)
         }).catch((err)=>{
@@ -128,7 +128,7 @@ useEffect(()=>{
   async function handleDelete(id) {
     try {
         const token = localStorage.getItem('token');
-      const response = await fetch(`http://65.2.172.195:8081/admin/deleterequirements/${id}`, {
+      const response = await fetch(`http://localhost:8081/admin/deleterequirements/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -152,7 +152,7 @@ useEffect(()=>{
 
   async function EditById(editid) {
     try {
-        const response = await axios.get(`http://65.2.172.195:8081/public/requirementsedit/${editid}`);
+        const response = await axios.get(`http://localhost:8081/public/requirementsedit/${editid}`);
         const { id, input1, input2,input3 } = response.data; // Assuming the response has id, question, and answers fields
         setEditid(id); // Assuming you have a state to hold the question id
         setInput1(input1);

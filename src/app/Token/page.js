@@ -60,7 +60,7 @@ const Token = () => {
     let data = {
       email: email
     }
-    axios.post('http://65.2.172.195:8081/public/update', data)
+    axios.post('http://localhost:8081/public/update', data)
       .then((res) => {
         settokenData(res.data)
         if (res.data.token == null) {

@@ -10,6 +10,7 @@ import JoditEditor from "jodit-react";
  const HeadTagData = () => {
 
     const [question, setQuestion] = useState('');
+    const [page, setPage] = useState('');
     const [answers, setAnswers] = useState('');
     const [questionAnswer,setQuestionAnswer] = useState([]);
     const [ogTitle,setOgTitle] = useState([]);
@@ -17,6 +18,11 @@ import JoditEditor from "jodit-react";
     const [conicalurl,setConicalurl] = useState([]);
     const [plainText,setPlainText] = useState([]);
 
+    const handleInput0Change = (e) => {
+        const newPage = e.target.value;
+        setPage(newPage);
+        GetAllQuestionAnswer(newPage);
+    };
     const handleInput1Change = (e) => {
         setQuestion(e.target.value);
     };
@@ -48,10 +54,11 @@ import JoditEditor from "jodit-react";
             setError('Please enter a value for the question And Answer');
             return;
           }
-        const apiUrl = 'http://65.2.172.195:8081/admin/metadata';
+        const apiUrl = 'http://localhost:8081/admin/metadata';
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         
         const formData = {
+            page: page,
             question: question,
             answers: answers,
             conicalurl:conicalurl,
@@ -84,6 +91,7 @@ import JoditEditor from "jodit-react";
             })
             
             setQuestion('');
+            setPage('');
             setAnswers('');
             setConicalurl('')
             setOgDescription('')
@@ -96,11 +104,9 @@ import JoditEditor from "jodit-react";
     };
     
 
-    useEffect(()=>{
-        GetAllQuestionAnswer();
-    },[]);
-        const GetAllQuestionAnswer = ()=>{
-            axios.get('http://65.2.172.195:8081/public/metadata').then((res)=>{
+
+        const GetAllQuestionAnswer = (page)=>{
+            axios.get(`http://localhost:8081/public/metadata/${page}`).then((res)=>{
                 setQuestionAnswer(res.data)
                 console.log("data...",res.data)
               }).catch((err)=>{
@@ -111,7 +117,7 @@ import JoditEditor from "jodit-react";
         async function handleDelete(id) {
             try {
                 const token = localStorage.getItem('token');
-              const response = await fetch(`http://65.2.172.195:8081/admin/deletemetadata/${id}`, {
+              const response = await fetch(`http://localhost:8081/admin/deletemetadata/${id}`, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json',
@@ -149,6 +155,33 @@ import JoditEditor from "jodit-react";
     <div>
         <h4 className="text-lg font-semibold mb-4">Add Meta Data In Head Tag</h4>
         <form onSubmit={handleSubmit} className="mb-6">
+            <div className="mb-4">
+                <label htmlFor="page" className="block mb-2 text-sm font-medium text-gray-900">Select Page</label>
+                <select
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Meta Title"
+           
+                    id="question"
+                    required
+                   
+                    value={page}
+                    onChange={handleInput0Change}
+                     >
+                         <option>Click Here</option>
+              <option value="home">Home Page</option>
+              <option value="about">About Page</option>
+              <option value="download">Download Page</option>
+              <option value="token">Token Page</option>
+              <option value="forum">Forum Page</option>
+              <option value="pricing">Pricing Page</option>
+              <option value="faq">FAQ Page</option>
+              <option value="documentation">Documentation Page</option>
+              <option value="blog">Blog Page</option>
+              <option value="tools">Tools Page</option>
+              <option value="signin">Signin Page</option>
+        
+                     </select>
+                 
+            </div>
             <div className="mb-4">
                 <label htmlFor="question" className="block mb-2 text-sm font-medium text-gray-900">Meta Title</label>
                 <input
@@ -237,7 +270,7 @@ import JoditEditor from "jodit-react";
         </form>
         <div>
             <h4 className="text-lg font-semibold mb-4">Featuresbox</h4>
-            <div className="border-double border-4 border-indigo-600 ...">
+            {/* <div className="border-double border-4 border-indigo-600 ...">
                 {questionAnswer.map((item, ind) => (
                     <div key={ind} className="mb-4">
                         <p className="mb-1 font-semibold">Meta Title</p>
@@ -262,7 +295,7 @@ import JoditEditor from "jodit-react";
         
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     </div>
 </div>

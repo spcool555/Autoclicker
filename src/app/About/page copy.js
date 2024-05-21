@@ -8,7 +8,7 @@ const About = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [data, setData] = useState("");
   useEffect(() => {
-    fetch("http://65.2.172.195:8081/public/aboutimage/1") // Adjust the URL according to your endpoint
+    fetch("http://localhost:8081/public/aboutimage/1") // Adjust the URL according to your endpoint
       .then((response) => response.blob())
       .then((blob) => {
         const url = URL.createObjectURL(blob);
@@ -20,7 +20,7 @@ const About = () => {
 
   const Getall = () => {
     axios
-      .get("http://65.2.172.195:8081/public/abouttext")
+      .get("http://localhost:8081/public/abouttext")
       .then((res) => {
         setData(res.data);
         console.log("data...", res.data);

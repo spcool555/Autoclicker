@@ -57,7 +57,7 @@ const SignIn = () => {
       password:password,
       // deviceid:deviceid
     }
-    axios.post('http://65.2.172.195:8081/auth/signin',data)
+    axios.post('http://localhost:8081/auth/signin',data)
     .then((res)=>{
       localStorage.setItem('token',res.data.token)
       localStorage.setItem('uid',res.data.id)
@@ -67,7 +67,7 @@ const SignIn = () => {
         window.location.href="/"   // with reloading
      
       }else if(res.data.role == 'ADMIN'){
-        // window.location.href="http://65.2.172.195:3000" 
+        // window.location.href="http://localhost:3000" 
         window.location.href="/"
       }
       else{
@@ -101,7 +101,7 @@ const { email, password } = data;
       // deviceid:deviceid
     }
     console.log("Received 22222222222222222222222222222222222222222users:", data2);
-    axios.post('http://65.2.172.195:8081/auth/signin',data2)
+    axios.post('http://localhost:8081/auth/signin',data2)
     .then((res)=>{
       localStorage.setItem('token',res.data.token)
       localStorage.setItem('uid',res.data.id)
@@ -111,7 +111,7 @@ const { email, password } = data;
         window.location.href="/"   // with reloading
      
       }else if(res.data.role == 'ADMIN'){
-        // window.location.href="http://65.2.172.195:3000" 
+        // window.location.href="http://localhost:3000" 
         window.location.href="/"
       }
       else{
@@ -162,7 +162,7 @@ const { email, password } = data;
         jti: decodedHeader.jti,
         password:1234
     }
-    axios.post('http://65.2.172.195:8081/auth/googlesignin',data)
+    axios.post('http://localhost:8081/auth/googlesignin',data)
     .then((res)=>{
 
       handleSubmitgoogles(data)

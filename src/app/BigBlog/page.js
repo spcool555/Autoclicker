@@ -12,7 +12,7 @@ const BigBlog = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://65.2.172.195:8081/public/newsbox/${id}`);
+        const response = await axios.get(`http://localhost:8081/public/newsbox/${id}`);
         setNewsData(response.data);
         console.log("Response:", response);
         console.log("Data:", response.data);

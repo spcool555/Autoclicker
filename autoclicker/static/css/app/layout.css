@@ -589,6 +589,10 @@ video {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.my-9 {
+  margin-top: 2.25rem;
+  margin-bottom: 2.25rem;
+}
 .-mt-1 {
   margin-top: -0.25rem;
 }
@@ -639,6 +643,9 @@ video {
 }
 .ml-6 {
   margin-left: 1.5rem;
+}
+.mr-1 {
+  margin-right: 0.25rem;
 }
 .mr-2 {
   margin-right: 0.5rem;
@@ -761,9 +768,6 @@ video {
 .h-80 {
   height: 20rem;
 }
-.h-\[500px\] {
-  height: 500px;
-}
 .h-\[calc\(100\%-1rem\)\] {
   height: calc(100% - 1rem);
 }
@@ -875,11 +879,6 @@ video {
 .grow {
   flex-grow: 1;
 }
-.scale-105 {
-  --tw-scale-x: 1.05;
-  --tw-scale-y: 1.05;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -941,6 +940,9 @@ video {
 }
 .items-baseline {
   align-items: baseline;
+}
+.justify-start {
+  justify-content: flex-start;
 }
 .justify-end {
   justify-content: flex-end;
@@ -1309,9 +1311,6 @@ video {
 .bg-contain {
   background-size: contain;
 }
-.bg-center {
-  background-position: center;
-}
 .bg-no-repeat {
   background-repeat: no-repeat;
 }
@@ -1653,6 +1652,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
 .text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
@@ -1748,6 +1751,9 @@ video {
   --tw-drop-shadow: drop-shadow(0 7px 29px rgba(0,0,0,0.3));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1793,6 +1799,21 @@ video {
   .p4 {
     color: black;
   }
+  .tableBox{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  .labelForum{
+    color: #ffffff;
+    background-color: #256eff;
+  }
+  
+  .bordercss{
+    border: 1px solid black;
+  }
+  .labelForum1{
+    border: 1px solid black;
+    background-color: white;
+  }
 }
 
 [data-theme="dark"] {
@@ -1835,6 +1856,9 @@ video {
   .trSecond{
     color:white;
     background-color: #162458;
+  }
+  .bordercss{
+    border: 1px solid white;
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -1944,6 +1968,34 @@ body {
   width: 100%;
   height: 100vh;
   padding: 20px;
+}
+.WorkSmarterBox{
+  height: 300px;
+  width: 90%;
+}
+.imageboxHome{
+  justify-content:center;
+  gap: 50px;
+  display:flex;
+}
+.homeSmarterP{
+  text-align: justify;
+}
+@media (max-width: 500px) {
+  .WorkSmarterBox{
+    height: 238px;
+     width: 100%;
+  }
+  .homeSmarterP{
+    text-align: justify;
+  }
+  .imageboxHome{
+    justify-content:center;
+    gap:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .placeholder\:text-gray-400::-moz-placeholder {
   --tw-text-opacity: 1;
@@ -2056,6 +2108,10 @@ body {
 .hover\:text-indigo-900:hover {
   --tw-text-opacity: 1;
   color: rgb(49 46 129 / var(--tw-text-opacity));
+}
+.hover\:text-red-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
@@ -2917,6 +2973,7 @@ body {
 .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
   text-align: right;
 }
+
 
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[11].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"src\\app\\layout.js","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!

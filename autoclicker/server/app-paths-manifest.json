@@ -1,4 +1,10 @@
 {
+  "/not-found": "app/not-found.js",
+  "/Admin/page": "app/Admin/page.js",
+  "/Admin/AboutSection/page": "app/Admin/AboutSection/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/SignIn/page": "app/SignIn/page.js",
   "/page": "app/page.js",
-  "/Forum/page": "app/Forum/page.js"
+  "/Profile/page": "app/Profile/page.js",
+  "/Admin/HomeSection/HeadTagData/page": "app/Admin/HomeSection/HeadTagData/page.js"
 }

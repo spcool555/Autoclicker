@@ -9,6 +9,8 @@ import SEO from "../seo/Seo";
 const Forum = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showReplies, setShowReplies] = useState(false);
+  const [forumTitle, setforumTitle] = useState(false);
+  const [FilterTopic, setfilterTopic] = useState([]);
   const [latestpost, setLatestpost] = useState([
     {
       id: 1,
@@ -118,9 +120,10 @@ const Forum = () => {
 
 
   const [isOpen, setIsOpen] = useState(false);
+  const [ForumTitleName, setForumTitleName] = useState('');
   const [replyUid, setReplyUid] = useState(null);
   const [replyUname, setReplyUname] = useState('');
-
+  const [isTopic, setIstopic] = useState(false)
   const toggleModal = (uid, uname) => {
     setIsOpen(!isOpen);
     setReplyUid(uid);
@@ -200,7 +203,13 @@ const Forum = () => {
     profession: '',
     bio: ''
   });
-
+  const goToTopic = (data) => {
+    const topiclist = topicList.filter((item) => item.operater == data.operater)
+    setfilterTopic(topiclist)
+    setForumTitleName(data.operater)
+    setIstopic(true)
+    setforumTitle(true)
+  }
   useEffect(() => {
     GetAllReplies();
     const uid = localStorage.getItem('uid');
@@ -311,6 +320,8 @@ const Forum = () => {
     },
     labelForum: {
       padding: '16px 10px',
+      fontSize: '20px',
+      fontWeight: '600'
     },
     tdTable: {
       padding: '16px 10px',
@@ -329,7 +340,7 @@ const Forum = () => {
     },
     forumTitle: {
       fontSize: '22px',
-      color: 'white',
+
       fontWeight: '600',
       paddingBottom: '10px'
 
@@ -340,7 +351,6 @@ const Forum = () => {
       borderRadius: '50%',
       textAlign: 'center',
       padding: '7px',
-      border: '1px solid white'
     }
   }
   return (
@@ -679,110 +689,225 @@ const Forum = () => {
       </div> */}
 
       <div style={style.mainBox} className="p3">
-        <div>
-          <div style={style.forumTitle}>Forum</div>
+        <div style={{
+          justifyContent: 'space-between',
+          display: 'flex'
+        }}>
+          {
+            isTopic ?
+              <div style={style.forumTitle} className="p4">{ForumTitleName}</div>
+              :
+              <div style={style.forumTitle} className="p4">Forum</div>
+
+          }
+          {
+            isTopic ?
+
+              <div style={style.forumTitle} className="p4">
+
+                <Link href="" className="text-blue-700 hover:text-blue-700" onClick={() => { setIstopic(false) }}>Back</Link>
+              </div>
+              :
+              <div style={style.forumTitle} className="p4">
+                <button className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-red-300 font-medium  text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">New Post</button>
+
+              </div>
+          }
         </div>
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <div style={style.table1}>
-            <table style={style.tableBox}>
-              <tbody>
-                <tr>
-                  <td colSpan="12">
-                    <div style={style.labelForum} className="labelForum">MT Studio Support</div>
-                  </td>
-                </tr>
-                {
-                  operatingList.map((item, ind) => (
-                    <tr  className="trSecond" key={ind}>
-                      <td style={style.tdTable} className="p4">
-                        <div>
-                          <i className="far fa-comments" style={{ fontSize: '30px' }} aria-hidden="true"></i>
-                        </div>
-                      </td>
-                      <td style={style.tdTableFirst}>
 
-                        {item.operater}
-
-
-                      </td>
-                      <td style={style.tdTable} className="p4">
-                        <div style={style.boxEndBox}>
-                          <div >
-                            <div>Threads</div>
-                            <div>{item.threads}</div>
-                          </div>
-                        </div>
-
-                      </td>
-                      <td style={style.tdTable} className="p4">
-                        <div style={style.boxEndBox}>
-                          <div>
-                            <div>Messages</div>
-                            <div>{item.message}</div>
-                          </div>
-                        </div>
-
-                      </td>
-                      <td style={style.tdTable} className="p4">
-                        <div style={style.boxEndBox}>
-                          <div style={style.labelCenter}>
-                            {item.label}
-                          </div>
-                        </div>
-
-                      </td>
-                      <td style={style.tdTable} className="p4">
-                        <div style={style.boxEndBox}>
-                          <div >
-                            <div>{item.comment}</div>
-                            <div>{item.time}</div>
-                          </div>
-                        </div>
-
+        {
+          isTopic ?
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <div style={{ width: '100%' }}>
+                <table style={style.tableBox} className="tableBox">
+                  <tbody>
+                    <tr>
+                      <td colSpan="12">
+                        <div style={{ padding: '29px 10px', }} className="labelForum1"></div>
                       </td>
                     </tr>
-                  ))
-                }
+                    {
+                      FilterTopic.map((item, ind) => (
+                        <tr className="trSecond" key={ind}>
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div className="bordercss" style={style.labelCenter}>
+                                {item.avtar}
+                              </div>
+                            </div>
 
-              </tbody>
-            </table>
-          </div>
-          <div style={style.table2}>
-            <table style={style.tableBox}>
-              <tbody>
-                <tr>
-                  <td colSpan="12">
-                    <div style={style.labelForum} className="labelForum">Latest Post</div>
-                  </td>
-                </tr>
-                {
-                  latestpost.map((item, ind) => (
-                    <tr style={style.trSecond} key={ind}>
+                          </td>
 
-                      <td style={style.tdTable} className="p4">
-                        <div style={style.boxEndBox}>
-                          <div style={style.labelCenter}>
-                            {item.label}
-                          </div>
-                        </div>
+                          <td style={style.tdTableFirst}>
+                            <div style={style.boxEndBox}>
+                              <div >
+                                <div><Link href="" className="text-red-700 hover:text-red-700">{item.label}</Link></div>
+                                <div style={{
+                                  color: 'grey',
+                                  fontSize: '14px'
+                                }}>{item.description2} . &nbsp; {item.description}</div>
+                              </div>
+                            </div>
 
+                          </td>
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div style={{ display: 'flex', gap: '5px' }}>
+                                <div><i className="fa fa-lock" aria-hidden="true"></i></div>
+                                <div><i className="fa fa-thumb-tack" aria-hidden="true"></i></div>
+                              </div>
+                            </div>
+
+                          </td>
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div>
+                                <div>Replies</div>
+                                <div>Views</div>
+                              </div>
+                            </div>
+
+                          </td>
+
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div >
+                                <div>{item.point}</div>
+                                <div>{item.point2}</div>
+                              </div>
+                            </div>
+
+                          </td>
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div >
+                                <div>{item.description}</div>
+                                <div>{item.description2}</div>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                      ))
+                    }
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+            :
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <div style={style.table1}>
+                <table style={style.tableBox} className="tableBox">
+                  <tbody>
+                    <tr>
+                      <td colSpan="12">
+                        <div style={style.labelForum} className="labelForum">MT Studio Support</div>
                       </td>
-                      <td style={style.tdTable} className="p4">
-                        {item.comment}
-
-
-                      </td>
-
-
-
                     </tr>
-                  ))
-                }
+                    {
+                      operatingList.map((item, ind) => (
+                        <tr className="trSecond" key={ind}>
+                          <td style={style.tdTable} className="p4">
+                            <div>
+                              <i className="far fa-comments" style={{ fontSize: '30px' }} aria-hidden="true"></i>
+                            </div>
+                          </td>
+                          <td style={style.tdTableFirst}>
+                            <Link href="" className="text-blue-700 hover:text-blue-700 " onClick={() => { goToTopic(item) }}
 
-              </tbody>
-            </table>
-          </div>
-        </div>
+
+                            >{item.operater}</Link>
+
+
+
+                          </td>
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div >
+                                <div>Threads</div>
+                                <div>{item.threads}</div>
+                              </div>
+                            </div>
+
+                          </td>
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div>
+                                <div>Messages</div>
+                                <div>{item.message}</div>
+                              </div>
+                            </div>
+
+                          </td>
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div className="bordercss" style={style.labelCenter}>
+                                {item.label}
+                              </div>
+                            </div>
+
+                          </td>
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div >
+                                <div>{item.comment}</div>
+                                <div>{item.time}</div>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                      ))
+                    }
+
+                  </tbody>
+                </table>
+              </div>
+              <div style={style.table2}>
+                <table style={style.tableBox} className="tableBox">
+                  <tbody>
+                    <tr>
+                      <td colSpan="12">
+                        <div style={style.labelForum} className="labelForum">Latest Post</div>
+                      </td>
+                    </tr>
+                    {
+                      latestpost.map((item, ind) => (
+                        <tr className="trSecond" key={ind}>
+
+                          <td style={style.tdTable} className="p4">
+                            <div style={style.boxEndBox}>
+                              <div className="bordercss" style={style.labelCenter}>
+                                {item.label}
+                              </div>
+                            </div>
+
+                          </td>
+                          <td style={style.tdTable} className="p4">
+                            <Link href="" className="text-blue-700 hover:text-blue-700 "
+
+
+                            >  {item.comment}</Link>
+
+
+
+
+                          </td>
+
+
+
+                        </tr>
+                      ))
+                    }
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        }
+
       </div>
     </>
   );

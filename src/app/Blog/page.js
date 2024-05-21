@@ -7,20 +7,8 @@ import SEO from "../seo/Seo";
 
 const Blog = () => {
     const [data,setData] = useState([]);
-    const [leddata,setleData] = useState([
-      {
-        id:1,
-        input3:"https://5.imimg.com/data5/SELLER/Default/2023/7/326371055/AP/BV/SQ/43222355/ciferon-restaurant-billing-software-250x250.png",
-        input1:"jhfjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
-        
-      },
-      {
-        id:2,
-        input3:"https://5.imimg.com/data5/SELLER/Default/2023/7/326371055/AP/BV/SQ/43222355/ciferon-restaurant-billing-software-250x250.png",
-        input1:"jhfjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhkkkkkkkkkkkkkkkkkkkkkk",
-        
-      }
-    ]);
+    const [isReadMore, setIsReadMore] = useState(true);
+    const [isReadMore2, setIsReadMore2] = useState(true);
     
     
 useEffect(()=>{
@@ -42,10 +30,54 @@ useEffect(()=>{
   };
   
 
-    
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+  const toggleReadMore2 = () => {
+    setIsReadMore2(!isReadMore2);
+  };
 
     const MAX_WORDS = 15;
-
+    const createMarkup = (content) => {
+      return { __html: content };
+    };
+  
+    const getTruncatedHTML = (html, length) => {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+  
+      let truncatedText = '';
+      let currentLength = 0;
+      const nodes = Array.from(div.childNodes);
+  
+      for (const node of nodes) {
+        if (currentLength >= length) break;
+  
+        if (node.nodeType === Node.TEXT_NODE) {
+          const remainingLength = length - currentLength;
+          if (node.textContent.length > remainingLength) {
+            truncatedText += node.textContent.slice(0, remainingLength) + '...';
+            currentLength = length;
+          } else {
+            truncatedText += node.textContent;
+            currentLength += node.textContent.length;
+          }
+        } else {
+          const outerHTML = node.outerHTML;
+          const nodeLength = node.textContent.length;
+          if (currentLength + nodeLength > length) {
+            const truncatedNodeContent = getTruncatedHTML(node.innerHTML, length - currentLength);
+            truncatedText += `<${node.nodeName.toLowerCase()}>${truncatedNodeContent}</${node.nodeName.toLowerCase()}>`;
+            currentLength = length;
+          } else {
+            truncatedText += outerHTML;
+            currentLength += nodeLength;
+          }
+        }
+      }
+  
+      return truncatedText;
+    };
     const truncateText = (text, maxWords) => {
       const words = text.split(' ');
       if (words.length > maxWords) {
@@ -77,15 +109,65 @@ useEffect(()=>{
     <div className="grid grid-cols-3 gap-6 sm:gap-6 xl:gap-10 p0">
       {
         data.map((item, ind) => (
-          <div key={ind} class="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">
-      <img src={item.imageUrl} alt="img" className="standard-image" />
-      <div class="flex justify-center items-baseline my-8">
-        <span class="mr-2 text-5xl font-extrabold"   dangerouslySetInnerHTML={{ __html: item.input1 }}></span>
-      </div> 
-      <p className="font-light p4 sm:text-lg dark:text-gray-400" dangerouslySetInnerHTML={{ __html: truncateText(item.input1, MAX_WORDS) }}></p>
-      <Link href={`/BigBlog?id=${item.id}`} className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Read More</Link>
+          <div key={ind} class="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg" style={{ width: '400px' }}>
+          <div style={{display:'flex',justifyContent:'center'}}>
+          <img src={item.imageUrl} alt="img" className="standard-image" />
+            </div>
+        
+          <div className='flex justify-center my-9' style={{ overflowWrap: 'anywhere', display: 'flex', flexDirection: 'column' }}>
+
+            <div className='mr-1 text-3xl font-extrabold'
+             
+              dangerouslySetInnerHTML={createMarkup(
+                isReadMore ? getTruncatedHTML(item.input1, 20) : item.input1
+              )}
+            >
+
+
+            </div>
+            <div>
+              {item.input1.length > 20 && (
+                <span onClick={toggleReadMore} style={{ color: 'blue', cursor: 'pointer', fontSize: '13px' }}>
+                  {isReadMore ? 'read more' : 'show less'}
+                </span>
+              )}
+            </div>
+
+          </div>
+          <div className='flex justify-center  my-30' style={{ overflowWrap: 'anywhere', display: 'flex', flexDirection: 'column' }}>
+
+            <div className="font-light p4 sm:text-lg dark:text-gray-400"
+              // dangerouslySetInnerHTML={{ __html: item.input1 }}
+              dangerouslySetInnerHTML={createMarkup(
+                isReadMore2 ? getTruncatedHTML(item.input2, 20) : item.input2
+              )}
+            >
+         
+            
+
+            </div>
+            <div>
+              {item.input2.length > 20 && (
+                <span onClick={toggleReadMore2} style={{ color: 'blue', cursor: 'pointer', fontSize: '13px' }}>
+                  {isReadMore2 ? 'read more' : 'show less'}
+                </span>
+              )}
+            </div>
+
+          </div>
+         
+          <Link href={`/BigBlog?id=${item.id}`} className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Read More</Link>
+
+        </div>
+    //       <div key={ind} class="flex flex-col p-6 mx-auto max-w-lg text-center p3 bg-slate-100 rounded-lg border border-yellow-300 dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-400 hover:shadow-lg">
+    //   <img src={item.imageUrl} alt="img" className="standard-image" />
+    //   <div class="flex justify-center items-baseline my-8">
+    //     <span class="mr-2 text-5xl font-extrabold"   dangerouslySetInnerHTML={{ __html: item.input1 }}></span>
+    //   </div> 
+    //   <p className="font-light p4 sm:text-lg dark:text-gray-400" dangerouslySetInnerHTML={{ __html: truncateText(item.input1, MAX_WORDS) }}></p>
+    //   <Link href={`/BigBlog?id=${item.id}`} className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Read More</Link>
        
-    </div>
+    // </div>
         ))
       }
     </div>

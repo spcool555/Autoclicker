@@ -1,61 +1,45 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/Download/page": [
+    "/Profile/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Download/page.js"
+      "static/chunks/app/Profile/page.js"
     ],
-    "/Token/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Token/page.js"
+      "static/chunks/app/page.js"
     ],
-    "/Forum/page": [
+    "/Admin/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/Forum/page.css",
-      "static/chunks/app/Forum/page.js"
+      "static/chunks/app/Admin/page.js"
     ],
-    "/Pricing/page": [
+    "/Admin/AboutSection/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Pricing/page.js"
-    ],
-    "/FAQ/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/FAQ/page.js"
-    ],
-    "/Blog/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Blog/page.js"
-    ],
-    "/Documentation/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Documentation/page.js"
-    ],
-    "/Tools/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Tools/page.js"
+      "static/chunks/app/Admin/AboutSection/page.js"
     ],
     "/SignIn/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/SignIn/page.js"
+    ],
+    "/Admin/HomeSection/HeadTagData/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Admin/HomeSection/HeadTagData/page.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
     ]
   }
 }

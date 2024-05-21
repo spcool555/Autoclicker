@@ -197,6 +197,9 @@ const { email, password } = data;
             <input
             defaultValue={email2}
             onChange={emailInput}
+            style={{
+              padding: '3px 6px'
+            }}
               id="email"
               name="email"
               type="email"
@@ -231,6 +234,9 @@ const { email, password } = data;
           </div>
           <div className="mt-2">
             <input
+             style={{
+              padding: '3px 6px'
+            }}
               onChange={passwordInput}
               id="password"
               name="password"

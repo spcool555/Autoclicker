@@ -18,7 +18,7 @@ Getall();
 
 
 const Getall=()=>{
-  axios.get('http://localhost:8081/public/whatmakes').then((res)=>{
+  axios.get('http://65.2.172.195:8081/public/whatmakes').then((res)=>{
     setData(res.data)
     console.log("data...",res.data)
   }).catch((err)=>{
@@ -31,7 +31,7 @@ const handleSubmit = async (e) => {
   try {
     const token = localStorage.getItem('token');
     const response = await axios.post(
-      'http://localhost:8081/admin/whatmakes',
+      'http://65.2.172.195:8081/admin/whatmakes',
       { items: about },
       {
         headers: {

@@ -29,7 +29,7 @@ import JoditEditor from "jodit-react";
             setError('Please enter a value for the question And Answer');
             return;
           }
-        const apiUrl = 'http://localhost:8081/admin/questionanswer';
+        const apiUrl = 'http://65.2.172.195:8081/admin/questionanswer';
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         
         const formData = {
@@ -73,7 +73,7 @@ import JoditEditor from "jodit-react";
         GetAllQuestionAnswer();
     },[]);
         const GetAllQuestionAnswer = ()=>{
-            axios.get('http://localhost:8081/public/questionanswer').then((res)=>{
+            axios.get('http://65.2.172.195:8081/public/questionanswer').then((res)=>{
                 setQuestionAnswer(res.data)
                 console.log("data...",res.data)
               }).catch((err)=>{
@@ -84,7 +84,7 @@ import JoditEditor from "jodit-react";
 
         async function EditQuestionAnswerById(questionId) {
             try {
-                const response = await axios.get(`http://localhost:8081/public/questionansweredit/${questionId}`);
+                const response = await axios.get(`http://65.2.172.195:8081/public/questionansweredit/${questionId}`);
                 const { id, question, answers } = response.data; // Assuming the response has id, question, and answers fields
                 setQuestionId(id); // Assuming you have a state to hold the question id
                 setQuestion(question);
@@ -103,7 +103,7 @@ import JoditEditor from "jodit-react";
         async function handleDelete(id) {
             try {
                 const token = localStorage.getItem('token');
-              const response = await fetch(`http://localhost:8081/admin/deleteQuestion/${id}`, {
+              const response = await fetch(`http://65.2.172.195:8081/admin/deleteQuestion/${id}`, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json',

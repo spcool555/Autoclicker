@@ -20,7 +20,7 @@ import Link from "next/link";
 
     const profileChangeNav = () => {
         const uid = localStorage.getItem('uid');
-        fetch(`http://localhost:8081/public/profileimage/${uid}`)
+        fetch(`http://65.2.172.195:8081/public/profileimage/${uid}`)
             .then((response) => response.blob())
             .then((blob) => {
                 const url = URL.createObjectURL(blob);
@@ -46,7 +46,7 @@ import Link from "next/link";
         const uid = localStorage.getItem('uid');
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch(`http://localhost:8081/adminuser/profileupload/${uid}`, {
+            const response = await fetch(`http://65.2.172.195:8081/adminuser/profileupload/${uid}`, {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -79,7 +79,7 @@ import Link from "next/link";
         e.preventDefault();
 
         // Send data to the REST API
-        axios.post(`http://localhost:8081/adminuser/saveprofiledata/${uid}`, formData, {
+        axios.post(`http://65.2.172.195:8081/adminuser/saveprofiledata/${uid}`, formData, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
@@ -107,7 +107,7 @@ import Link from "next/link";
 
     useEffect(() => {
         const uid = localStorage.getItem('uid');
-        axios.get(`http://localhost:8081/public/userdata/${uid}`)
+        axios.get(`http://65.2.172.195:8081/public/userdata/${uid}`)
         .then((res) => {
             console.log("Received data:", res.data);
             setFormData(res.data);

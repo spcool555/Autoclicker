@@ -1,8 +1,0 @@
-{
-  "/SignIn/page": "app/SignIn/page.js",
-  "/page": "app/page.js",
-  "/Profile/page": "app/Profile/page.js",
-  "/Admin/page": "app/Admin/page.js",
-  "/Admin/HomeSection/HeadTagData/page": "app/Admin/HomeSection/HeadTagData/page.js",
-  "/Admin/HomeSection/FAQs/page": "app/Admin/HomeSection/FAQs/page.js"
-}

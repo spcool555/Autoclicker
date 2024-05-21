@@ -54,7 +54,7 @@ import JoditEditor from "jodit-react";
             setError('Please enter a value for the question And Answer');
             return;
           }
-        const apiUrl = 'http://localhost:8081/admin/metadata';
+        const apiUrl = 'http://65.2.172.195:8081/admin/metadata';
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         
         const formData = {
@@ -106,7 +106,7 @@ import JoditEditor from "jodit-react";
 
 
         const GetAllQuestionAnswer = (page)=>{
-            axios.get(`http://localhost:8081/public/metadata/${page}`).then((res)=>{
+            axios.get(`http://65.2.172.195:8081/public/metadata/${page}`).then((res)=>{
                 setQuestionAnswer(res.data)
                 console.log("data...",res.data)
               }).catch((err)=>{
@@ -117,7 +117,7 @@ import JoditEditor from "jodit-react";
         async function handleDelete(id) {
             try {
                 const token = localStorage.getItem('token');
-              const response = await fetch(`http://localhost:8081/admin/deletemetadata/${id}`, {
+              const response = await fetch(`http://65.2.172.195:8081/admin/deletemetadata/${id}`, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json',

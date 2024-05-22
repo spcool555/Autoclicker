@@ -57,18 +57,18 @@ const AboutSection = () => {
     <>
 
 
-      <div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+      <div className="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
         <Nav2 />
-        <main class="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
+        <main className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
           <div style={{display:'flex'}}>
-            <div class="p-2 md:p-4">
-              <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
-                <h2 class="pl-6 text-2xl font-bold sm:text-xl">Admin Page</h2>
+            <div className="p-2 md:p-4">
+              <div className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
+                <h2 className="pl-6 text-2xl font-bold sm:text-xl">Admin Page</h2>
 
-                <div class="grid max-w-2xl mx-auto mt-8 border border-black p-5">
+                <div className="grid max-w-2xl mx-auto mt-8 border border-black p-5">
 
 
-                  <div class="items-center mt-8 sm:mt-14 text-[#202142]">
+                  <div className="items-center mt-8 sm:mt-14 text-[#202142]">
 
                     <Col xl={12} md={12} xs={12} className="mb-6">
                       <Card>

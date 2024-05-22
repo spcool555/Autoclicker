@@ -51,7 +51,7 @@ const PricingSection = () => {
                 },
             });
 
-            if (!response.ok) {
+            if (!response?.ok) {
                 throw new Error('Network response was not ok');
             }
 
@@ -81,7 +81,7 @@ const PricingSection = () => {
     const GetAllFeaturebox = () => {
         axios.get('http://65.2.172.195:8081/public/pricefeaturebox')
             .then((res) => {
-                setData(res.data);
+                setData(res?.data);
             })
             .catch((err) => {
                 console.log("err", err);
@@ -101,7 +101,7 @@ const PricingSection = () => {
             body: JSON.stringify({ id }), // Send the ID of the item to be deleted
           });
       
-          if (!response.ok) {
+          if (!response?.ok) {
             throw new Error('Failed to delete item');
           }
       
@@ -148,7 +148,7 @@ const PricingSection = () => {
                                         <label htmlFor="formInput3" className="block mb-2 text-sm font-medium text-gray-900">Price</label>
                                         <input
                                         type='text'
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Price" required
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Price" required
                                             id="formInput3"
                                             value={input3}
                                             onChange={handleInput3Change}

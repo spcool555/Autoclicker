@@ -29,7 +29,7 @@ const SpecificationAndFeatures = () => {
         if (itemName.trim() === '') {
             setError('Please enter a value for the item name.');
             return;
-          }
+        }
         showConfirmationDialog();
     };
 
@@ -72,11 +72,11 @@ const SpecificationAndFeatures = () => {
 
     return (
         <>
-        
+
             <div className="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
-            <Nav2 />
+                <Nav2 />
                 <main className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
-                    
+
                     <div className="p-2 md:p-4">
                         <div className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
                             <h2 className="pl-6 text-2xl font-bold sm:text-xl">Admin Page</h2>
@@ -89,40 +89,42 @@ const SpecificationAndFeatures = () => {
                                                 <div className="flex items-center">
 
                                                     <div className="ms-3">
-                                                    {error && <p className="text-red-500">{error}</p>}
+                                                        {error && <p className="text-red-500">{error}</p>}
                                                         <h1 className="mb-0 font-bold">Specification & Features</h1>
                                                     </div>
                                                 </div>
 
                                             </div>
                                             <div className="mb-4">
-                                                <div>
-                                                    {
-                                                        data.map((item, ind) => (
-                                                            <p dangerouslySetInnerHTML={{ __html: item.items }} key={ind}></p>
-                                                        ))
-                                                    }
-                                                </div>
+                                                {
+                                                    data.map((item, ind) => (
+                                                        <div key={ind}>
+                                                            <p dangerouslySetInnerHTML={{ __html: item.items }} ></p>
+
+                                                        </div>
+                                                    ))
+                                                }
+
                                             </div>
                                             <div className="flex items-center mb-3">
 
                                                 <Form onSubmit={handleSubmit} className="flex-grow ml-3">
-                                                    <div className="flex items-center gap-3">
-                                                        <Form.Label className="w-24">Add</Form.Label>
+                                                    <div className="flex gap-4 justify-start flex-col">
+
 
 
                                                         <JoditEditor
-    id="name"
-    value={itemName}
-    onChange={(content) => setItemName(content)}
-    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    required
-/>
+                                                            id="name"
+                                                            value={itemName}
+                                                            onChange={(content) => setItemName(content)}
+                                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                            required
+                                                        />
 
 
 
                                                         <button type="submit" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Post</button>
-
+                                                        
                                                     </div>
                                                 </Form>
                                             </div>

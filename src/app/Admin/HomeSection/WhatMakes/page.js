@@ -69,7 +69,7 @@ const handleSubmit = async (e) => {
 
                     <div class="items-center mt-8 sm:mt-14 text-[#202142]">
 
-                    <Col xl={6} md={12} xs={12} className="mb-6">
+                    <Col xl={12} md={12} xs={12} className="mb-6">
     <Card>
       <Card.Body>
       <h4 className="font-bold">What makes MT Auto Clicker Different?</h4>

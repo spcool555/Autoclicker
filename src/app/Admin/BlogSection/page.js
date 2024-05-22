@@ -83,7 +83,7 @@ const BlogSection = () => {
   const GetAllFeaturebox = () => {
     axios.get('http://65.2.172.195:8081/public/newsbox')
       .then((res) => {
-        const processedData = res.data.map(newsItem => ({
+        const processedData = res?.data.map(newsItem => ({
           ...newsItem,
           imageUrl: `data:image/jpeg;base64,${newsItem.input3}` // Assuming input3 contains base64 encoded image data
         }));

@@ -12,20 +12,19 @@ const BigBlog = () => {
   
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://65.2.172.195:8081/public/newsbox/${id}`);
-        setNewsData(response.data);
-        console.log("Response:", response);
-        console.log("Data:", response.data);
-       
-      } catch (error) {
-        console.error('Error fetching news data:', error);
-      }
-    };
-
     fetchData();
   }, []);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`http://65.2.172.195:8081/public/newsbox/${id}`);
+      setNewsData(response?.data);
+      console.log("Response:", response);
+      console.log("Data:", response?.data);
+     
+    } catch (error) {
+      console.error('Error fetching news data:', error);
+    }
+  };
 
   return (
     <div id="bg">

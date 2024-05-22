@@ -49,17 +49,17 @@ import axios from "axios";
       }, 10000 * 60 * 1000); // 5 minutes in milliseconds
 
       // Event handler function for 'unload' event
-      const handleUnload = () => {
-        localStorage.removeItem('token');
-      };
+      // const handleUnload = () => {
+      //   localStorage.removeItem('token');
+      // };
 
       // Add event listener for 'unload' event
-      window.addEventListener('unload', handleUnload);
+      // window.addEventListener('unload', handleUnload);
 
       // Cleanup function to clear the timer and remove event listener
       return () => {
         clearTimeout(removeTokenTimeout);
-        window.removeEventListener('unload', handleUnload);
+        // window.removeEventListener('unload', handleUnload);
       };
     } else {
       // Token doesn't exist or is empty

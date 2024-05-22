@@ -6,7 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import Nav2 from "../../Nav2/page"
-import JoditEditor from "jodit-react";
+
  const HeadTagData = () => {
 
     const [question, setQuestion] = useState('');

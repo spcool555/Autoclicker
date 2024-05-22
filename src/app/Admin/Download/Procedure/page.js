@@ -1,12 +1,12 @@
 "use client";
-import Image from "next/image";
-import { useRouter } from "next/navigation"; // Changed from "next/navigation" to "next/router"
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import Nav2 from "../../Nav2/page"
-import JoditEditor from "jodit-react";
+import dynamic from 'next/dynamic';
+const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
  const DownloadSectionProcedure = () => {
     const [selectOs, setselectos] = useState('');
   const [itemName, setItemName] = useState('');

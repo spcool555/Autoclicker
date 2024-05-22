@@ -7,7 +7,8 @@ import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import Nav2 from "../../Nav2/page"
 
 import Swal from "sweetalert2";
-import JoditEditor from "jodit-react";
+import dynamic from 'next/dynamic';
+const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
  const WhatMakes = () => {
   const [about, setAbout] = useState('');
   const [data,setData] = useState([]);

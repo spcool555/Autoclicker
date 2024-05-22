@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import JoditEditor from 'jodit-react';
+import dynamic from 'next/dynamic';
 import Swal from 'sweetalert2';
 import Nav2 from "../Nav2/page"
-
+const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
 const PricingSection = () => {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');

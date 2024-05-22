@@ -100,7 +100,7 @@ const { email, password } = data;
       password:password,
       // deviceid:deviceid
     }
-    console.log("Received 22222222222222222222222222222222222222222users:", data2);
+ 
     axios.post('http://65.2.172.195:8081/auth/signin',data2)
     .then((res)=>{
       localStorage.setItem('token',res.data.token)

@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation"; // Changed from "next/navigation" t
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import dynamic from 'next/dynamic';
 import Nav2 from "../../Nav2/page"
-import JoditEditor from "jodit-react";
+const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
  const QuestionsSection = () => {
     const[questionId,setQuestionId]=useState('')
     const [question, setQuestion] = useState('');

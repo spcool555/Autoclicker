@@ -1,14 +1,16 @@
 "use client";
-import Image from "next/image";
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useSearchParams } from 'next/navigation'
+import {useSearchParams} from "react-router-dom";
 
 const BigBlog = () => {
   const [newsData, setNewsData] = useState(null);
-  const params = useParams()
-  const searchParams = useSearchParams()
-  const id = searchParams.get("id")
+ 
+  const searchParams = typeof window !== 'undefined' ? useSearchParams() : null;
+  const id = searchParams ? searchParams.get("id") : null;
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {

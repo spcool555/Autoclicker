@@ -1,12 +1,11 @@
 "use client";
-import Image from "next/image";
-import { useRouter } from "next/router"; // Updated import
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import Nav2 from "../../Nav2/page"
-import JoditEditor from "jodit-react";
+const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
 
 const SpecificationAndFeatures = () => {
     const [itemName, setItemName] = useState('');
